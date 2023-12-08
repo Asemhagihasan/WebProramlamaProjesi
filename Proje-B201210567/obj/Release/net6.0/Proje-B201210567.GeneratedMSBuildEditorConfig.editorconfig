@@ -16,28 +16,12 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = C:\Users\AsemHagi\source\repos\WebProramlamaProjesi\Proje-B201210567
 build_property._RazorSourceGeneratorDebug = 
 
-[C:/Users/AsemHagi/source/repos/WebProramlamaProjesi/Proje-B201210567/Views/Admin/Kullancilar.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cS3VsbGFuY2lsYXIuY3NodG1s
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/AsemHagi/source/repos/WebProramlamaProjesi/Proje-B201210567/Views/Hastane/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSGFzdGFuZVxJbmRleC5jc2h0bWw=
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/AsemHagi/source/repos/WebProramlamaProjesi/Proje-B201210567/Views/Hastane/Login.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSGFzdGFuZVxMb2dpbi5jc2h0bWw=
-build_metadata.AdditionalFiles.CssScope = 
-
 [C:/Users/AsemHagi/source/repos/WebProramlamaProjesi/Proje-B201210567/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/AsemHagi/source/repos/WebProramlamaProjesi/Proje-B201210567/Views/Home/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/AsemHagi/source/repos/WebProramlamaProjesi/Proje-B201210567/Views/Kullanci/Create.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcS3VsbGFuY2lcQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/AsemHagi/source/repos/WebProramlamaProjesi/Proje-B201210567/Views/Shared/Error.cshtml]
