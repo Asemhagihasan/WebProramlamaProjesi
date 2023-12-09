@@ -8,5 +8,10 @@ namespace Proje_B201210567.Controllers
 		{
 			return View();
 		}
-	}
+
+        public IActionResult Login()
+        {
+            return View();
+        }
+    }
 }
