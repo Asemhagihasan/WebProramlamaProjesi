@@ -2,7 +2,7 @@
 <form method="post">
 	<div class="border p-3 mt-4">
 		<div class="row pb-2">
-			<h2 class="text-primary">Hesap Oluşturma</h2>
+			<h2 class="text-primary">Kullanci Oluşturma</h2>
 			<hr />
 		</div>
 		<div class="mb-3">
@@ -37,8 +37,7 @@
 			<input asp-for="Sifre" type="password" class="form-control" />
 			<span asp-validation-for="Sifre" class="text-danger"></span>
 		</div>
-		<button asp-controller="Kullanci" asp-action="Create" type="submit" class="btn btn-primary" style="width:150px">Oluştur</button>
-		<a asp-controller="Hastane" asp-action="Login" class="btn btn-secondary" style="width:150px">Logine Dön</a>
+		<button asp-controller="Kullanci" asp-action="KullanciEkleme" type="submit" class="btn btn-primary" style="width:150px">Oluştur</button>
 	</div>
 </form>
 @section Scripts{

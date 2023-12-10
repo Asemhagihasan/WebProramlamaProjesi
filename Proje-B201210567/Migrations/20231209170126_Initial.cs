@@ -6,26 +6,10 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace Proje_B201210567.Migrations
 {
-    public partial class InitialCreate : Migration
+    public partial class Initial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.CreateTable(
-                name: "Doktorlar",
-                columns: table => new
-                {
-                    DoktorId = table.Column<int>(type: "integer", nullable: false)
-                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    Doktor_Adi = table.Column<string>(type: "text", nullable: false),
-                    Doktor_Soyad = table.Column<string>(type: "text", nullable: false),
-                    Uzmanlik_Alani = table.Column<string>(type: "text", nullable: false),
-                    Bolum_Id = table.Column<string>(type: "text", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Doktorlar", x => x.DoktorId);
-                });
-
             migrationBuilder.CreateTable(
                 name: "Kullancilar",
                 columns: table => new
@@ -42,6 +26,40 @@ namespace Proje_B201210567.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Kullancilar", x => x.KullaniciId);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Poliklinikler",
+                columns: table => new
+                {
+                    Bolum_Id = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    Bolum_Adi = table.Column<string>(type: "text", nullable: false),
+                    DoktorId = table.Column<int>(type: "integer", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Poliklinikler", x => x.Bolum_Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Doktorlar",
+                columns: table => new
+                {
+                    DoktorId = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    Doktor_Adi = table.Column<string>(type: "text", nullable: false),
+                    Doktor_Soyad = table.Column<string>(type: "text", nullable: false),
+                    PoliklinikBolum_Id = table.Column<int>(type: "integer", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Doktorlar", x => x.DoktorId);
+                    table.ForeignKey(
+                        name: "FK_Doktorlar_Poliklinikler_PoliklinikBolum_Id",
+                        column: x => x.PoliklinikBolum_Id,
+                        principalTable: "Poliklinikler",
+                        principalColumn: "Bolum_Id");
                 });
 
             migrationBuilder.CreateTable(
@@ -64,25 +82,6 @@ namespace Proje_B201210567.Migrations
                         principalTable: "Doktorlar",
                         principalColumn: "DoktorId",
                         onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Poliklinikler",
-                columns: table => new
-                {
-                    Bolum_Id = table.Column<int>(type: "integer", nullable: false)
-                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    Bolum_Adi = table.Column<string>(type: "text", nullable: false),
-                    DoktorId = table.Column<int>(type: "integer", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Poliklinikler", x => x.Bolum_Id);
-                    table.ForeignKey(
-                        name: "FK_Poliklinikler_Doktorlar_DoktorId",
-                        column: x => x.DoktorId,
-                        principalTable: "Doktorlar",
-                        principalColumn: "DoktorId");
                 });
 
             migrationBuilder.CreateTable(
@@ -119,10 +118,9 @@ namespace Proje_B201210567.Migrations
                 column: "DoktorId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Poliklinikler_DoktorId",
-                table: "Poliklinikler",
-                column: "DoktorId",
-                unique: true);
+                name: "IX_Doktorlar_PoliklinikBolum_Id",
+                table: "Doktorlar",
+                column: "PoliklinikBolum_Id");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Rendevuler_DoktorId",
@@ -141,9 +139,6 @@ namespace Proje_B201210567.Migrations
                 name: "CalismaSaati");
 
             migrationBuilder.DropTable(
-                name: "Poliklinikler");
-
-            migrationBuilder.DropTable(
                 name: "Rendevuler");
 
             migrationBuilder.DropTable(
@@ -151,6 +146,9 @@ namespace Proje_B201210567.Migrations
 
             migrationBuilder.DropTable(
                 name: "Kullancilar");
+
+            migrationBuilder.DropTable(
+                name: "Poliklinikler");
         }
     }
 }
