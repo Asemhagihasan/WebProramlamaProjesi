@@ -57,57 +57,55 @@ namespace Proje_B201210567.Data
                     context.SaveChanges();
                 }
                 //Doktorlar
-                if (!context.Doktorlar.Any())
-                {
-                    context.Doktorlar.AddRange(new List<Doktor>()
-                    {
-                        new Doktor()
-                        {
-                            DoktorId = 0001,
-                            Doktor_Adi = "ahmet",
-                            Doktor_Soyad = "nor",
-                            Uzmanlik_Alani = "Çocuk Cerrahisi",
-                            CalismaSaatleri = new List<CalismaSaati>()
-                            {
-                                new CalismaSaati()
-                                {
-                                    Gun = new DateTime(2023,12,5).DayOfWeek,
-                                    BaslangicSaati = new TimeSpan(9,0,0),
-                                    BitisSaati = new TimeSpan(17,0,0),
-                                },
-                                new CalismaSaati()
-                                {
-                                    Gun = new DateTime(2023,12,7).DayOfWeek,
-                                    BaslangicSaati = new TimeSpan(9,0,0),
-                                    BitisSaati = new TimeSpan(17,0,0),
-                                }
-                            }
-                        },
-                        new Doktor()
-                        {
-                            DoktorId = 0002,
-                            Doktor_Adi = "Hasan",
-                            Doktor_Soyad = "hamil",
-                            Uzmanlik_Alani = "El Cerrahisi",
-                             CalismaSaatleri = new List<CalismaSaati>()
-                            {
-                                new CalismaSaati()
-                                {
-                                    Gun = new DateTime(2023,12,4).DayOfWeek,
-                                    BaslangicSaati = new TimeSpan(13,0,0),
-                                    BitisSaati = new TimeSpan(17,0,0),
-                                },
-                                new CalismaSaati()
-                                {
-                                    Gun = new DateTime(2023,12,8).DayOfWeek,
-                                    BaslangicSaati = new TimeSpan(9,0,0),
-                                    BitisSaati = new TimeSpan(15,0,0),
-                                }
-                            }
-                        }
-                    });
-                    context.SaveChanges();
-                }
+                //if (!context.Doktorlar.Any())
+                //{
+                //    context.Doktorlar.AddRange(new List<Doktor>()
+                //    {
+                //        new Doktor()
+                //        {
+                //            DoktorId = 0001,
+                //            Doktor_Adi = "ahmet",
+                //            Doktor_Soyad = "nor",
+                //            CalismaSaatleri = new List<CalismaSaati>()
+                //            {
+                //                new CalismaSaati()
+                //                {
+                //                    Gun = new DateTime(2023,12,5).DayOfWeek,
+                //                    BaslangicSaati = new TimeSpan(9,0,0),
+                //                    BitisSaati = new TimeSpan(17,0,0),
+                //                },
+                //                new CalismaSaati()
+                //                {
+                //                    Gun = new DateTime(2023,12,7).DayOfWeek,
+                //                    BaslangicSaati = new TimeSpan(9,0,0),
+                //                    BitisSaati = new TimeSpan(17,0,0),
+                //                }
+                //            }
+                //        },
+                //        new Doktor()
+                //        {
+                //            DoktorId = 0002,
+                //            Doktor_Adi = "Hasan",
+                //            Doktor_Soyad = "hamil",
+                //             CalismaSaatleri = new List<CalismaSaati>()
+                //            {
+                //                new CalismaSaati()
+                //                {
+                //                    Gun = new DateTime(2023,12,4).DayOfWeek,
+                //                    BaslangicSaati = new TimeSpan(13,0,0),
+                //                    BitisSaati = new TimeSpan(17,0,0),
+                //                },
+                //                new CalismaSaati()
+                //                {
+                //                    Gun = new DateTime(2023,12,8).DayOfWeek,
+                //                    BaslangicSaati = new TimeSpan(9,0,0),
+                //                    BitisSaati = new TimeSpan(15,0,0),
+                //                }
+                //            }
+                //        }
+                //    });
+                //    context.SaveChanges();
+                //}
                 //Poliklinikler
                 if (!context.Poliklinikler.Any())
                 {
@@ -116,14 +114,104 @@ namespace Proje_B201210567.Data
                         new Poliklinik()
                         {
                             Bolum_Id = 10,
-                            Bolum_Adi = "Dahiliye"
+                            Bolum_Adi = "Dahiliye",
+                            DoktorList = new List<Doktor>()
+                            {
+                                new Doktor()
+                                {
+									DoktorId = 0001,
+							        Doktor_Adi = "ahmet",
+							        Doktor_Soyad = "nor",
+									CalismaSaatleri = new List<CalismaSaati>()
+							        {
+								        new CalismaSaati()
+								        {
+									        Gun = new DateTime(2023,12,5).DayOfWeek,
+									        BaslangicSaati = new TimeSpan(9,0,0),
+									        BitisSaati = new TimeSpan(17,0,0),
+								        },
+								        new CalismaSaati()
+								        {
+									        Gun = new DateTime(2023,12,7).DayOfWeek,
+									        BaslangicSaati = new TimeSpan(9,0,0),
+									        BitisSaati = new TimeSpan(17,0,0),
+								        }
+							        }
+								},
+								new Doktor()
+								{
+									DoktorId = 0002,
+									Doktor_Adi = "Hasan",
+									Doktor_Soyad = "hamil",
+									CalismaSaatleri = new List<CalismaSaati>()
+									{
+										new CalismaSaati()
+										{
+											Gun = new DateTime(2023,12,3).DayOfWeek,
+											BaslangicSaati = new TimeSpan(11,0,0),
+											BitisSaati = new TimeSpan(15,0,0),
+										},
+										new CalismaSaati()
+										{
+											Gun = new DateTime(2023,12,1).DayOfWeek,
+											BaslangicSaati = new TimeSpan(9,0,0),
+											BitisSaati = new TimeSpan(14,0,0),
+										}
+									}
+								}
+							}
                         },
 
                         new Poliklinik()
                         {
                             Bolum_Id = 11,
-                            Bolum_Adi = "Çocuk Polikliniği"
-                        }
+                            Bolum_Adi = "Çocuk Polikliniği",
+							DoktorList = new List<Doktor>()
+                            {
+								new Doktor()
+								{
+									DoktorId = 0003,
+									Doktor_Adi = "nor",
+									Doktor_Soyad = "hala",
+									CalismaSaatleri = new List<CalismaSaati>()
+									{
+										new CalismaSaati()
+										{
+											Gun = new DateTime(2023,12,11).DayOfWeek,
+											BaslangicSaati = new TimeSpan(9,0,0),
+											BitisSaati = new TimeSpan(17,0,0),
+										},
+										new CalismaSaati()
+										{
+											Gun = new DateTime(2023,12,8).DayOfWeek,
+											BaslangicSaati = new TimeSpan(9,0,0),
+											BitisSaati = new TimeSpan(16,0,0),
+										}
+									}
+								},
+								new Doktor()
+								{
+									DoktorId = 0004,
+									Doktor_Adi = "hany",
+									Doktor_Soyad = "san",
+									CalismaSaatleri = new List<CalismaSaati>()
+									{
+										new CalismaSaati()
+										{
+											Gun = new DateTime(2023,12,20).DayOfWeek,
+											BaslangicSaati = new TimeSpan(14,0,0),
+											BitisSaati = new TimeSpan(17,0,0),
+										},
+										new CalismaSaati()
+										{
+											Gun = new DateTime(2023,12,17).DayOfWeek,
+											BaslangicSaati = new TimeSpan(10,0,0),
+											BitisSaati = new TimeSpan(15,0,0),
+										}
+									}
+								}
+							}
+						}
                     });
                     context.SaveChanges();
 
@@ -133,3 +221,5 @@ namespace Proje_B201210567.Data
     }
 }
 
+
+                            

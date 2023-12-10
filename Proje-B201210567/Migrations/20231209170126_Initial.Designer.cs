@@ -12,8 +12,8 @@ using Proje_B201210567.Data;
 namespace Proje_B201210567.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20231207142802_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20231209170126_Initial")]
+    partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -59,9 +59,6 @@ namespace Proje_B201210567.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("DoktorId"));
 
-                    b.Property<string>("Bolum_Id")
-                        .HasColumnType("text");
-
                     b.Property<string>("Doktor_Adi")
                         .IsRequired()
                         .HasColumnType("text");
@@ -70,11 +67,12 @@ namespace Proje_B201210567.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<string>("Uzmanlik_Alani")
-                        .IsRequired()
-                        .HasColumnType("text");
+                    b.Property<int?>("PoliklinikBolum_Id")
+                        .HasColumnType("integer");
 
                     b.HasKey("DoktorId");
+
+                    b.HasIndex("PoliklinikBolum_Id");
 
                     b.ToTable("Doktorlar");
                 });
@@ -132,9 +130,6 @@ namespace Proje_B201210567.Migrations
 
                     b.HasKey("Bolum_Id");
 
-                    b.HasIndex("DoktorId")
-                        .IsUnique();
-
                     b.ToTable("Poliklinikler");
                 });
 
@@ -183,13 +178,11 @@ namespace Proje_B201210567.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("Proje_B201210567.Models.Poliklinik", b =>
+            modelBuilder.Entity("Proje_B201210567.Models.Doktor", b =>
                 {
-                    b.HasOne("Proje_B201210567.Models.Doktor", "doktor")
-                        .WithOne("poliklinik")
-                        .HasForeignKey("Proje_B201210567.Models.Poliklinik", "DoktorId");
-
-                    b.Navigation("doktor");
+                    b.HasOne("Proje_B201210567.Models.Poliklinik", null)
+                        .WithMany("DoktorList")
+                        .HasForeignKey("PoliklinikBolum_Id");
                 });
 
             modelBuilder.Entity("Proje_B201210567.Models.Randevu", b =>
@@ -210,8 +203,11 @@ namespace Proje_B201210567.Migrations
             modelBuilder.Entity("Proje_B201210567.Models.Doktor", b =>
                 {
                     b.Navigation("CalismaSaatleri");
+                });
 
-                    b.Navigation("poliklinik");
+            modelBuilder.Entity("Proje_B201210567.Models.Poliklinik", b =>
+                {
+                    b.Navigation("DoktorList");
                 });
 #pragma warning restore 612, 618
         }

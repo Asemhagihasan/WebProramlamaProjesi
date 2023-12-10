@@ -11,46 +11,6 @@ namespace Proje_B201210567.Controllers
 		{
 			_db = db;
 		}
-		public IActionResult Kullancilar()
-		{
-			IEnumerable<Kullanci> objCategortList = _db.Kullancilar.ToList();
-			return View(objCategortList);
-		}
-		public IActionResult KullanciEkleme()
-		{
-			return View();
-		}
-		public IActionResult KullanciSilme()
-		{
-			return View();
-		}
-		public IActionResult Randevuler()
-		{
-			return View();
-		}
-		public IActionResult RendevuAlmak()
-		{
-			return View();
-		}
-		public IActionResult RandevuSilmek()
-		{
-			return View();
-		}
-		public IActionResult RandevuDegistir()
-		{
-			return View();
-		}
-		public IActionResult DoktorEklemk()
-		{
-			return View();
-		}
-		public IActionResult DoktorSilmek()
-		{
-			return View();
-		}
-		public IActionResult PoliklinikOlusturma()
-		{
-			return View();
-		}
+		
 	}
 }
