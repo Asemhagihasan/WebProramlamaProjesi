@@ -1,0 +1,62 @@
+﻿@model IEnumerable<Poliklinik>
+
+<div class="form-group">
+    <label for="exampleSelect1" class="form-label mt-4">Bölüm</label>
+    <select class="form-select" id="mySelect">
+        @foreach (var item in Model)
+        {
+            <option value="@item.Bolum_Id">@item.Bolum_Adi</option>
+        }
+    </select>
+</div>
+<div class="ponklikListsi mt-3"></div>
+@section scripts {
+    <script>
+        const ponklikContainer = document.querySelector(".ponklikListsi");
+        document.getElementById("mySelect").addEventListener("change", function () {
+            var selectedElement = this.value;
+
+            $.ajax({
+                type: "GET",
+                url: "/Poliklinik/jsonData",
+                data: { BolumId: selectedElement },
+                success: function (detailes) {
+                    DisplayDeteailes(detailes);
+                },
+                error: function (error) {
+                    alert("siktir git");
+                }
+            });
+        });
+
+        const DisplayDeteailes = function (data) {
+            const html = `<table class="table table-bordered table-striped">
+            <thead>
+                <tr class="bg-body-secondary">
+                    <th>Bölüm Id</th>
+                    <th>Bölüm Adı</th>
+                    <th>Doktor Listesi</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>${data.bolum_Id}</td>
+                    <td>${data.bolum_Adi}</td>
+                    <td width="20%">
+                        <div class="w-50 btn-group " role="group">
+                                     <a href="/Doktor/DoktorListesi/${data.bolum_Id}" class="btn btn-primary mx-2"><i class="bi bi-pencil-square"></i> &nbsp; a </a>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>`;
+            ponklikContainer.innerHTML = "";
+            ponklikContainer.insertAdjacentHTML("afterbegin", html);
+
+        }
+    </script>
+}
+
+
+
+
