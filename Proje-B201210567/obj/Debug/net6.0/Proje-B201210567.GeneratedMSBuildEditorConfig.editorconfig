@@ -9,61 +9,61 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = Proje_B201210567
 build_property.RootNamespace = Proje_B201210567
-build_property.ProjectDir = C:\Users\AsemHagi\source\repos\WebProramlamaProjesi\Proje-B201210567\
+build_property.ProjectDir = C:\Users\HamudTheGreat\Source\Repos\WebProramlamaProjesi\Proje-B201210567\
 build_property.RazorLangVersion = 6.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = C:\Users\AsemHagi\source\repos\WebProramlamaProjesi\Proje-B201210567
+build_property.MSBuildProjectDirectory = C:\Users\HamudTheGreat\Source\Repos\WebProramlamaProjesi\Proje-B201210567
 build_property._RazorSourceGeneratorDebug = 
 
-[C:/Users/AsemHagi/source/repos/WebProramlamaProjesi/Proje-B201210567/Views/Doktor/DoktorListesi.cshtml]
+[C:/Users/HamudTheGreat/Source/Repos/WebProramlamaProjesi/Proje-B201210567/Views/Doktor/DoktorListesi.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRG9rdG9yXERva3Rvckxpc3Rlc2kuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/AsemHagi/source/repos/WebProramlamaProjesi/Proje-B201210567/Views/Hastane/Login.cshtml]
+[C:/Users/HamudTheGreat/Source/Repos/WebProramlamaProjesi/Proje-B201210567/Views/Hastane/Login.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSGFzdGFuZVxMb2dpbi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/AsemHagi/source/repos/WebProramlamaProjesi/Proje-B201210567/Views/Home/Index.cshtml]
+[C:/Users/HamudTheGreat/Source/Repos/WebProramlamaProjesi/Proje-B201210567/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/AsemHagi/source/repos/WebProramlamaProjesi/Proje-B201210567/Views/Home/Privacy.cshtml]
+[C:/Users/HamudTheGreat/Source/Repos/WebProramlamaProjesi/Proje-B201210567/Views/Home/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/AsemHagi/source/repos/WebProramlamaProjesi/Proje-B201210567/Views/Kullanci/KullanciEkleme.cshtml]
+[C:/Users/HamudTheGreat/Source/Repos/WebProramlamaProjesi/Proje-B201210567/Views/Kullanci/KullanciEkleme.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcS3VsbGFuY2lcS3VsbGFuY2lFa2xlbWUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/AsemHagi/source/repos/WebProramlamaProjesi/Proje-B201210567/Views/Kullanci/KullanciGuncel.cshtml]
+[C:/Users/HamudTheGreat/Source/Repos/WebProramlamaProjesi/Proje-B201210567/Views/Kullanci/KullanciGuncel.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcS3VsbGFuY2lcS3VsbGFuY2lHdW5jZWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/AsemHagi/source/repos/WebProramlamaProjesi/Proje-B201210567/Views/Kullanci/Kullancilar.cshtml]
+[C:/Users/HamudTheGreat/Source/Repos/WebProramlamaProjesi/Proje-B201210567/Views/Kullanci/Kullancilar.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcS3VsbGFuY2lcS3VsbGFuY2lsYXIuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/AsemHagi/source/repos/WebProramlamaProjesi/Proje-B201210567/Views/Kullanci/KullanciSilme.cshtml]
+[C:/Users/HamudTheGreat/Source/Repos/WebProramlamaProjesi/Proje-B201210567/Views/Kullanci/KullanciSilme.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcS3VsbGFuY2lcS3VsbGFuY2lTaWxtZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/AsemHagi/source/repos/WebProramlamaProjesi/Proje-B201210567/Views/Shared/Error.cshtml]
+[C:/Users/HamudTheGreat/Source/Repos/WebProramlamaProjesi/Proje-B201210567/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/AsemHagi/source/repos/WebProramlamaProjesi/Proje-B201210567/Views/Shared/_ValidationScriptsPartial.cshtml]
+[C:/Users/HamudTheGreat/Source/Repos/WebProramlamaProjesi/Proje-B201210567/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/AsemHagi/source/repos/WebProramlamaProjesi/Proje-B201210567/Views/_ViewImports.cshtml]
+[C:/Users/HamudTheGreat/Source/Repos/WebProramlamaProjesi/Proje-B201210567/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/AsemHagi/source/repos/WebProramlamaProjesi/Proje-B201210567/Views/_ViewStart.cshtml]
+[C:/Users/HamudTheGreat/Source/Repos/WebProramlamaProjesi/Proje-B201210567/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/AsemHagi/source/repos/WebProramlamaProjesi/Proje-B201210567/Views/Shared/_Layout.cshtml]
+[C:/Users/HamudTheGreat/Source/Repos/WebProramlamaProjesi/Proje-B201210567/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-7hkgso9cj1
