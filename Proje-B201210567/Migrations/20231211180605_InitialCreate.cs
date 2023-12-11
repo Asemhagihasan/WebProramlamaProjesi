@@ -6,7 +6,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace Proje_B201210567.Migrations
 {
-    public partial class Initial : Migration
+    public partial class InitialCreate : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -50,14 +50,15 @@ namespace Proje_B201210567.Migrations
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     Doktor_Adi = table.Column<string>(type: "text", nullable: false),
                     Doktor_Soyad = table.Column<string>(type: "text", nullable: false),
-                    PoliklinikBolum_Id = table.Column<int>(type: "integer", nullable: true)
+                    Bolum_Id = table.Column<int>(type: "integer", nullable: true),
+                    poliklinikBolum_Id = table.Column<int>(type: "integer", nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Doktorlar", x => x.DoktorId);
                     table.ForeignKey(
-                        name: "FK_Doktorlar_Poliklinikler_PoliklinikBolum_Id",
-                        column: x => x.PoliklinikBolum_Id,
+                        name: "FK_Doktorlar_Poliklinikler_poliklinikBolum_Id",
+                        column: x => x.poliklinikBolum_Id,
                         principalTable: "Poliklinikler",
                         principalColumn: "Bolum_Id");
                 });
@@ -118,9 +119,9 @@ namespace Proje_B201210567.Migrations
                 column: "DoktorId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Doktorlar_PoliklinikBolum_Id",
+                name: "IX_Doktorlar_poliklinikBolum_Id",
                 table: "Doktorlar",
-                column: "PoliklinikBolum_Id");
+                column: "poliklinikBolum_Id");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Rendevuler_DoktorId",

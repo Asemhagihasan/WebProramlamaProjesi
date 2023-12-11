@@ -57,6 +57,9 @@ namespace Proje_B201210567.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("DoktorId"));
 
+                    b.Property<int?>("Bolum_Id")
+                        .HasColumnType("integer");
+
                     b.Property<string>("Doktor_Adi")
                         .IsRequired()
                         .HasColumnType("text");
@@ -65,12 +68,12 @@ namespace Proje_B201210567.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<int?>("PoliklinikBolum_Id")
+                    b.Property<int?>("poliklinikBolum_Id")
                         .HasColumnType("integer");
 
                     b.HasKey("DoktorId");
 
-                    b.HasIndex("PoliklinikBolum_Id");
+                    b.HasIndex("poliklinikBolum_Id");
 
                     b.ToTable("Doktorlar");
                 });
@@ -178,9 +181,11 @@ namespace Proje_B201210567.Migrations
 
             modelBuilder.Entity("Proje_B201210567.Models.Doktor", b =>
                 {
-                    b.HasOne("Proje_B201210567.Models.Poliklinik", null)
+                    b.HasOne("Proje_B201210567.Models.Poliklinik", "poliklinik")
                         .WithMany("DoktorList")
-                        .HasForeignKey("PoliklinikBolum_Id");
+                        .HasForeignKey("poliklinikBolum_Id");
+
+                    b.Navigation("poliklinik");
                 });
 
             modelBuilder.Entity("Proje_B201210567.Models.Randevu", b =>

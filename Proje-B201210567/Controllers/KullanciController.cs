@@ -96,5 +96,11 @@ namespace Proje_B201210567.Controllers
             _db.SaveChanges();
             return RedirectToAction("Kullancilar","Kullanci");
         }
+        [HttpPost]
+        public IActionResult HastaAra (int ?id)
+        {
+            return View(id);
+            
+        }
     }
 }

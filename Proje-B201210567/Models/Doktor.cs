@@ -12,7 +12,9 @@ namespace Proje_B201210567.Models
         public string Doktor_Adi { get; set; }
 		[Required]
         public string Doktor_Soyad { get; set; }
-		[Required]
+        [ForeignKey("Poliklinik")]
+        public int? Bolum_Id { get; set; }
+		public Poliklinik ?poliklinik {  get; set; }
 
         // Doktorun çalışma tarihleri ve saatleri
         public List<CalismaSaati> CalismaSaatleri { get; set; }

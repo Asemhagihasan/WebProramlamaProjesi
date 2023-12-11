@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Proje_B201210567.Models
@@ -7,6 +8,7 @@ namespace Proje_B201210567.Models
 	{
         [Key]
         public int Bolum_Id { get; set; }
+        [DisplayName("Bölüm Adı")]
         public string Bolum_Adi { get; set; }
 
         [ForeignKey("Doktor")]
