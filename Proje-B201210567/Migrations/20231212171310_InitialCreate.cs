@@ -16,9 +16,10 @@ namespace Proje_B201210567.Migrations
                 {
                     KullaniciId = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    Tc = table.Column<string>(type: "text", nullable: false),
                     Kullanci_Adi = table.Column<string>(type: "text", nullable: false),
                     Kullanci_Soyad = table.Column<string>(type: "text", nullable: false),
-                    TelefonNumarasi = table.Column<int>(type: "integer", nullable: false),
+                    TelefonNumarasi = table.Column<string>(type: "text", nullable: false),
                     Cinsel = table.Column<string>(type: "text", nullable: false),
                     Email = table.Column<string>(type: "text", nullable: false),
                     Sifre = table.Column<string>(type: "text", nullable: false)
@@ -48,9 +49,11 @@ namespace Proje_B201210567.Migrations
                 {
                     DoktorId = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    Tc = table.Column<string>(type: "text", nullable: false),
                     Doktor_Adi = table.Column<string>(type: "text", nullable: false),
                     Doktor_Soyad = table.Column<string>(type: "text", nullable: false),
-                    Bolum_Id = table.Column<int>(type: "integer", nullable: true),
+                    TelefonNumarasi = table.Column<string>(type: "text", nullable: false),
+                    Email = table.Column<string>(type: "text", nullable: false),
                     poliklinikBolum_Id = table.Column<int>(type: "integer", nullable: true)
                 },
                 constraints: table =>

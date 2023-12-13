@@ -20,17 +20,22 @@
                 Id
             </th>
             <th>
+                Tc
+            </th>
+            <th>
                 Adi
             </th>
             <th>
                 Soyad
             </th>
             <th>
+                Telefon Numarası
+            </th>
+            <th>
+                Email
+            </th>
+            <th>
                 Bölüm İd
-            </th>
-            <th>
-            </th>
-            <th>
             </th>
             <th></th>
             <th></th>
@@ -40,23 +45,26 @@
         @foreach (var obj in Model)
         {
             <tr>
-                <td width="13%">
+                <td>
                     @obj.DoktorId
                 </td>
-                <td width="13%">
+                <td>
+                    @obj.Tc
+                </td>
+                <td>
                     @obj.Doktor_Adi
                 </td>
-                <td width="13%">
+                <td>
                     @obj.Doktor_Soyad
                 </td>
-                <td width="13%">
-                    @obj.Bolum_Id
+                <td>
+                    @obj.TelefonNumarasi
                 </td>
-                <td width="13%">
-
+                <td>
+                    @obj.Email
                 </td>
-                <td width="13%">
-
+                <td>
+                    @obj.poliklinikBolum_Id
                 </td>
                 <td>
                     <div class="w-75 btn-group " role="group">

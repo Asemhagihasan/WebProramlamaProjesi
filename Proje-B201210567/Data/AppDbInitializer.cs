@@ -20,8 +20,10 @@ namespace Proje_B201210567.Data
                         new Kullanci()
                         {
                             KullaniciId = 1234,
+                            Tc = "99242813288",
                             Kullanci_Adi = "Asem",
                             Kullanci_Soyad = "Hagi hasan",
+                            TelefonNumarasi = "05526492911",
                             Cinsel = "Erkek",
                             Email = "asemhagihasan12345@gmail.com",
                             Sifre = "9924"
@@ -29,8 +31,10 @@ namespace Proje_B201210567.Data
                           new Kullanci()
                         {
                             KullaniciId = 1345,
+                            Tc = "99242813277",
                             Kullanci_Adi = "omar",
                             Kullanci_Soyad = "shamiye",
+                            TelefonNumarasi = "05526492981",
                             Cinsel = "kadin",
                             Email = "omarshamiye@gmail.com",
                             Sifre = "9924"
@@ -38,8 +42,10 @@ namespace Proje_B201210567.Data
                           new Kullanci()
                           {
                             KullaniciId = 1246,
+                            Tc = "99242813266",
                             Kullanci_Adi = "qusai",
                             Kullanci_Soyad = "kalmon",
+                            TelefonNumarasi = "05525592911",
                             Cinsel = "Erkek",
                             Email = "qusai@gmail.com",
                             Sifre = "9924"
@@ -47,8 +53,10 @@ namespace Proje_B201210567.Data
                            new Kullanci()
                           {
                             KullaniciId = 2314,
+                            Tc = "99242813255",
                             Kullanci_Adi = "suhaib",
                             Kullanci_Soyad = "hagosman",
+                            TelefonNumarasi = "05526464911",
                             Cinsel = "Erkek",
                             Email = "suhaib@gmail.com",
                             Sifre = "9924"
@@ -120,8 +128,11 @@ namespace Proje_B201210567.Data
                                 new Doktor()
                                 {
 									DoktorId = 0001,
+                                    Tc = "99242813211",
 							        Doktor_Adi = "ahmet",
 							        Doktor_Soyad = "nor",
+                                    TelefonNumarasi = "05528728212",
+                                    Email = "ahmet@gmail.com",
 									CalismaSaatleri = new List<CalismaSaati>()
 							        {
 								        new CalismaSaati()
@@ -141,8 +152,11 @@ namespace Proje_B201210567.Data
 								new Doktor()
 								{
 									DoktorId = 0002,
+                                    Tc = "99242813211",
 									Doktor_Adi = "Hasan",
 									Doktor_Soyad = "hamil",
+                                    TelefonNumarasi = "5526492965",
+                                    Email = "Hasan@gmail.com",
 									CalismaSaatleri = new List<CalismaSaati>()
 									{
 										new CalismaSaati()
@@ -171,8 +185,11 @@ namespace Proje_B201210567.Data
 								new Doktor()
 								{
 									DoktorId = 0003,
+                                    Tc = "99242713344",
 									Doktor_Adi = "nor",
 									Doktor_Soyad = "hala",
+                                    TelefonNumarasi = "5526492988",
+                                    Email = "nor@gmail.com",
 									CalismaSaatleri = new List<CalismaSaati>()
 									{
 										new CalismaSaati()
@@ -192,8 +209,11 @@ namespace Proje_B201210567.Data
 								new Doktor()
 								{
 									DoktorId = 0004,
-									Doktor_Adi = "hany",
+                                    Tc = "992427133045",
+                                    Doktor_Adi = "hany",
 									Doktor_Soyad = "san",
+                                    TelefonNumarasi = "05526482533",
+                                    Email = "hany@gmail.com",
 									CalismaSaatleri = new List<CalismaSaati>()
 									{
 										new CalismaSaati()
