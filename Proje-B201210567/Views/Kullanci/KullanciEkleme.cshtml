@@ -6,6 +6,11 @@
 			<hr />
 		</div>
 		<div class="mb-3">
+			<label asp-for="Tc"></label>
+			<input asp-for="Tc" type="text" class="form-control" />
+			<span asp-validation-for="Tc" class="text-danger"></span>
+		</div>
+		<div class="mb-3">
 			<label asp-for="Kullanci_Adi"></label>
 			<input asp-for="Kullanci_Adi" type="text" class="form-control" />
 			<span asp-validation-for="Kullanci_Adi" class="text-danger"></span>
@@ -17,7 +22,7 @@
 		</div>
 		<div class="mb-3">
 			<label asp-for="TelefonNumarasi"></label>
-			<input asp-for="TelefonNumarasi" type="number" class="form-control" />
+			<input asp-for="TelefonNumarasi" type="text" class="form-control" />
 			<span asp-validation-for="TelefonNumarasi" class="text-danger"></span>
 		</div>
 		<div class="mb-3">

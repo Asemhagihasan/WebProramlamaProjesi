@@ -13,14 +13,15 @@ namespace Proje_B201210567.Controllers
         public IActionResult DoktorListesi(int ?id)
 		{
 			if(id == 0 && id == null) { return NotFound(); }
-			
-			//var doktorlar = (from d in _db.Doktorlar where d.Bolum_Id == id select d).ToList();
 
-			//if(doktorlar == null) {
-			//	return NotFound(); 
-			//}
+			var doktorlar = (from d in _db.Doktorlar where d.poliklinikBolum_Id == id select d).ToList();
 
-			return View();
+			if (doktorlar == null)
+			{
+				return NotFound();
+			}
+
+			return View(doktorlar);
 		}
 
 	}

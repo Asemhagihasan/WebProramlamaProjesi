@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Proje_B201210567.Data;
 using Proje_B201210567.Models;
+using System.Collections;
+using System.Collections.Generic;
 
 namespace Proje_B201210567.Controllers
 {
@@ -11,10 +13,20 @@ namespace Proje_B201210567.Controllers
 		{
 			_db = db;
 		}
-      
-        public IActionResult Kullancilar()
+
+        public IActionResult Kullancilar(Kullanci model)
         {
-            IEnumerable<Kullanci> objCategortList = _db.Kullancilar.ToList();
+            List<Kullanci> objCategortList;
+
+            if (model != null)
+            {
+                objCategortList = new List<Kullanci> { model };
+            }
+            else
+            {
+                objCategortList = _db.Kullancilar.ToList();
+            }
+
             return View(objCategortList);
         }
         public IActionResult KullanciEkleme()
@@ -97,10 +109,21 @@ namespace Proje_B201210567.Controllers
             return RedirectToAction("Kullancilar","Kullanci");
         }
         [HttpPost]
-        public IActionResult HastaAra (int ?id)
+        public IActionResult HastaAra(string Tc)
         {
-            return View(id);
-            
+            if (string.IsNullOrEmpty(Tc))
+            {
+                return NotFound();
+            }
+
+            var Hasta = _db.Kullancilar.Where(x => x.Tc == Tc).ToList();
+
+            if (!Hasta.Any())
+            {
+                return NotFound();
+            }
+
+            return RedirectToAction("Kullancilar", Hasta);
         }
     }
 }

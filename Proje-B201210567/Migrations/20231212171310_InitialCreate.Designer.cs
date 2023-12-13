@@ -12,7 +12,7 @@ using Proje_B201210567.Data;
 namespace Proje_B201210567.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20231211180605_InitialCreate")]
+    [Migration("20231212171310_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -59,14 +59,23 @@ namespace Proje_B201210567.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("DoktorId"));
 
-                    b.Property<int?>("Bolum_Id")
-                        .HasColumnType("integer");
-
                     b.Property<string>("Doktor_Adi")
                         .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<string>("Doktor_Soyad")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("Tc")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("TelefonNumarasi")
                         .IsRequired()
                         .HasColumnType("text");
 
@@ -108,8 +117,13 @@ namespace Proje_B201210567.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<int>("TelefonNumarasi")
-                        .HasColumnType("integer");
+                    b.Property<string>("Tc")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("TelefonNumarasi")
+                        .IsRequired()
+                        .HasColumnType("text");
 
                     b.HasKey("KullaniciId");
 

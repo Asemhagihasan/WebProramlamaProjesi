@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Kullanci>
+﻿@model List<Kullanci>
 @{
     ViewData["Title"] = "Index";
     var kullancilar = (from x in Model orderby x.KullaniciId select x).ToList();
@@ -17,16 +17,18 @@
     </div>
 </div>
 <br />
-<form class="d-flex mb-2">
-    <input class="form-control me-sm-2" type="search" placeholder="Search">
-    <button asp-controller="Doktor" asp-action="HastaAra" class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
+
+<form method="post" asp-controller="Kullanci" asp-action="HastaAra" class="d-flex mb-2">
+    <input class="form-control me-sm-2" type="search" name="Tc" placeholder="Search">
+    <button  class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
 </form>
+
 
 <table class="table table-bordered table-striped" style="width:100%">
     <thead>
         <tr class="bg-body-secondary">
             <th>
-                Id
+                Tc
             </th>
             <th>
                 Adi
@@ -51,22 +53,22 @@
         @foreach (var obj in kullancilar)
         {
             <tr>
-                <td width="13%">
-                    @obj.KullaniciId
+                <td >
+                    @obj.Tc
                 </td>
-                <td width="13%">
+                <td >
                     @obj.Kullanci_Adi
                 </td>
-                <td width="13%">
+                <td >
                     @obj.Kullanci_Soyad
                 </td>
-                <td width="13%">
+                <td >
                     @obj.TelefonNumarasi
                 </td>
-                <td width="13%">
+                <td>
                     @obj.Cinsel
                 </td>
-                <td width="13%">
+                <td>
                     @obj.Email
                 </td>
                 <td>

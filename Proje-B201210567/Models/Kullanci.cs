@@ -8,7 +8,10 @@ namespace Proje_B201210567.Models
         [Key]
         public int KullaniciId { get; set; }
 
-		[Required(ErrorMessage = "Kullanıcı Adı boş bırakılamaz.")]
+		[Required]
+        public string Tc { get; set; }
+
+        [Required(ErrorMessage = "Kullanıcı Adı boş bırakılamaz.")]
 		[DisplayName("Adı")]
         public string Kullanci_Adi { get; set; }
 
@@ -18,7 +21,7 @@ namespace Proje_B201210567.Models
 
 		[Required(ErrorMessage = "Telefon Numarası boş bırakılamaz.")]
 		[DisplayName("Telefon Numarası")]
-        public int TelefonNumarasi { get; set; }
+        public string TelefonNumarasi { get; set; }
 
 		[Required(ErrorMessage = "Cinsel seçimi yapmalısınız.")]
 		public string Cinsel { get; set; }
