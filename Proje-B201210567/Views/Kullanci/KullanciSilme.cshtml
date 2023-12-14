@@ -1,5 +1,6 @@
 ﻿@model Kullanci
-<form method="post">
+<form method="post" asp-controller="Kullanci" asp-action="HastaSil">
+	<input asp-for="KullaniciId" type="hidden" />
 	<div class="border p-3 mt-4">
 		<div class="row pb-2">
 			<h2 class="text-primary">Hasta Silme</h2>
@@ -32,6 +33,6 @@
 			<label asp-for="Email"></label>
 			<input asp-for="Email" type="email" class="form-control" disabled placeholder="email@example.com" />
 		</div>
-		<button asp-controller="Kullanci" asp-action="HastaSil" type="submit" class="btn btn-danger" style="width:150px">Sil</button>
+		<button  type="submit" class="btn btn-danger" style="width:150px">Sil</button>
 	</div>
 </form>

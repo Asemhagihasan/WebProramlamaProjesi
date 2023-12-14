@@ -1,4 +1,5 @@
 ﻿using Proje_B201210567.Models;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -22,6 +23,8 @@ namespace Proje_B201210567.Models
         public string Email { get; set; }
 
         [ForeignKey("Poliklinik")]
+
+
         public int? poliklinikBolum_Id { get; set; }
 		public Poliklinik ?poliklinik {  get; set; }
 

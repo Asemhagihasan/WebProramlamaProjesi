@@ -29,5 +29,27 @@ namespace Proje_B201210567.Controllers
             }
             return Json(null);
         }
+
+        public IActionResult PoliklinikEkle()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult PoliklinikEkle(Poliklinik model)
+        { 
+            if(model.DoktorList == null)
+            {
+                model.DoktorList = new List<Doktor>() { };
+            }
+
+            if(model.DoktorList != null && model.Bolum_Id != null)
+            {
+                _db.Poliklinikler.Add(model);
+                _db.SaveChanges();
+                return RedirectToAction("PoliklinikGet");
+            }
+            return View(model); 
+        }
     }
 }

@@ -1,0 +1,65 @@
+﻿@model PoliklinikVeDoktor
+
+<form method="post" asp-controller="Doktor" asp-action="DoktorGuncel">
+	<div class="border p-3 mt-4">
+		<div class="row pb-2">
+			<h2 class="text-primary">Doktor Ekle</h2>
+			<hr />
+		</div>
+		<input asp-for="Doktor.DoktorId" type="hidden" />
+		<div class="mb-3">
+			<label asp-for="Doktor.Tc"></label>
+			<input asp-for="Doktor.Tc" type="text" class="form-control" />
+			<span asp-validation-for="Doktor.Tc" class="text-danger"></span>
+		</div>
+		<div class="mb-3">
+			<label asp-for="Doktor.Doktor_Adi"></label>
+			<input asp-for="Doktor.Doktor_Adi" type="text" class="form-control" />
+			<span asp-validation-for="Doktor.Doktor_Adi" class="text-danger"></span>
+		</div>
+		<div class="mb-3">
+			<label asp-for="Doktor.Doktor_Soyad"></label>
+			<input asp-for="Doktor.Doktor_Soyad" type="text" class="form-control" />
+			<span asp-validation-for="Doktor.Doktor_Soyad" class="text-danger"></span>
+		</div>
+		<div class="mb-3">
+			<label asp-for="Doktor.TelefonNumarasi"></label>
+			<input asp-for="Doktor.TelefonNumarasi" type="text" class="form-control" />
+			<span asp-validation-for="Doktor.TelefonNumarasi" class="text-danger"></span>
+		</div>
+		<div class="mb-3">
+			<label asp-for="Doktor.Email" class="form-label"></label>
+			<input asp-for="Doktor.Email" type="email" class="form-control" />
+			<span asp-validation-for="Doktor.Email" class="text-danger"></span>
+		</div>
+		<div class="mb-3">
+			<label class="form-label">Bölüm</label>
+			<select asp-for="Doktor.poliklinikBolum_Id" class="form-select" id="mySelect">
+				@foreach (var item in Model.polikliniks)
+				{
+					<option value="@item.Bolum_Id">@item.Bolum_Adi</option>
+				}
+			</select>
+		</div>
+		<div class="col-6">
+			<div class="mb-2">
+				<label asp-for="Doktor.CalismaSaatleri[0].Gun"></label>
+				<input asp-for="Doktor.CalismaSaatleri[0].Gun" type="text" class="form-control" />
+			</div>
+			<div class="mb-2">
+				<label asp-for="Doktor.CalismaSaatleri[0].BaslangicSaati"></label>
+				<input asp-for="Doktor.CalismaSaatleri[0].BaslangicSaati" type="text" class="form-control" />
+			</div>
+			<div class="mb-2">
+				<label asp-for="Doktor.CalismaSaatleri[0].BitisSaati"></label>
+				<input asp-for="Doktor.CalismaSaatleri[0].BitisSaati" type="text" class="form-control" />
+			</div>
+		</div>
+		<button type="submit" class="btn btn-primary" style="width:150px">Oluştur</button>
+	</div>
+</form>
+@section Scripts{
+	@{
+		<partial name="_validationScriptsPartial" />
+	}
+}
