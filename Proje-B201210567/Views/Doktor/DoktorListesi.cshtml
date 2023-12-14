@@ -1,4 +1,4 @@
-﻿@model List<Doktor>
+﻿@model DoktorList_Id
 
 <div class="container p-3">
     <div class="row pt-4">
@@ -6,7 +6,7 @@
             <h2 class="text-primary">Doktorlar Listesi</h2>
         </div>
         <div class="col-6 text-end">
-            <a asp-controller="Kullanci" asp-action="KullanciEkleme" class="btn btn-primary">
+            <a asp-controller="Doktor" asp-action="DoktorEkle" asp-route-id="Id" class="btn btn-primary">
                 <i class="bi bi-plus-circle"></i> &nbsp; Doktor Ekle
             </a>
         </div>
@@ -42,7 +42,7 @@
         </tr>
     </thead>
     <tbody>
-        @foreach (var obj in Model)
+        @foreach (var obj in Model.doktorlar)
         {
             <tr>
                 <td>
@@ -68,12 +68,12 @@
                 </td>
                 <td>
                     <div class="w-75 btn-group " role="group">
-                        <a asp-controller="Kullanci" asp-action="KullanciGuncel" asp-route-id="" class="btn btn-primary mx-2"><i class="bi bi-pencil-square"></i> &nbsp; Güncel</a>
+                        <a asp-controller="Doktor" asp-action="DoktorGuncel" asp-route-id="@obj.DoktorId" class="btn btn-primary mx-2"><i class="bi bi-pencil-square"></i> &nbsp; Güncel</a>
                     </div>
                 </td>
                 <td>
                     <div class="w-75 btn-group " role="group">
-                        <a asp-controller="Kullanci" asp-action="KullanciSilme" asp-route-id="" class="btn btn-danger mx-2"><i class="bi bi-trash-fill"></i>&nbsp; Sil</a>
+                        <a asp-controller="Doktor" asp-action="DoktorSilme" asp-route-id="@obj.DoktorId" class="btn btn-danger mx-2"><i class="bi bi-trash-fill"></i>&nbsp; Sil</a>
                     </div>
                 </td>
             </tr>

@@ -16,8 +16,20 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = C:\Users\AsemHagi\source\repos\WebProramlamaProjesi\Proje-B201210567
 build_property._RazorSourceGeneratorDebug = 
 
+[C:/Users/AsemHagi/source/repos/WebProramlamaProjesi/Proje-B201210567/Views/Doktor/DoktorEkle.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRG9rdG9yXERva3RvckVrbGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/AsemHagi/source/repos/WebProramlamaProjesi/Proje-B201210567/Views/Doktor/DoktorGuncel.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRG9rdG9yXERva3Rvckd1bmNlbC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/AsemHagi/source/repos/WebProramlamaProjesi/Proje-B201210567/Views/Doktor/DoktorListesi.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRG9rdG9yXERva3Rvckxpc3Rlc2kuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/AsemHagi/source/repos/WebProramlamaProjesi/Proje-B201210567/Views/Doktor/DoktorSilme.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRG9rdG9yXERva3RvclNpbG1lLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/AsemHagi/source/repos/WebProramlamaProjesi/Proje-B201210567/Views/Hastane/Login.cshtml]
@@ -46,6 +58,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/AsemHagi/source/repos/WebProramlamaProjesi/Proje-B201210567/Views/Kullanci/KullanciSilme.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcS3VsbGFuY2lcS3VsbGFuY2lTaWxtZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/AsemHagi/source/repos/WebProramlamaProjesi/Proje-B201210567/Views/Poliklinik/PoliklinikEkle.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUG9saWtsaW5pa1xQb2xpa2xpbmlrRWtsZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/AsemHagi/source/repos/WebProramlamaProjesi/Proje-B201210567/Views/Poliklinik/PoliklinikGet.cshtml]
