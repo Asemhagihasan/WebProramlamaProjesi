@@ -4,5 +4,7 @@
 	{
 		public List<Doktor> doktorlar { get; set; }
         public int Id { get; set; }
+
+		public List<CalismaSaati> calismasaati { get; set; }
     }
 }

@@ -1,19 +1,18 @@
 ﻿@model IEnumerable<Poliklinik>
 
-
 <div class="container p-3">
     <div class="row pt-4">
-
+        <div class="col-6">
+        </div>
         <div class="col-6 text-end">
             <a asp-controller="Poliklinik" asp-action="PoliklinikEkle" class="btn btn-primary">
                 <i class="bi bi-plus-circle"></i> &nbsp; Poliklinik Ekle
             </a>
         </div>
-      
     </div>
 </div>
-<div class="form-group">
-    
+
+<div class="form-group" style="margin-top:-2rem">
     <label for="exampleSelect1" class="form-label mt-4">Bölüm</label>
     <select class="form-select" id="mySelect">
         @foreach (var item in Model)
@@ -58,9 +57,16 @@
                     <td>${data.bolum_Adi}</td>
                     <td width="20%">
                         <div class="w-50 btn-group " role="group">
-                                                     <a href="/Doktor/DoktorListesi/${data.bolum_Id}" class="btn btn-primary mx-2"><i class="bi bi-pencil-square"></i> &nbsp;incele </a>
+                                                     <a href="/Doktor/DoktorListesi/${data.bolum_Id}" class="btn btn-info mx-2"><i class="bi bi-pencil-square"></i> &nbsp;incele </a>
                         </div>
+
                     </td>
+                              <td width="20%">
+                                <div class="w-50 btn-group " role="group">
+                                                <a href="/Poliklinik/poliklinikSil/${data.bolum_Id}" class="btn btn-danger mx-2"><i class="bi bi-pencil-square"></i> &nbsp;sil </a>
+                                </div>
+
+                            </td>
                 </tr>
             </tbody>
         </table>`;

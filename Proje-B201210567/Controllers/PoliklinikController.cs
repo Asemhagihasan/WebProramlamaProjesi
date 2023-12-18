@@ -29,63 +29,68 @@ namespace Proje_B201210567.Controllers
             }
             return Json(null);
         }
-        public IActionResult PoliklinikEkle() 
-        {
-                return View();   
-        }
-        [HttpPost]
-        public IActionResult PoliklinikEklepost(Poliklinik pol)
-        {
-            if (pol.DoktorList == null) 
-            {
-                pol.DoktorList = pol.DoktorList ?? new List<Doktor>();
-            }
-            if (pol.Bolum_Id!=null && pol.DoktorList!=null) 
 
+        public IActionResult PoliklinikEkle()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult PoliklinikEkle(Poliklinik model)
+        { 
+            if(model.DoktorList == null)
             {
-                _db.Add(pol);
+                model.DoktorList = new List<Doktor>() { };
+            }
+
+            if(model.DoktorList != null && model.Bolum_Id != null)
+            {
+                _db.Poliklinikler.Add(model);
                 _db.SaveChanges();
                 return RedirectToAction("PoliklinikGet");
             }
-
-            else
-            {
-                return View(pol);
-            }
-
-           
-
+            return View(model); 
         }
 
-       
-
-
-
-
-
-
-        public IActionResult PoliklinikSilme(int ? id) 
+        public IActionResult poliklinikSil(int id)
         {
-            if (id == null || id == 0)
+            if(id == null || id == 0)
             {
                 return NotFound();
             }
-            else
+
+            var model = _db.Poliklinikler.FirstOrDefault(pol => pol.Bolum_Id == id);
+
+            if(model == null)
             {
-                var Deleted = _db.Poliklinikler.SingleOrDefault(x => x.Bolum_Id == id);
-                _db.Remove(Deleted);
-                _db.SaveChanges();
-                return RedirectToAction("PoliklinikGet");
+                return NotFound();
             }
 
-
+            return View(model);
         }
-        
-        [HttpPost]
-        public IActionResult PoliklinikSilPost(int? id) 
-        {
-            return View();
 
+        [HttpPost]
+        public IActionResult poliklinikSilPost(int ?id)
+        {
+            if(id == 0 || id == null)
+            {
+                return NotFound();
+            }
+
+            var pol = _db.Poliklinikler.FirstOrDefault(p => p.Bolum_Id == id);
+
+            if(pol == null)
+            {
+                return NotFound();
+            }
+
+            var DoktorList = _db.Doktorlar.Where(d => d.poliklinikBolum_Id == id).ToList();
+            DoktorList.Clear();
+
+            _db.Poliklinikler.Remove(pol);
+            _db.SaveChanges();
+
+            return RedirectToAction("PoliklinikGet");
         }
     }
 }
