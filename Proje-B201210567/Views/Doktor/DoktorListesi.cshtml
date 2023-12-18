@@ -1,5 +1,6 @@
 ﻿@model DoktorList_Id
 
+
 <div class="container p-3">
     <div class="row pt-4">
         <div class="col-6">
@@ -12,7 +13,7 @@
         </div>
     </div>
 </div>
-
+<form method="post">
 <table class="table table-bordered table-striped" style="width:100%">
     <thead>
         <tr class="bg-body-secondary">
@@ -37,6 +38,7 @@
             <th>
                 Bölüm İd
             </th>
+            <th>Çalışma Saatları</th>
             <th></th>
             <th></th>
         </tr>
@@ -67,12 +69,19 @@
                     @obj.poliklinikBolum_Id
                 </td>
                 <td>
-                    <div class="w-75 btn-group " role="group">
-                        <a asp-controller="Doktor" asp-action="DoktorGuncel" asp-route-id="@obj.DoktorId" class="btn btn-primary mx-2"><i class="bi bi-pencil-square"></i> &nbsp; Güncel</a>
+                    <div class=" btn-group " role="group">
+                            <button class="btn btn-info mx-2" data-id="@obj.DoktorId" onclick="handleButtonClick(this)">
+                            <i class="bi bi-clock"></i> &nbsp; İncele
+                        </button>
                     </div>
                 </td>
                 <td>
-                    <div class="w-75 btn-group " role="group">
+                    <div class=" btn-group " role="group">
+                        <a asp-controller="Doktor" asp-action="DoktorGuncel" asp-route-id="@obj.DoktorId" class="btn btn-warning mx-2"><i class="bi bi-pencil-square"></i> &nbsp; Güncel</a>
+                    </div>
+                </td>
+                <td>
+                    <div class=" btn-group " role="group">
                         <a asp-controller="Doktor" asp-action="DoktorSilme" asp-route-id="@obj.DoktorId" class="btn btn-danger mx-2"><i class="bi bi-trash-fill"></i>&nbsp; Sil</a>
                     </div>
                 </td>
@@ -80,3 +89,83 @@
         }
     </tbody>
 </table>
+</form>
+
+<div class="CalismaSaati mt-6"></div>
+
+@section scripts{
+   <script>
+        function handleButtonClick(button) {
+            event.preventDefault();
+            const CalismaListecontainer = document.querySelector(".CalismaSaati");
+            const doktorId = button.getAttribute("data-id");
+            $.ajax({
+                type: "GET",
+                url: "/Doktor/jsonData",
+                data: { DoktorId: doktorId },
+                success: function (detailes) {
+                    console.log(detailes);
+                    Displaydetailes(detailes, CalismaListecontainer);
+                },
+                error: function (error) {
+                    alert("siktir git");
+                }
+            });
+        }
+
+        function Displaydetailes(data, CalismaListecontainer) {
+            console.log(data);
+            const gunlar = ["Pazar", "Pazartesi", "Salı", "Çarşamba", "Perşembe", "Cuma", "Cumartesi"]
+            let html = `<table class="table table-bordered table-striped" style="width:100%">
+                <thead>
+                    <tr class="bg-body-secondary">
+                    <th>Doktor Id</th>
+                        <th>Gün</th>
+                        <th>Başlangıç Saati</th>
+                        <th>Bitiş Saati</th>
+                        <th></th>
+                        <th></th>
+                        <th>
+                          
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>`;
+
+            data.forEach(item => {
+                console.log(item);
+                html += `<tr>
+                    <td>${item.doktorId}</th>
+                    <td>${gunlar[item.gun]}</td>
+                    <td>${item.baslangicSaati}</td>
+                    <td>${item.bitisSaati}</td>
+                    <td>
+                        <a asp-controller="CalismaSaati" asp-action="CalismaEkle" class="btn btn-primary">
+                            <i class="bi bi-plus-circle"></i> &nbsp; Ekle
+                        </a>
+                    </td>
+                    <td>
+                        <a asp-controller="CalismaSaati" asp-action="CalismaEkle" class="btn btn-primary">
+                            <i class="bi bi-plus-circle"></i> &nbsp; Ekle
+                        </a>
+                    </td>
+                </tr>`;
+            });
+
+            html += `</tbody></table>`;
+
+            CalismaListecontainer.innerHTML = "";
+            CalismaListecontainer.insertAdjacentHTML("afterbegin", html);
+        }
+   </script>
+}
+
+@* <div class="row pt-4">
+    <div class="col-6">
+    </div>
+    <div class="col-6 text-end">
+        <a asp-controller="CalismaSaati" asp-action="CalismaEkle" class="btn btn-primary">
+            <i class="bi bi-plus-circle"></i> &nbsp; Ekle
+        </a>
+    </div>
+</div> *@

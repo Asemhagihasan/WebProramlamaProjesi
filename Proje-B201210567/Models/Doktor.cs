@@ -7,7 +7,9 @@ namespace Proje_B201210567.Models
 {
 	public class Doktor
 	{
-		[Key]
+ 
+
+        [Key]
 		public int DoktorId { get; set; }
 
         public string Tc { get; set; }

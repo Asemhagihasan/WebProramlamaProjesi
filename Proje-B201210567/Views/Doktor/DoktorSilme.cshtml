@@ -3,7 +3,7 @@
 <form method="post" asp-controller="Doktor" asp-action="DoktorSilmePost">
 	<div class="border p-3 mt-4">
 		<div class="row pb-2">
-			<h2 class="text-primary">Doktor Ekle</h2>
+			<h2 class="text-primary">Doktor Silme</h2>
 			<hr />
 		</div>
 		<input asp-for="DoktorId" type="hidden" />
@@ -37,20 +37,6 @@
 			<select asp-for="poliklinikBolum_Id" class="form-select" id="mySelect" disabled>
 				<option value="@Model.poliklinikBolum_Id">@Model.poliklinikBolum_Id</option>
 			</select>
-		</div>
-		<div class="col-6">
-			<div class="mb-2">
-				<label asp-for="CalismaSaatleri[0].Gun"></label>
-				<input asp-for="CalismaSaatleri[0].Gun" type="text" class="form-control" disabled />
-			</div>
-			<div class="mb-2">
-				<label asp-for="CalismaSaatleri[0].BaslangicSaati"></label>
-				<input asp-for="CalismaSaatleri[0].BaslangicSaati" type="text" class="form-control" disabled />
-			</div>
-			<div class="mb-2">
-				<label asp-for="CalismaSaatleri[0].BitisSaati"></label>
-				<input asp-for="CalismaSaatleri[0].BitisSaati" type="text" class="form-control" disabled />
-			</div>
 		</div>
 		<button type="submit" class="btn btn-primary" style="width:150px">Sil</button>
 	</div>
