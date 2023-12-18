@@ -56,9 +56,16 @@
                     <td>${data.bolum_Adi}</td>
                     <td width="20%">
                         <div class="w-50 btn-group " role="group">
-                                                     <a href="/Doktor/DoktorListesi/${data.bolum_Id}" class="btn btn-primary mx-2"><i class="bi bi-pencil-square"></i> &nbsp;incele </a>
+                                                     <a href="/Doktor/DoktorListesi/${data.bolum_Id}" class="btn btn-info mx-2"><i class="bi bi-pencil-square"></i> &nbsp;incele </a>
                         </div>
+
                     </td>
+                              <td width="20%">
+                                <div class="w-50 btn-group " role="group">
+                                                <a href="/Poliklinik/poliklinikSil/${data.bolum_Id}" class="btn btn-danger mx-2"><i class="bi bi-pencil-square"></i> &nbsp;sil </a>
+                                </div>
+
+                            </td>
                 </tr>
             </tbody>
         </table>`;

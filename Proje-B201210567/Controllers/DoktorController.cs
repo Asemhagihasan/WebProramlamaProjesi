@@ -6,7 +6,6 @@ namespace Proje_B201210567.Controllers
 {
 	public class DoktorController : Controller
 	{
-		int BolumId;
         private readonly AppDbContext _db;
         public DoktorController(AppDbContext db)
         {
@@ -18,7 +17,10 @@ namespace Proje_B201210567.Controllers
 
 			var Doktorlar = (from d in _db.Doktorlar where d.poliklinikBolum_Id == id select d).ToList();
 
-			if (Doktorlar == null)
+			var calismaSaati = (from c in _db.CalismaSaati where c.DoktorId == id select c).ToList();
+
+
+            if (Doktorlar == null)
 			{
 				return NotFound();
 
@@ -27,9 +29,9 @@ namespace Proje_B201210567.Controllers
 			DoktorList_Id doktorList_Id = new DoktorList_Id()
 			{
 				doktorlar = Doktorlar,
-				Id = id
+				Id = id,
+				calismasaati = calismaSaati,
 			};
-
 
 			return View(doktorList_Id);
 		}
@@ -59,7 +61,12 @@ namespace Proje_B201210567.Controllers
 				model.polikliniks = _db.Poliklinikler.ToList();
 				return View(model);
 			}
-			var id = model.Doktor.poliklinikBolum_Id;
+
+			if(model.Doktor.CalismaSaatleri == null)
+			{
+				model.Doktor.CalismaSaatleri = new List<CalismaSaati> { };
+			}
+			//var id = model.Doktor.poliklinikBolum_Id;
 
 			_db.Doktorlar.Add(model.Doktor);
 			_db.SaveChanges();
@@ -91,6 +98,15 @@ namespace Proje_B201210567.Controllers
 		[HttpPost]
 		public IActionResult DoktorGuncel(Doktor doktor)
 		{
+			CalismaSaati calismaSaati = new CalismaSaati()
+			{
+				Gun = doktor.CalismaSaatleri[0].Gun,
+				BaslangicSaati = doktor.CalismaSaatleri[0].BaslangicSaati,
+                BitisSaati = doktor.CalismaSaatleri[0].BitisSaati,
+				DoktorId = doktor.DoktorId
+            };
+            _db.CalismaSaati.Add(calismaSaati);
+            doktor.CalismaSaatleri.Clear();
 			if (doktor == null)
 			{
 				return NotFound();
@@ -119,10 +135,44 @@ namespace Proje_B201210567.Controllers
 		}
 
 		[HttpPost]
-		public IActionResult DoktorSilmePost(int ?id)
+		public IActionResult DoktorSilmePost(int ?DoktorId)
 		{
+			if(DoktorId == null || DoktorId == 0)
+			{
+				return NotFound();
+			}
 
-			return RedirectToAction("");
+			var model = _db.Doktorlar.SingleOrDefault(d => d.DoktorId == DoktorId);
+
+			if(model == null)
+			{
+				return NotFound();
+			}
+
+			if(model.CalismaSaatleri == null)
+			{
+				model.CalismaSaatleri = new List<CalismaSaati> { };
+            }
+
+
+            _db.Doktorlar.Remove(model);
+            _db.SaveChanges();
+            return RedirectToAction("PoliklinikGet", "Poliklinik"); ;
+        }
+
+		[HttpGet]
+		public JsonResult jsonData(int ? DoktorId)
+		{
+			if(DoktorId.HasValue)
+			{
+				var calismaListe = (from c in _db.CalismaSaati where c.DoktorId == DoktorId select c).ToList();
+				if(calismaListe == null)
+				{
+					return Json(null);
+				}
+				return Json(calismaListe);
+			}
+			return Json(DoktorId);
 		}
-	}
+    }
 }

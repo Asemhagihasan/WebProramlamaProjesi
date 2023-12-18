@@ -1,0 +1,25 @@
+﻿@model Poliklinik
+<form method="post">
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr class="bg-body-secondary">
+            <th>Bölüm Id</th>
+            <th>Bölüm Adı</th>
+            <th>Doktor Listesi</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>@Model.Bolum_Id</td>
+            <td>@Model.Bolum_Adi</td>
+            <td width="20%">
+                <div class="w-50 btn-group " role="group">
+                    <a href="/Doktor/DoktorListesi/${data.bolum_Id}" class="btn btn-primary mx-2"><i class="bi bi-pencil-square"></i> &nbsp;incele </a>
+                </div>
+
+            </td>
+        </tr>
+    </tbody>
+</table>
+    <button asp-controller="Poliklinik" asp-action="poliklinikSilPost" asp-route-id="@Model.Bolum_Id" type="submit" class="btn btn-danger" style="width:150px">Sil</button>
+</form>

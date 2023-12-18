@@ -51,5 +51,46 @@ namespace Proje_B201210567.Controllers
             }
             return View(model); 
         }
+
+        public IActionResult poliklinikSil(int id)
+        {
+            if(id == null || id == 0)
+            {
+                return NotFound();
+            }
+
+            var model = _db.Poliklinikler.FirstOrDefault(pol => pol.Bolum_Id == id);
+
+            if(model == null)
+            {
+                return NotFound();
+            }
+
+            return View(model);
+        }
+
+        [HttpPost]
+        public IActionResult poliklinikSilPost(int ?id)
+        {
+            if(id == 0 || id == null)
+            {
+                return NotFound();
+            }
+
+            var pol = _db.Poliklinikler.FirstOrDefault(p => p.Bolum_Id == id);
+
+            if(pol == null)
+            {
+                return NotFound();
+            }
+
+            var DoktorList = _db.Doktorlar.Where(d => d.poliklinikBolum_Id == id).ToList();
+            DoktorList.Clear();
+
+            _db.Poliklinikler.Remove(pol);
+            _db.SaveChanges();
+
+            return RedirectToAction("PoliklinikGet");
+        }
     }
 }
