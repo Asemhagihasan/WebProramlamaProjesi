@@ -1,10 +1,11 @@
 ﻿@model Kullanci
-<form method="post">
+<form method="post" asp-controller="Kullanci" asp-action="KullanciGuncel">
 	<div class="border p-3 mt-4">
 		<div class="row pb-2">
 			<h2 class="text-primary">Günceleme</h2>
 			<hr />
 		</div>
+		<input asp-for="KullaniciId" type="hidden" />
 		<div class="mb-3">
 			<label asp-for="Tc"></label>
 			<input asp-for="Tc" type="text" class="form-control" />
@@ -37,7 +38,9 @@
 			<input asp-for="Email" type="email" class="form-control" placeholder="email@example.com" />
 			<span asp-validation-for="Email" class="text-danger"></span>
 		</div>
-		<button asp-controller="Kullanci" asp-action="KullanciGuncel" type="submit" class="btn btn-primary" style="width:150px">Oluştur</button>
+		<input asp-for="Sifre" type="hidden" class="form-control" /> 
+		<button  type="submit" class="btn btn-primary" style="width:150px">Oluştur</button>
+		<a asp-controller="Kullanci" asp-action="Kullancilar" class="btn btn-secondary" style="width:150px">Back To List</a>
 	</div>
 </form>
 @section Scripts{

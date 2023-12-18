@@ -18,7 +18,7 @@ namespace Proje_B201210567.Controllers
         {
             List<Kullanci> objCategortList;
 
-            if (model != null)
+            if (model.KullaniciId != 0)
             {
                 objCategortList = new List<Kullanci> { model };
             }
@@ -70,7 +70,7 @@ namespace Proje_B201210567.Controllers
             {
                 _db.Kullancilar.Update(kullanci);
                 _db.SaveChanges();
-                return RedirectToAction("Kullancilar", "Kullanci");
+                return RedirectToAction("Kullancilar");
             }
             return View(kullanci);
         }
@@ -97,9 +97,9 @@ namespace Proje_B201210567.Controllers
 
         [HttpPost]
 		[ValidateAntiForgeryToken]
-		public IActionResult HastaSil(int?id)
+		public IActionResult HastaSil(int? KullaniciId)
         {
-           var kullanci = _db.Kullancilar.Find(id);
+           var kullanci = _db.Kullancilar.Find(KullaniciId);
           if(kullanci == null)
             {
                 return NotFound();
@@ -116,9 +116,9 @@ namespace Proje_B201210567.Controllers
                 return NotFound();
             }
 
-            var Hasta = _db.Kullancilar.Where(x => x.Tc == Tc).ToList();
+            var Hasta = _db.Kullancilar.SingleOrDefault(x => x.Tc == Tc);
 
-            if (!Hasta.Any())
+            if (Hasta == null)
             {
                 return NotFound();
             }

@@ -1,0 +1,22 @@
+﻿@model Poliklinik
+
+<form method="post">
+	<div class="border p-3 mt-4">
+		<div class="row pb-2">
+			<h2 class="text-primary">Poliklinik Ekle</h2>
+			<hr />
+		</div>
+		<div class="mb-3">
+			<label asp-for="Bolum_Adi"></label>
+			<input asp-for="Bolum_Adi" type="text" class="form-control" />
+			<span asp-validation-for="Bolum_Adi" class="text-danger"></span>
+		</div>
+		
+		<button asp-controller="Poliklinik" asp-action="PoliklinikEklepost" type="submit" class="btn btn-primary" style="width:150px">Oluştur</button>
+	</div>
+</form>
+@section Scripts{
+	@{
+		<partial name="_validationScriptsPartial" />
+	}
+}
