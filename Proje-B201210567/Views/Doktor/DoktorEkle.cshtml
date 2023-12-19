@@ -1,4 +1,7 @@
 ﻿@model PoliklinikVeDoktor
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-8ePzU2nBNSfZ+nUOGbJ50Ec/i6z0GYj5Lr6PT8j8UEjR+8UX4Gg7r7uUcF9b1I5d" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha384-vk5IQ2aZI//eI5/zQOf5R2FpKeh9DIQcuGLl9sDQeD5PfNhC2w8I1Ew1c5CXqtk" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap-datepicker@1.9.0/dist/js/bootstrap-datepicker.min.js" integrity="sha384-iXZqSdMtpLCqAZTM3JPaUQCZSc2ouwFQ8+9dI2OK9QfnQZpNBR0edFk9h2b5uDSB" crossorigin="anonymous"></script>
 
 <form method="post" asp-controller="Doktor" asp-action="DoktorEkle">
 	<div class="border p-3 mt-4">
@@ -43,7 +46,7 @@
 		<div class="col-6">
 			<div class="mb-2">
 				<label asp-for="Doktor.CalismaSaatleri[0].Gun"></label>
-				<input asp-for="Doktor.CalismaSaatleri[0].Gun" type="text" class="form-control" />
+				<input type="text" asp-for="Doktor.CalismaSaatleri[0].Gun"  class="form-control" />
 			</div>
 			<div class="mb-2">
 				<label asp-for="Doktor.CalismaSaatleri[0].BaslangicSaati"></label>
@@ -57,6 +60,14 @@
 		<button type="submit" class="btn btn-primary" style="width:150px">Oluştur</button> 
 	</div>
 </form>
+<script>
+	$(document).ready(function () {
+		$('#datepicker').datepicker({
+			format: 'yyyy-mm-dd',  // Set the desired date format
+			autoclose: true
+		});
+	});
+</script>
 @section Scripts{
 	@{
 		<partial name="_validationScriptsPartial" />
