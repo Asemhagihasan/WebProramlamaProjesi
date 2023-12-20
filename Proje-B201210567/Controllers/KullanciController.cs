@@ -38,7 +38,19 @@ namespace Proje_B201210567.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult KullanciEkleme(Kullanci kullanci)
         {
-            if (ModelState.IsValid)
+			if (_db.Kullancilar.Any(k => k.Tc == kullanci.Tc ))
+
+			{
+				ModelState.AddModelError("Tc", "This TC is already in use.");
+				return View(kullanci);
+			}
+            if(_db.Kullancilar.Any(c=>c.Email == kullanci.Email))
+            {
+				ModelState.AddModelError("Email", "This Email is already in use.");
+				return View(kullanci);
+
+			}
+			if (ModelState.IsValid)
             {
                 _db.Add(kullanci);
                 _db.SaveChanges();

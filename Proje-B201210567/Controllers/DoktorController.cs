@@ -114,7 +114,7 @@ namespace Proje_B201210567.Controllers
 			}
 			_db.Doktorlar.Update(doktor);
 			_db.SaveChanges();
-			return RedirectToAction("PoliklinikGet","Poliklinik");
+			return RedirectToAction("DoktorListesi" , "Doktor",new { id = doktor.poliklinikBolum_Id });
 
 		}
 

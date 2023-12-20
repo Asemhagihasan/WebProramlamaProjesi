@@ -31,9 +31,10 @@ namespace Proje_B201210567.Controllers
         {
             if (ModelState.IsValid)
             {
+                var Doktor1 = _db.Doktorlar.Find(calisma.DoktorId);
                 _db.CalismaSaati.Update(calisma);
                 _db.SaveChanges();
-                return RedirectToAction("DoktorListesi", "Doktor", new {  id = calisma.DoktorId});
+                return RedirectToAction("DoktorListesi", "Doktor", new {  id = Doktor1.poliklinikBolum_Id });
 				
 			}
             return View(calisma);
@@ -56,9 +57,10 @@ namespace Proje_B201210567.Controllers
         {
             if (ModelState.IsValid)
             {
+                var Doktor2 = _db.Doktorlar.Find(calisma.DoktorId);
                 _db.CalismaSaati.Remove(calisma);
                 _db.SaveChanges();
-                return RedirectToAction("DoktorListesi", "Doktor");
+                return RedirectToAction("DoktorListesi", "Doktor" , new { id = Doktor2.poliklinikBolum_Id });
 
             }
             return View(calisma);
