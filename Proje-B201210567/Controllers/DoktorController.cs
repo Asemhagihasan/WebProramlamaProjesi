@@ -70,7 +70,7 @@ namespace Proje_B201210567.Controllers
 
 			_db.Doktorlar.Add(model.Doktor);
 			_db.SaveChanges();
-			return RedirectToAction("PoliklinikGet","Poliklinik");
+			return RedirectToAction("DoktorListesi", "Doktor",new { id = model.Doktor.poliklinikBolum_Id});
 
 		}
 
