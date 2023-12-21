@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "plkSz5YAI4ukLXp5PYTiJk1tniojRlSNm7HRjJpjyeA=",
+  "Hash": "krQu1l47s0ZRnPesIYcZh5RU0KddrQF0hJrvYFF7G14=",
   "Source": "Proje-B201210567",
   "BasePath": "_content/Proje-B201210567",
   "Mode": "Default",
@@ -83,6 +83,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\favicon.ico"
+    },
+    {
+      "Identity": "C:\\Users\\AsemHagi\\source\\repos\\WebProramlamaProjesi\\Proje-B201210567\\wwwroot\\imgs\\doctor-logo-icon-design-vector-15613661.jpg",
+      "SourceId": "Proje-B201210567",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\AsemHagi\\source\\repos\\WebProramlamaProjesi\\Proje-B201210567\\wwwroot\\",
+      "BasePath": "_content/Proje-B201210567",
+      "RelativePath": "imgs/doctor-logo-icon-design-vector-15613661.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\imgs\\doctor-logo-icon-design-vector-15613661.jpg"
     },
     {
       "Identity": "C:\\Users\\AsemHagi\\source\\repos\\WebProramlamaProjesi\\Proje-B201210567\\wwwroot\\js\\site.js",

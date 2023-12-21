@@ -1,0 +1,28 @@
+﻿@model CalismaSaati
+
+
+<form method="post" asp-controller="CalismaSaati" asp-action="CalismaSil">
+	<div class="border p-3 mt-4">
+		<div class="row pb-2">
+			<h2 class="text-primary">CalismaSaatiSil</h2>
+		</div>
+
+		<hr />
+		<input asp-for="DoktorId" type="hidden" />
+		<div class="mb-2">
+			<label asp-for="Gun"></label>
+			<input asp-for="Gun" type="text" class="form-control" />
+		</div>
+		<div class="mb-2">
+			<label asp-for="BaslangicSaati"></label>
+			<input asp-for="BaslangicSaati" type="text" class="form-control" />
+		</div>
+		<div class="mb-2">
+			<label asp-for="BitisSaati"></label>
+			<input asp-for="BitisSaati" type="text" class="form-control" />
+		</div>
+
+		<button type="submit" class="btn btn-primary" style="width:150px">Sil</button>
+	</div>
+
+</form>
