@@ -6,12 +6,13 @@ namespace Proje_B201210567.Controllers
 {
 	public class DoktorController : Controller
 	{
-        private readonly AppDbContext _db;
-        public DoktorController(AppDbContext db)
-        {
-            _db = db;
-        }
-        public IActionResult DoktorListesi(int id)
+		int BolumId;
+		private readonly AppDbContext _db;
+		public DoktorController(AppDbContext db)
+		{
+			_db = db;
+		}
+		public IActionResult DoktorListesi(int id)
 		{
 			if(id == 0 || id == null) { return NotFound(); }
 
@@ -20,7 +21,7 @@ namespace Proje_B201210567.Controllers
 			var calismaSaati = (from c in _db.CalismaSaati where c.DoktorId == id select c).ToList();
 
 
-            if (Doktorlar == null)
+			if (Doktorlar == null)
 			{
 				return NotFound();
 
@@ -81,18 +82,18 @@ namespace Proje_B201210567.Controllers
 				return NotFound();
 			}
 
-            PoliklinikVeDoktor doktor = new PoliklinikVeDoktor()
-            {
-                polikliniks = _db.Poliklinikler.ToList(),
-                Doktor = _db.Doktorlar.Find(id),
-            };
+			PoliklinikVeDoktor doktor = new PoliklinikVeDoktor()
+			{
+				polikliniks = _db.Poliklinikler.ToList(),
+				Doktor = _db.Doktorlar.Find(id),
+			};
 
 			if(doktor == null)
 			{
 				return NotFound();
 			}
 
-            return View(doktor);
+			return View(doktor);
 		}
 
 		[HttpPost]
@@ -102,18 +103,18 @@ namespace Proje_B201210567.Controllers
 			{
 				Gun = doktor.CalismaSaatleri[0].Gun,
 				BaslangicSaati = doktor.CalismaSaatleri[0].BaslangicSaati,
-                BitisSaati = doktor.CalismaSaatleri[0].BitisSaati,
+				BitisSaati = doktor.CalismaSaatleri[0].BitisSaati,
 				DoktorId = doktor.DoktorId
-            };
-            _db.CalismaSaati.Add(calismaSaati);
-            doktor.CalismaSaatleri.Clear();
+			};
+			_db.CalismaSaati.Add(calismaSaati);
+			doktor.CalismaSaatleri.Clear();
 			if (doktor == null)
 			{
 				return NotFound();
 			}
 			_db.Doktorlar.Update(doktor);
 			_db.SaveChanges();
-			return RedirectToAction("PoliklinikGet","Poliklinik");
+			return RedirectToAction("DoktorListesi" , "Doktor",new { id = doktor.poliklinikBolum_Id });
 
 		}
 
@@ -152,13 +153,13 @@ namespace Proje_B201210567.Controllers
 			if(model.CalismaSaatleri == null)
 			{
 				model.CalismaSaatleri = new List<CalismaSaati> { };
-            }
+			}
 
 
-            _db.Doktorlar.Remove(model);
-            _db.SaveChanges();
-            return RedirectToAction("PoliklinikGet", "Poliklinik"); ;
-        }
+			_db.Doktorlar.Remove(model);
+			_db.SaveChanges();
+			return RedirectToAction("PoliklinikGet", "Poliklinik"); ;
+		}
 
 		[HttpGet]
 		public JsonResult jsonData(int ? DoktorId)
@@ -174,5 +175,5 @@ namespace Proje_B201210567.Controllers
 			}
 			return Json(DoktorId);
 		}
-    }
+	}
 }

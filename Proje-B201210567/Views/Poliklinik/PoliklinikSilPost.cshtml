@@ -11,7 +11,8 @@
 			<input asp-for="Bolum_Adi" type="text" class="form-control" />
 			<span asp-validation-for="Bolum_Adi" class="text-danger"></span>
 		</div>
-		<button asp-controller="Poliklinik" asp-action="PoliklinikEkle" type="submit" class="btn btn-primary" style="width:150px">Oluştur</button>
+
+		<button asp-controller="Poliklinik" asp-action="PoliklinikSilme" class="btn btn-primary" style="width:150px">Oluştur</button>
 	</div>
 </form>
 @section Scripts{
@@ -19,9 +20,3 @@
 		<partial name="_validationScriptsPartial" />
 	}
 }
-<div class="form-check">
-	
-	<label class="form-check-label" for="flexCheckDefault">
-		Default checkbox
-	</label>
-</div>

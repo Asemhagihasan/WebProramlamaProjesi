@@ -1,10 +1,12 @@
 ﻿using Proje_B201210567.Models;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Proje_B201210567.Models
 {
 	public class Randevu
 	{
+		[Key]
 		public int RandevuId { get; set; }
 		[ForeignKey("Doktor")]
 		public int ?DoktorId { get; set; } // Randevunun hangi doktora ait olduğunu belirtmek için
