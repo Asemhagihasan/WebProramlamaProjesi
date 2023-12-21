@@ -9,6 +9,6 @@ namespace Proje_B201210567.Models
         public int DoktorId { get; set; }
         public DayOfWeek Gun { get; set; } // Haftanın günü 
         public TimeSpan BaslangicSaati { get; set; } // Çalışma başlangıç saati
-        public TimeSpan BitisSaati { get; set; } // Çalışma bitiş saati dsa
+        public TimeSpan BitisSaati { get; set; } // Çalışma bitiş saati d
     }
 }

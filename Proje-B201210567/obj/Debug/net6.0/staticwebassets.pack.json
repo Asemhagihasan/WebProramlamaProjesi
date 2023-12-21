@@ -13,6 +13,10 @@
       "PackagePath": "staticwebassets\\favicon.ico"
     },
     {
+      "Id": "C:\\Users\\AsemHagi\\source\\repos\\WebProramlamaProjesi\\Proje-B201210567\\wwwroot\\imgs\\doctor-logo-icon-design-vector-15613661.jpg",
+      "PackagePath": "staticwebassets\\imgs\\doctor-logo-icon-design-vector-15613661.jpg"
+    },
+    {
       "Id": "C:\\Users\\AsemHagi\\source\\repos\\WebProramlamaProjesi\\Proje-B201210567\\wwwroot\\js\\site.js",
       "PackagePath": "staticwebassets\\js\\site.js"
     },

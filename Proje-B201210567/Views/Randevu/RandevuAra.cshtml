@@ -1,0 +1,86 @@
+﻿@model RandevuModelleri
+
+<form method="post" asp-controller="Randevu" asp-action="DoktorFiltere">
+	<div class="border p-3 mt-4">
+		<div class="row pb-2">
+			<h2 class="text-primary"> 
+				<a asp-controller="Home" asp-action="Index" class="text-decoration-none">
+					<i class="bi bi-arrow-left"></i>
+				</a>
+				Randevu Al
+			</h2>
+			<hr />
+		</div>
+		<div class="mb-3">
+			<label asp-for="Kullanci.Tc" ></label>
+			<input asp-for="Kullanci.Tc" type="text" class="form-control" />
+			<span asp-validation-for="Kullanci.Tc" class="text-danger"></span>
+		</div>
+		<div class="mb-3">
+			<label class="form-label">Bölüm</label>
+			<select  class="form-select" id="mySelect">
+				<option></option>
+				@foreach (var item in Model.poliklinikler)
+				{
+					<option value="@item.Bolum_Id">@item.Bolum_Adi</option>
+				}
+			</select>
+		</div> 
+		<div class="mb-3">
+			<label class="form-label">Hakim</label>
+			<select class="form-select hakimListesi" disabled>
+				
+			</select>
+		</div>
+
+		<button type="submit" class="btn btn-primary" style="width:150px">Oluştur</button>
+	</div>
+</form>
+
+
+@section Scripts{
+	@{
+	<partial name="_validationScriptsPartial" />
+	}
+	<script>
+		const container = document.querySelector(".hakimListesi");
+
+		document.getElementById("mySelect").addEventListener("change", function () {
+			let selectedValue = this.value;
+			console.log(selectedValue);
+			$.ajax({
+				type: "GET",
+				url: "/Randevu/jsonData",
+				data: { BolumId: selectedValue },
+				success: function (detailes) {
+					DisplayDetailes(detailes);
+					console.log(detailes)
+				},
+				error: function (error) {
+					alert("Error");
+				}
+			});
+		});
+		function DisplayDetailes(data)
+		{
+			let html = `<option value="0" class="nav-link">-Fark Etmez-</option>`;
+			data.forEach(item => {
+				html += `<option value="${item.doktorId}">${item.doktor_Adi} ${item.doktor_Soyad}</option>`;
+			});
+			container.innerHTML = "";
+			container.insertAdjacentHTML("afterbegin",html);
+			container.disabled = false;
+		}
+
+	</script>
+}
+@* fetch("/Randevu/jsonData?BolumId=" + selectedValue)
+	.then(response => response.json())
+	.then(data => {
+		DisplayDetails(data);
+		console.log(data);
+	})
+	.catch(error => {
+		console.error("Error:", error);
+	}); *@
+
