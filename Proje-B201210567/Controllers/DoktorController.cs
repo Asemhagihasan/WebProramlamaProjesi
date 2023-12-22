@@ -62,8 +62,27 @@ namespace Proje_B201210567.Controllers
 				model.polikliniks = _db.Poliklinikler.ToList();
 				return View(model);
 			}
+			model.polikliniks = new List<Poliklinik>() { };
+			model.polikliniks.Add(poliklinik);
 
-			if(model.Doktor.CalismaSaatleri == null)
+			if (poliklinik.AcilisSaati > model.Doktor.CalismaSaatleri[0].BaslangicSaati || poliklinik.KapanisSaati < model.Doktor.CalismaSaatleri[0].BitisSaati)
+			{
+				ModelState.AddModelError("Doktor.CalismaSaatleri[0]", "Girdigniz saatler poliklinik calisma saatlerinden degildir");
+				return View(model);
+			}
+			if (_db.Doktorlar.Any(k => k.Tc == model.Doktor.Tc))
+			{
+				ModelState.AddModelError("Doktor.Tc", "Bu Tc Zaten Mevcut");
+				return View(model);
+			}
+			if (_db.Doktorlar.Any(c => c.Email == model.Doktor.Email))
+			{
+				ModelState.AddModelError("Doktor.Email", "Bu mail adresi Zaten Mevcut");
+				return View(model);
+
+			}
+
+			if (model.Doktor.CalismaSaatleri == null)
 			{
 				model.Doktor.CalismaSaatleri = new List<CalismaSaati> { };
 			}
