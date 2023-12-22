@@ -11,6 +11,12 @@
 			<input asp-for="Bolum_Adi" type="text" class="form-control" />
 			<span asp-validation-for="Bolum_Adi" class="text-danger"></span>
 		</div>
+		<div class="mb-3">
+			<label asp-for="Bolum_Adi"></label>
+			<input asp-for="Bolum_Adi" type="time" class="form-control" />
+			<span asp-validation-for="Bolum_Adi" class="text-danger"></span>
+		</div>
+		
 		<button asp-controller="Poliklinik" asp-action="PoliklinikEkle" type="submit" class="btn btn-primary" style="width:150px">Oluştur</button>
 	</div>
 </form>

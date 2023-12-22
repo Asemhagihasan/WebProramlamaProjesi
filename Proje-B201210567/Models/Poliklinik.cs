@@ -14,5 +14,6 @@ namespace Proje_B201210567.Models
         [ForeignKey("Doktor")]
         public int ?DoktorId { get; set; }
         public List<Doktor> DoktorList { get; set;}
+        
     }
 }
