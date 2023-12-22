@@ -9,7 +9,6 @@
 				</a>
 				Randevu Al
 			</h2>
-			<hr />
 		</div>
 		<div class="mb-3">
 			<label asp-for="Kullanci.Tc" ></label>
@@ -18,7 +17,7 @@
 		</div>
 		<div class="mb-3">
 			<label class="form-label">Bölüm</label>
-			<select  class="form-select" id="mySelect">
+			<select asp-for="Poliklinik.Bolum_Id" class="form-select" id="mySelect">
 				<option></option>
 				@foreach (var item in Model.poliklinikler)
 				{
@@ -28,9 +27,20 @@
 		</div> 
 		<div class="mb-3">
 			<label class="form-label">Hakim</label>
-			<select class="form-select hakimListesi" disabled>
+			<select asp-for="Doktor.DoktorId" class="form-select hakimListesi" disabled>
 				
 			</select>
+		</div>
+		<div class="mb-3">
+			<label  class="form-label">Başlangıç Tarihi</label>
+			<input asp-for="BaslangicTarihi" type="date" class="form-control" />
+			<span asp-validation-for="BaslangicTarihi" class="text-danger"></span>
+		</div>
+
+		<div class="mb-3">
+			<label class="form-label">Bitiş Tarihi</label>
+			<input asp-for="BitisTarihi" type="date" class="form-control" />
+			<span asp-validation-for="BitisTarihi"  class="text-danger"></span>
 		</div>
 
 		<button type="submit" class="btn btn-primary" style="width:150px">Oluştur</button>
