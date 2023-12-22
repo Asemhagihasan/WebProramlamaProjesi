@@ -3,7 +3,7 @@
 <form method="post" asp-controller="Doktor" asp-action="DoktorGuncel">
 	<div class="border p-3 mt-4">
 		<div class="row pb-2">
-			<h2 class="text-primary">Doktor Ekle</h2>
+			<h2 class="text-primary">Doktor Güncel</h2>
 			<hr />
 		</div>
 		<input asp-for="Doktor.DoktorId" type="hidden" />
@@ -48,11 +48,11 @@
 			</div>
 			<div class="mb-2">
 				<label asp-for="Doktor.CalismaSaatleri[0].BaslangicSaati"></label>
-				<input asp-for="Doktor.CalismaSaatleri[0].BaslangicSaati" type="text" class="form-control" />
+				<input asp-for="Doktor.CalismaSaatleri[0].BaslangicSaati" type="time" class="form-control" />
 			</div>
 			<div class="mb-2">
 				<label asp-for="Doktor.CalismaSaatleri[0].BitisSaati"></label>
-				<input asp-for="Doktor.CalismaSaatleri[0].BitisSaati" type="text" class="form-control" />
+				<input asp-for="Doktor.CalismaSaatleri[0].BitisSaati" type="time" class="form-control" />
 			</div>
 		</div>
 		<button type="submit" class="btn btn-primary" style="width:150px">Oluştur</button>

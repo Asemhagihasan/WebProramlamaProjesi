@@ -12,8 +12,8 @@ using Proje_B201210567.Data;
 namespace Proje_B201210567.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20231212171310_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20231214122325_CreateTables")]
+    partial class CreateTables
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

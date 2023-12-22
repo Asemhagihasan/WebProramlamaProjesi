@@ -16,3 +16,17 @@ html {
 body {
   margin-bottom: 60px;
 }
+#timer {
+    color: #3498db; /* Change the color of the numbers */
+    font-weight: bold; /* Make the numbers bold */
+    border: 2px solid #3498db; /* Add a border around the input */
+    border-radius: 5px; /* Add rounded corners */
+    padding: 5px; /* Add some padding for spacing */
+}
+#timer1 {
+    color: red; /* Change the color of the numbers */
+    font-weight: bold; /* Make the numbers bold */
+    border: 2px solid #3498db; /* Add a border around the input */
+    border-radius: 5px; /* Add rounded corners */
+    padding: 5px; /* Add some padding for spacing */
+}

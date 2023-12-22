@@ -38,6 +38,20 @@
 				<option value="@Model.poliklinikBolum_Id">@Model.poliklinikBolum_Id</option>
 			</select>
 		</div>
+		<div class="col-6">
+			<div class="mb-2">
+				<label asp-for="CalismaSaatleri[0].Gun"></label>
+				<input asp-for="CalismaSaatleri[0].Gun" type="text" class="form-control" disabled />
+			</div>
+			<div class="mb-2">
+				<label asp-for="CalismaSaatleri[0].BaslangicSaati"></label>
+				<input asp-for="CalismaSaatleri[0].BaslangicSaati" type="text" class="form-control" disabled />
+			</div>
+			<div class="mb-2">
+				<label asp-for="CalismaSaatleri[0].BitisSaati"></label>
+				<input asp-for="CalismaSaatleri[0].BitisSaati" type="text" class="form-control" disabled />
+			</div>
+		</div>
 		<button type="submit" class="btn btn-primary" style="width:150px">Sil</button>
 	</div>
 </form>
