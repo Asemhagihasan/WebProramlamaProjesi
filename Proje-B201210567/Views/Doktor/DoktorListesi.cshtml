@@ -132,36 +132,25 @@
                        </thead>
                        <tbody>`;
 
-           data.forEach(item => {
-               console.log(item);
-               html += `<tr>
-                           <td>${item.doktorId}</th>
-                           <td>${gunlar[item.gun]}</td>
-                           <td>${item.baslangicSaati}</td>
-                           <td>${item.bitisSaati}</td>
-
-               
-                           <td>
-                                                           <a href="/CalismaSaati/CalismaGuncel/${item.id}" class="btn btn-warning mx-2"">
-                                                  <i class="bi bi-pencil-square"></i> &nbsp; Guncel
-                                       </a>
-                            </td>
-                                      <td>
-                                                                   <a href="/CalismaSaati/CalismaSil/${item.id}"  class="btn btn-danger mx-2">
-                                                           <i class="bi bi-trash-fill"></i> &nbsp; Sil
-                                               </a>
-                                    </td>
-
-
-
-
-
-
-
-                                    
-                              </tr>`;
-           });
-       
+            data.forEach(item => {
+                console.log(item);
+                html += `<tr>
+                    <td>${item.doktorId}</th>
+                    <td>${gunlar[item.gun]}</td>
+                    <td>${item.baslangicSaati}</td>
+                    <td>${item.bitisSaati}</td>
+                    <td>
+                        <a asp-controller="CalismaSaati" asp-action="CalismaEkle" class="btn btn-primary">
+                            <i class="bi bi-plus-circle"></i> &nbsp; Ekle
+                        </a>
+                    </td>
+                    <td>
+                        <a asp-controller="CalismaSaati" asp-action="CalismaEkle" class="btn btn-primary">
+                            <i class="bi bi-plus-circle"></i> &nbsp; Ekle
+                        </a>
+                    </td>
+                </tr>`;
+            });
 
             html += `</tbody></table>`;
 
