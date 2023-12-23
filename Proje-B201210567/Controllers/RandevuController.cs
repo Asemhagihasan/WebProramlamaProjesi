@@ -36,7 +36,6 @@ namespace Proje_B201210567.Controllers
 
         private List<CalismaSaatlarGroup> CalismaKontrol(List<Doktor> doktors, DateTime BitisTarihi, DateTime BaslangisTarihi)
         {
-			var salk = new List<Doktor>();
 
 			var x = BitisTarihi < BaslangisTarihi; // dont get any thing
 			var y = BitisTarihi == BaslangisTarihi; // get specific day
@@ -123,6 +122,7 @@ namespace Proje_B201210567.Controllers
    //         return doktorlar;
         }
 
+		[HttpPost]
         public IActionResult DoktorFiltere(RandevuModelleri randevu)
         {
 
@@ -175,9 +175,22 @@ namespace Proje_B201210567.Controllers
 			return View(ActiveCalisma);
         }
 
-		public IActionResult CalismaSaatiGoster()
+
+		public IActionResult CalismaSaatiGoster(int ?id)
 		{
-			return View(); //adfjklmn
+			if (id == null || id == 0)
+			{
+				return NotFound();
+			}
+
+			var calisma = _db.CalismaSaati.Find(id);
+
+			if (calisma == null)
+			{ 
+				return NotFound(); 
+			}
+
+			return View(calisma); 
 		}
 	}
 }

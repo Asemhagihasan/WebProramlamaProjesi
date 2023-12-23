@@ -74,13 +74,13 @@
                                         <td>
                                             <div class="tarihContainer">
                                                 <span class="text-tarih">En Yakın Tarihi</span>
-                                                <div class="tarih"></div>
+                                                <div class="tarih">00/00/2023</div>
                                             </div>
                                         </td>
                                         <td> <span class="d-inline-block align-middle"><i class="bi bi-h-circle me-2"></i>Saü Sakarya</span></td>
                                         <td><span><i class="bi bi-hospital me-2"></i>@obj.BolumAdi</span></td>
                                         <td>
-                                            <a asp-controller="Randevu" asp-action="CalismaSaatiGoster" style="text-decoration:none; color:#157347">
+                                            <a asp-controller="Randevu" asp-action="CalismaSaatiGoster" asp-route-id="@item.Id" style="text-decoration:none; color:#157347">
                                                 <i class="bi bi-plus-circle "></i> &nbsp;
                                             </a>
                                         </td>

@@ -1,5 +1,4 @@
-﻿
-
+﻿@model CalismaSaati
 <div class="row">
     <div class="col-12">
         <div class="card">
@@ -10,29 +9,35 @@
             <div class="card-body p-0">
                 <table class="table table-hover">
                     <tbody>
-                        <tr data-widget="expandable-table" aria-expanded="false">
-                            <td>
-                                <i class="bi bi-chevron-right"></i>
-                                219
-                            </td>
-                        </tr>
-                        <tr class="expandable-body">
-                            <td>
-                                <div class="p-0">
-                                    <table class="table table-hover">
-                                        <tbody>
-                                            <tr data-widget="expandable-table" aria-expanded="false">
-                                                <td>
-                                                    <i class="expandable-table-caret fas fa-caret-right fa-fw"></i>
-                                                    <button class="btn btn-info"> 08:35</button>
-                                                </td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </td>
-                        </tr>
+                        @for (int i = 0; i <= (@Model.BitisSaati.Hours - @Model.BaslangicSaati.Hours); i++)
+                        {
+                            if (@Model.BaslangicSaati.Hours + i == 12) { continue; }
+                            <tr data-widget="expandable-table" aria-expanded="false">
+                                <td>
+                                    <i class="bi bi-chevron-right"></i>
+                                    @DateTime.Today.AddHours(Model.BaslangicSaati.Hours + i).ToString("HH:mm")
+                                </td>
+                            </tr>
+                            <tr class="expandable-body">
+                                <td>
+                                    <div class="p-0">
+                                        <table class="table table-hover">
+                                            <tbody>
+                                                <tr data-widget="expandable-table" aria-expanded="false">
+                                                    <td>
+                                                        <i class="expandable-table-caret fas fa-caret-right fa-fw"></i>
+                                                        <button class="btn btn-info"> 08:35</button>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </td>
+                            </tr>
+                        }
+
                     </tbody>
+
                 </table>
             </div>
             <!-- /.card-body -->
@@ -40,3 +45,4 @@
         <!-- /.card -->
     </div>
 </div>
+
