@@ -32,15 +32,13 @@
 			</select>
 		</div>
 		<div class="mb-3">
-			<label  class="form-label">Başlangıç Tarihi</label>
-			<input asp-for="BaslangicTarihi" type="date" class="form-control" />
-			<span asp-validation-for="BaslangicTarihi" class="text-danger"></span>
+			<label class="form-label">Başlangış Tarihi</label>
+			<input asp-for="BaslangicTarihi" type="date" class="form-control" id="baslangicDateInput" value="yyyy-mm-dd" />
 		</div>
 
 		<div class="mb-3">
 			<label class="form-label">Bitiş Tarihi</label>
-			<input asp-for="BitisTarihi" type="date" class="form-control" />
-			<span asp-validation-for="BitisTarihi"  class="text-danger"></span>
+			<input asp-for="BitisTarihi" type="date" class="form-control" id="bitisDateInput" value="yyyy-mm-dd" />
 		</div>
 
 		<button type="submit" class="btn btn-primary" style="width:150px">Oluştur</button>
@@ -81,6 +79,21 @@
 			container.insertAdjacentHTML("afterbegin",html);
 			container.disabled = false;
 		}
+
+		
+		// Create a new Date object to represent the current date
+		var currentDate = new Date();
+
+		// Get the current date as a string in "YYYY-MM-DD" format
+		var currentDateString = currentDate.toISOString().split('T')[0];
+
+		// Set the minimum attribute for the BaslangicTarihi input
+		document.getElementById('baslangicDateInput').min = currentDateString;
+
+		// Set the minimum attribute for the BitisTarihi input
+		document.getElementById('bitisDateInput').min = currentDateString;
+
+
 
 	</script>
 }

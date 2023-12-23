@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "4OvHYtS7tRlynCk0A8bHyfz+olO7grVJCGB4ENhkUnc=",
+  "Hash": "ozW4v9h//Gr9gq5ufO/6g7OwqD86ZUFF4I6PbCeroXU=",
   "Source": "Proje-B201210567",
   "BasePath": "_content/Proje-B201210567",
   "Mode": "Default",
@@ -49,6 +49,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "C:\\Users\\AsemHagi\\source\\repos\\WebProramlamaProjesi\\Proje-B201210567\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\Proje-B201210567.bundle.scp.css"
+    },
+    {
+      "Identity": "C:\\Users\\AsemHagi\\source\\repos\\WebProramlamaProjesi\\Proje-B201210567\\wwwroot\\css\\admineLte.css",
+      "SourceId": "Proje-B201210567",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\AsemHagi\\source\\repos\\WebProramlamaProjesi\\Proje-B201210567\\wwwroot\\",
+      "BasePath": "_content/Proje-B201210567",
+      "RelativePath": "css/admineLte.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\admineLte.css"
     },
     {
       "Identity": "C:\\Users\\AsemHagi\\source\\repos\\WebProramlamaProjesi\\Proje-B201210567\\wwwroot\\css\\site.css",
