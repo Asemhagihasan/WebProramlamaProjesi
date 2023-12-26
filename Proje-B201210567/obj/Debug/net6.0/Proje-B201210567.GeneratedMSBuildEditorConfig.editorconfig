@@ -16,6 +16,22 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = C:\Users\HamudTheGreat\Desktop\WebProramlamaProjesi\Proje-B201210567
 build_property._RazorSourceGeneratorDebug = 
 
+[C:/Users/HamudTheGreat/Desktop/WebProramlamaProjesi/Proje-B201210567/Views/Admin/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/HamudTheGreat/Desktop/WebProramlamaProjesi/Proje-B201210567/Views/Admin/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cRGVsZXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/HamudTheGreat/Desktop/WebProramlamaProjesi/Proje-B201210567/Views/Admin/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/HamudTheGreat/Desktop/WebProramlamaProjesi/Proje-B201210567/Views/Admin/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/HamudTheGreat/Desktop/WebProramlamaProjesi/Proje-B201210567/Views/CalismaSaati/CalismaGuncel.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2FsaXNtYVNhYXRpXENhbGlzbWFHdW5jZWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
