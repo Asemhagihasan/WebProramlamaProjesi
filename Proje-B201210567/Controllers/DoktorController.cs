@@ -102,7 +102,8 @@ namespace Proje_B201210567.Controllers
 		{
 			List<TimeSpan> randevuSaatlari = new List<TimeSpan>();
             List<TimeSpan> RandevuSaatlari1 = new List<TimeSpan>();
-            bool[] bools = new bool[2];
+            bool[] bools = new bool[doktor.CalismaSaatleri[0].BitisSaati.Hours - doktor.CalismaSaatleri[0].BaslangicSaati.Hours];
+			int count = 0;
 
             for (int i =0; i < doktor.CalismaSaatleri[0].BitisSaati.Hours - doktor.CalismaSaatleri[0].BaslangicSaati.Hours; i++)
 			{
@@ -116,8 +117,9 @@ namespace Proje_B201210567.Controllers
 				for(int j = 1; j < 3; j++)
 				{
 					TimeSpan RandevuSaat = new TimeSpan(currentHour, j*20, 0);
-                    bools[j-1] = true;
+                    bools[i + count] = true;
 					RandevuSaatlari1.Add(RandevuSaat);
+					count++;
                 }
 
                 TimeSpan appointmentTime = new TimeSpan(currentHour, 0, 0);

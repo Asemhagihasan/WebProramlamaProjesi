@@ -33,6 +33,14 @@
       "PackagePath": "staticwebassets\\lib\\bootstrap"
     },
     {
+      "Id": "C:\\Users\\AsemHagi\\source\\repos\\WebProramlamaProjesi\\Proje-B201210567\\wwwroot\\lib\\bootstrap\\dist\\css\\User.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\User.css"
+    },
+    {
+      "Id": "C:\\Users\\AsemHagi\\source\\repos\\WebProramlamaProjesi\\Proje-B201210567\\wwwroot\\lib\\bootstrap\\dist\\css\\animate.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\animate.css"
+    },
+    {
       "Id": "C:\\Users\\AsemHagi\\source\\repos\\WebProramlamaProjesi\\Proje-B201210567\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css"
     },
@@ -161,8 +169,36 @@
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css.map"
     },
     {
+      "Id": "C:\\Users\\AsemHagi\\source\\repos\\WebProramlamaProjesi\\Proje-B201210567\\wwwroot\\lib\\bootstrap\\dist\\css\\flaticon.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\flaticon.css"
+    },
+    {
+      "Id": "C:\\Users\\AsemHagi\\source\\repos\\WebProramlamaProjesi\\Proje-B201210567\\wwwroot\\lib\\bootstrap\\dist\\css\\gijgo.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\gijgo.css"
+    },
+    {
+      "Id": "C:\\Users\\AsemHagi\\source\\repos\\WebProramlamaProjesi\\Proje-B201210567\\wwwroot\\lib\\bootstrap\\dist\\css\\magnific-popup.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\magnific-popup.css"
+    },
+    {
+      "Id": "C:\\Users\\AsemHagi\\source\\repos\\WebProramlamaProjesi\\Proje-B201210567\\wwwroot\\lib\\bootstrap\\dist\\css\\nice-select.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\nice-select.css"
+    },
+    {
+      "Id": "C:\\Users\\AsemHagi\\source\\repos\\WebProramlamaProjesi\\Proje-B201210567\\wwwroot\\lib\\bootstrap\\dist\\css\\owl.carousel.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\owl.carousel.min.css"
+    },
+    {
+      "Id": "C:\\Users\\AsemHagi\\source\\repos\\WebProramlamaProjesi\\Proje-B201210567\\wwwroot\\lib\\bootstrap\\dist\\css\\slicknav.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\slicknav.css"
+    },
+    {
       "Id": "C:\\Users\\AsemHagi\\source\\repos\\WebProramlamaProjesi\\Proje-B201210567\\wwwroot\\lib\\bootstrap\\dist\\css\\style.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\style.css"
+    },
+    {
+      "Id": "C:\\Users\\AsemHagi\\source\\repos\\WebProramlamaProjesi\\Proje-B201210567\\wwwroot\\lib\\bootstrap\\dist\\css\\style1.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\style1.css"
     },
     {
       "Id": "C:\\Users\\AsemHagi\\source\\repos\\WebProramlamaProjesi\\Proje-B201210567\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js",

@@ -85,18 +85,6 @@ namespace Proje_B201210567.Controllers
                     }
 
                 }
-
-				else if(Math.Abs(BitisTarihi.DayOfYear - BaslangisTarihi.DayOfYear) < 6) 
-				{
-                    calismaSaatlarGroup.DoctorId = d.DoktorId;
-                    foreach (var calismaSaat in calismaSaatler)
-					{
-						//if(calismaSaat.Gun)
-						//{
-
-						//}
-					}
-                }
 			}
 			return calismaSaatlarGroups;
         }
@@ -116,31 +104,31 @@ namespace Proje_B201210567.Controllers
 			var ActiveCalisma = new List<CalismaSaatlarGroup>();
 
 
-            string hata = "";
+            string HataMsj = "";
 
 			if (kullanci == null)
 			{
-				hata = "Hasta bulunamadı";
-				return RedirectToAction("RandevuAra", hata);
-			}
+                HataMsj = "Hasta bulunamamıştır";
 
-			//kullanci doktor secmezise otomatik olark sectigi poliklinike ait tum doktorlara getirir
-			if (randevu.Doktor.DoktorId == 0)
+                return RedirectToAction("Hata",new {Msj = HataMsj });
+			}
+            //kullanci doktor secmezise otomatik olark sectigi poliklinike ait tum doktorlara getirir
+            if (randevu.Doktor.DoktorId == 0)
 			{
 				var doktorlar = (from d in _db.Doktorlar where d.poliklinikBolum_Id == randevu.Poliklinik.Bolum_Id select d).ToList();
 			    ActiveCalisma = CalismaKontrol(doktorlar, randevu.BitisTarihi, randevu.BaslangicTarihi,kullanci.KullaniciId);
 
                 if(ActiveCalisma.Count == 0)
                 {
-                    hata = "";
-                    return RedirectToAction("",hata);
+                    HataMsj = "Aradığınız Formata alınabilir uygun randevu bulunamamıştır.";
+                    return RedirectToAction("Hata", new { Msj = HataMsj });
                 }
 				return View(ActiveCalisma);
 			}
 
 			if (poliklinik == null || doktor == null)
 			{
-				return RedirectToAction("RandevuAra", hata);
+				return NotFound();
 
 			}
 
@@ -148,10 +136,16 @@ namespace Proje_B201210567.Controllers
 
             if(ActiveCalisma.Count == 0)
             {
-                return RedirectToAction("",hata);
+                HataMsj = "Aradığınız Formata alınabilir uygun randevu bulunamamıştır.";
+                return RedirectToAction("Hata", new { Msj = HataMsj });
             }
 
 			return View(ActiveCalisma);
+        }
+
+		public IActionResult Hata(string Msj)
+		{
+            return View((object)Msj);
         }
 
         [HttpGet]
