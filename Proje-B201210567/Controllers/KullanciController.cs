@@ -41,12 +41,12 @@ namespace Proje_B201210567.Controllers
 			if (_db.Kullancilar.Any(k => k.Tc == kullanci.Tc ))
 
 			{
-				ModelState.AddModelError("Tc", "This TC is already in use.");
+				ModelState.AddModelError("Tc", "Bu Tc Zaten Mevcut");
 				return View(kullanci);
 			}
             if(_db.Kullancilar.Any(c=>c.Email == kullanci.Email))
             {
-				ModelState.AddModelError("Email", "This Email is already in use.");
+				ModelState.AddModelError("Email", "Bu Mail Adresi zaten Mevcut");
 				return View(kullanci);
 
 			}

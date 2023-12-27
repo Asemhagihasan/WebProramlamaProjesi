@@ -1,0 +1,45 @@
+﻿@model Admin
+<form method="post" >
+	<div class="border p-3 mt-4">
+		<div class="row pb-2">
+			<h2 class="text-primary">Admin Oluşturma</h2>
+			<hr />
+		</div>
+		<div class="mb-3">
+			<label asp-for="Tc"></label>
+			<input asp-for="Tc" type="text" class="form-control" />
+			<span asp-validation-for="Tc" class="text-danger"></span>
+		</div>
+		<div class="mb-3">
+			<label asp-for="Adi"></label>
+			<input asp-for="Adi" type="text" class="form-control" />
+			<span asp-validation-for="Adi" class="text-danger"></span>
+		</div>
+		<div class="mb-3">
+			<label asp-for="Soyad"></label>
+			<input asp-for="Soyad" type="text" class="form-control" />
+			<span asp-validation-for="Soyad" class="text-danger"></span>
+		</div>
+		<div class="mb-3">
+			<label asp-for="TelefonNumarasi"></label>
+			<input asp-for="TelefonNumarasi" type="text" class="form-control" />
+			<span asp-validation-for="TelefonNumarasi" class="text-danger"></span>
+		</div>
+		<div class="mb-3">
+			<label asp-for="Email"></label>
+			<input asp-for="Email" type="email" class="form-control" placeholder="email@example.com" />
+			<span asp-validation-for="Email" class="text-danger"></span>
+		</div>
+		<div class="mb-3">
+			<label asp-for="Sifre"></label>
+			<input asp-for="Sifre" type="password" class="form-control" />
+			<span asp-validation-for="Sifre" class="text-danger"></span>
+		</div>
+		<button asp-controller="Admin" asp-action="Create" type="submit" class="btn btn-primary" style="width:150px">Oluştur</button>
+	</div>
+</form>
+@section Scripts{
+	@{
+		<partial name="_validationScriptsPartial" />
+	}
+}

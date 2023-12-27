@@ -42,6 +42,7 @@
 
 		<button type="submit" class="btn btn-primary" style="width:150px">Oluştur</button> 
 	</div>
+	@Html.ValidationMessageFor(model => model.Doktor.CalismaSaatleri[0], "", new { @class = "text-danger" })
 </form>
 
 

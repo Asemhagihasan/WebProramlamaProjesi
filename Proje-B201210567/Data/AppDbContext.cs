@@ -16,7 +16,7 @@ namespace Proje_B201210567.Data
 		public DbSet<Randevu> Rendevuler { get; set; }
 		public DbSet<Poliklinik> Poliklinikler { get; set; }
         public DbSet<CalismaSaati> CalismaSaati { get; set; }
-		public DbSet<CalismaVePoliklinik> calismaVePolikliniks { get; set; }
+		public DbSet<Admin> Admins { get; set; }
 
 
     }
