@@ -60,7 +60,7 @@
                             @foreach(var obj in Model){
 
                                 @foreach (var item in obj.CalismaSaatiListesi)
-                                {
+                                {   
                                     <tr class="align-middle">
                                         <td>
                                             <div class="d-flex align-items-center">
@@ -73,19 +73,21 @@
                                         </td>
                                         <td>
                                             <div class="tarihContainer">
-                                                <span class="text-tarih">En Yakın Tarihi</span>
-                                                <div class="tarih">00/00/2023</div>
+                                                <span class="text-tarih">En Yakın Gün</span>
+                                                <div class="tarih">
+                                                    @item.Gun
+                                                </div>
                                             </div>
                                         </td>
                                         <td> <span class="d-inline-block align-middle"><i class="bi bi-h-circle me-2"></i>Saü Sakarya</span></td>
                                         <td><span><i class="bi bi-hospital me-2"></i>@obj.BolumAdi</span></td>
                                         <td>
-                                            <a asp-controller="Randevu" asp-action="CalismaSaatiGoster" asp-route-id="@item.Id" style="text-decoration:none; color:#157347">
+                                            <a asp-controller="Randevu" asp-action="CalismaSaatiGoster" asp-route-id1="@item.Id" asp-route-id2="@obj.KullanciId" style="text-decoration:none; color:#157347">
                                                 <i class="bi bi-plus-circle "></i> &nbsp;
                                             </a>
                                         </td>
 
-                                    </tr>
+                                    </tr>                                  
                                 }
                             }
                         </tbody>

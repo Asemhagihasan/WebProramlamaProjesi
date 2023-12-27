@@ -1,0 +1,26 @@
+﻿@model List<RandevuYazdir>
+
+
+<table class="table table-bordered table-striped" style="width:100%">
+    <thead>
+        <tr class="bg-body-secondary">
+            <th>Tc</th>
+            <th>Hasta</th>
+            <th>Doktor</th>
+            <th>Bölüm</th>
+            <th></th>
+        </tr>
+    </thead>
+	<tbody>
+        @foreach(var item in Model)
+        {
+            <tr>
+                <td>@item.Tc</td>
+                <td>@item.KullanciAdi</td>
+                <td>@item.DoktorAdi</td>
+                <td>@item.BolumAdi</td>
+                <td></td>
+            </tr>
+        }
+    </tbody>
+</table>

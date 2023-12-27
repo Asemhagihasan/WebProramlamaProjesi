@@ -96,26 +96,58 @@ namespace Proje_B201210567.Controllers
 			return View(doktor);
 		}
 
-		[HttpPost]
+
+        [HttpPost]
 		public IActionResult DoktorGuncel(Doktor doktor)
 		{
-			CalismaSaati calismaSaati = new CalismaSaati()
+			List<TimeSpan> randevuSaatlari = new List<TimeSpan>();
+            List<TimeSpan> RandevuSaatlari1 = new List<TimeSpan>();
+            bool[] bools = new bool[2];
+
+            for (int i =0; i < doktor.CalismaSaatleri[0].BitisSaati.Hours - doktor.CalismaSaatleri[0].BaslangicSaati.Hours; i++)
+			{
+                int currentHour = doktor.CalismaSaatleri[0].BaslangicSaati.Hours + i;
+
+                if (currentHour == 12)
+                {
+                    continue;
+                }
+
+				for(int j = 1; j < 3; j++)
+				{
+					TimeSpan RandevuSaat = new TimeSpan(currentHour, j*20, 0);
+                    bools[j-1] = true;
+					RandevuSaatlari1.Add(RandevuSaat);
+                }
+
+                TimeSpan appointmentTime = new TimeSpan(currentHour, 0, 0);
+
+                randevuSaatlari.Add(appointmentTime);
+            }
+			var gun = (int)(doktor.CalismaSaatleri[0].Gun);
+
+            CalismaSaati calismaSaati = new CalismaSaati()
 			{
 				Gun = doktor.CalismaSaatleri[0].Gun,
 				BaslangicSaati = doktor.CalismaSaatleri[0].BaslangicSaati,
 				BitisSaati = doktor.CalismaSaatleri[0].BitisSaati,
-				DoktorId = doktor.DoktorId
+				DoktorId = doktor.DoktorId,
+				DayOfWeeks = randevuSaatlari,
+				RandevuSaatlari = RandevuSaatlari1,
+				Tarih = DateTime.Now.ToShortDateString(),
+				IsAvailable = bools,
 			};
-			_db.CalismaSaati.Add(calismaSaati);
-			doktor.CalismaSaatleri.Clear();
-			if (doktor == null)
+
+            if (doktor == null)
 			{
 				return NotFound();
 			}
-			_db.Doktorlar.Update(doktor);
-			_db.SaveChanges();
-			return RedirectToAction("DoktorListesi" , "Doktor",new { id = doktor.poliklinikBolum_Id });
 
+            doktor.CalismaSaatleri.Clear();
+            _db.Doktorlar.Update(doktor);
+            _db.CalismaSaati.Add(calismaSaati);
+            _db.SaveChanges();
+			return RedirectToAction("DoktorListesi" , "Doktor",new { id = doktor.poliklinikBolum_Id });
 		}
 
 		public IActionResult DoktorSilme(int ?id)

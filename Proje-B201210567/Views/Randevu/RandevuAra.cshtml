@@ -46,10 +46,7 @@
 </form>
 
 
-@section Scripts{
-	@{
-	<partial name="_validationScriptsPartial" />
-	}
+
 	<script>
 		const container = document.querySelector(".hakimListesi");
 
@@ -96,6 +93,10 @@
 
 
 	</script>
+@section Scripts{
+	@{
+		<partial name="_validationScriptsPartial" />
+	}
 }
 @* fetch("/Randevu/jsonData?BolumId=" + selectedValue)
 	.then(response => response.json())

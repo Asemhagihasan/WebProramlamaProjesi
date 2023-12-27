@@ -2,6 +2,7 @@
 using Proje_B201210567.Data;
 using Proje_B201210567.Models;
 using System;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Proje_B201210567.Controllers
 {
@@ -34,15 +35,9 @@ namespace Proje_B201210567.Controllers
 			return Json(null);
 		}
 
-        private List<CalismaSaatlarGroup> CalismaKontrol(List<Doktor> doktors, DateTime BitisTarihi, DateTime BaslangisTarihi)
+        private List<CalismaSaatlarGroup> CalismaKontrol(List<Doktor> doktors, DateTime BitisTarihi, DateTime BaslangisTarihi,int KullanciId)
         {
-
-			var x = BitisTarihi < BaslangisTarihi; // dont get any thing
-			var y = BitisTarihi == BaslangisTarihi; // get specific day
-			var z = BitisTarihi.DayOfYear - BaslangisTarihi.DayOfYear;// if negatif => between two years else if more than 6 get all days else get specific days
-
-
-			var calismaSaatlarGroups = new List<CalismaSaatlarGroup>();
+            var calismaSaatlarGroups = new List<CalismaSaatlarGroup>();
 			foreach (var d in doktors)
             {
                 var calismaSaatler = _db.CalismaSaati.Where(a => a.DoktorId == d.DoktorId );
@@ -58,6 +53,7 @@ namespace Proje_B201210567.Controllers
 					calismaSaatlarGroup.BolumAdi = poliklinik.Bolum_Adi;
 					calismaSaatlarGroup.BaslangisTarih = BaslangisTarihi;
 					calismaSaatlarGroup.BitisTarih = BitisTarihi;
+					calismaSaatlarGroup.KullanciId = KullanciId;
 
                     foreach (var calismaSaat in calismaSaatler)
 					{
@@ -76,6 +72,9 @@ namespace Proje_B201210567.Controllers
                     calismaSaatlarGroup.DoctorName = d.Doktor_Adi;
                     calismaSaatlarGroup.DoktorSoyad = d.Doktor_Soyad;
                     calismaSaatlarGroup.BolumAdi = poliklinik.Bolum_Adi;
+                    calismaSaatlarGroup.BaslangisTarih = BaslangisTarihi;
+                    calismaSaatlarGroup.BitisTarih = BitisTarihi;
+                    calismaSaatlarGroup.KullanciId = KullanciId;
                     foreach (var calismaSaat in calismaSaatler)
                     {                   
                             calismaSaatlarGroup.CalismaSaatiListesi.Add(calismaSaat);  
@@ -100,26 +99,6 @@ namespace Proje_B201210567.Controllers
                 }
 			}
 			return calismaSaatlarGroups;
-
-
-			//List<List<CalismaSaati>> CalismaTablosu = new List<CalismaSaati>();
-   //         foreach (var d in doktors)
-   //         {
-   //            var claismaList = (from  cla in _db.CalismaSaati where cla.DoktorId == d.DoktorId select cla).ToList();
-   //             foreach (var doc in claismaList)
-   //             {
-   //                 int dayOfWeek =(int)doc.Gun;
-
-			//		if (!(dayOfWeek <= BitisTarihi.Day && dayOfWeek >= BaslangisTarihi.Day))
-   //                 {
-			//			claismaList.Remove(doc);
-			//			//var Doktor = _db.Doktorlar.Find(doc.DoktorId);
-			//			//                  doktorlar.Add(Doktor);
-			//		}
-			//	}
-   //             CalismaTablosu.Add(claismaList);
-			//}
-   //         return doktorlar;
         }
 
 		[HttpPost]
@@ -149,7 +128,7 @@ namespace Proje_B201210567.Controllers
 			if (randevu.Doktor.DoktorId == 0)
 			{
 				var doktorlar = (from d in _db.Doktorlar where d.poliklinikBolum_Id == randevu.Poliklinik.Bolum_Id select d).ToList();
-			    ActiveCalisma = CalismaKontrol(doktorlar, randevu.BitisTarihi, randevu.BaslangicTarihi);
+			    ActiveCalisma = CalismaKontrol(doktorlar, randevu.BitisTarihi, randevu.BaslangicTarihi,kullanci.KullaniciId);
 
                 if(ActiveCalisma.Count == 0)
                 {
@@ -165,7 +144,7 @@ namespace Proje_B201210567.Controllers
 
 			}
 
-			ActiveCalisma =  CalismaKontrol(new List<Doktor> { doktor} ,randevu.BitisTarihi,randevu.BaslangicTarihi);
+			ActiveCalisma =  CalismaKontrol(new List<Doktor> { doktor} ,randevu.BitisTarihi,randevu.BaslangicTarihi, kullanci.KullaniciId);
 
             if(ActiveCalisma.Count == 0)
             {
@@ -175,22 +154,96 @@ namespace Proje_B201210567.Controllers
 			return View(ActiveCalisma);
         }
 
-
-		public IActionResult CalismaSaatiGoster(int ?id)
+        [HttpGet]
+        public IActionResult CalismaSaatiGoster(int ?id1,int ?id2)
 		{
-			if (id == null || id == 0)
+			if (id1 == null || id1 == 0 || id2 == null || id2 == 0)
 			{
 				return NotFound();
 			}
 
-			var calisma = _db.CalismaSaati.Find(id);
+			var calisma = _db.CalismaSaati.Find(id1);
+			var doktor = _db.Doktorlar.Find(calisma.DoktorId);
+			var poliklinikId = doktor.poliklinikBolum_Id;
+			var kullanci = _db.Kullancilar.Find(id2);
 
-			if (calisma == null)
+            var poliklinik = _db.Poliklinikler.Find(poliklinikId);
+
+			if (calisma == null || poliklinik == null)
 			{ 
 				return NotFound(); 
 			}
 
-			return View(calisma); 
+			CalismaVePoliklinik model = new CalismaVePoliklinik()
+			{
+                CalismaSaati = calisma,
+				Poliklinik = poliklinik,
+				Doktor = doktor,
+				Kullanci = kullanci,
+            };
+            _db.calismaVePolikliniks.RemoveRange(_db.calismaVePolikliniks);
+            _db.calismaVePolikliniks.Add(model);
+			_db.SaveChanges();
+
+            return View(model); 
 		}
-	}
+
+
+		[HttpPost]
+		public IActionResult RandevuOnay(int ?RandevId)
+		{
+			if(RandevId == 0 || RandevId == null)
+			{
+				return NotFound();
+			}
+
+			var randevu = _db.calismaVePolikliniks.Find(RandevId);
+
+			if(randevu == null)
+			{
+				return NotFound();
+			}
+
+			Randevu randevuObj = new Randevu() 
+			{
+                DoktorId = randevu.DoktorId,
+                KullaniciId =randevu.KullanciId,
+                RandevuOlasanTarih = DateTime.Now.ToShortDateString(),
+				Durum = "Beklemede",
+				BolumId = randevu.poliklinikId,
+            }; 
+			
+			_db.Rendevuler.Add(randevuObj);
+			_db.SaveChanges();
+			return RedirectToAction("RandevuListesi");
+		}
+
+		public IActionResult RandevuListesi()
+		{
+			var Randevular = _db.Rendevuler.ToList();
+			var Randevuler1 = new List<RandevuYazdir>();
+
+
+            foreach (var item in Randevular)
+			{
+				var kullanci = _db.Kullancilar.Find(item.KullaniciId);
+				var Doktor = _db.Doktorlar.Find(item.DoktorId);
+				var Bolum = _db.Poliklinikler.Find(item.BolumId);
+
+                var Randevu = new RandevuYazdir()
+				{
+					KullanciAdi = kullanci.Kullanci_Adi + " " +  kullanci.Kullanci_Soyad,
+					Tc = kullanci.Tc,
+					KullanciId = kullanci.KullaniciId,
+					DoktorAdi = Doktor.Doktor_Adi +" " +  Doktor.Doktor_Soyad,
+					DokrorId = Doktor.DoktorId,
+					BolumAdi = Bolum.Bolum_Adi,
+					BolumId = Bolum.Bolum_Id,
+                };
+                Randevuler1.Add(Randevu);
+            }
+			
+			return View(Randevuler1);
+		}
+    }
 }

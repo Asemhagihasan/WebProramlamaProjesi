@@ -15,6 +15,7 @@
 <div class="form-group" style="margin-top:-2rem">
     <label for="exampleSelect1" class="form-label mt-4">Bölüm</label>
     <select class="form-select" id="mySelect">
+        <option></option>
         @foreach (var item in Model)
         {
             <option value="@item.Bolum_Id">@item.Bolum_Adi</option>
