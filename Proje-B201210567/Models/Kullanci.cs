@@ -12,15 +12,15 @@ namespace Proje_B201210567.Models
         public string Tc { get; set; }
 
         [Required(ErrorMessage = "Kullanıcı Adı boş bırakılamaz.")]
-		[DisplayName("Adı")]
+		//[DisplayName("Adı")]
         public string Kullanci_Adi { get; set; }
 
 		[Required(ErrorMessage = "Kullanıcı Soyadı boş bırakılamaz.")]
-		[DisplayName("Soyad")]
+		//[DisplayName("Soyad")]
         public string Kullanci_Soyad { get; set; }
 
 		[Required(ErrorMessage = "Telefon Numarası boş bırakılamaz.")]
-		[DisplayName("Telefon Numarası")]
+		//[DisplayName("Telefon Numarası")]
         public string TelefonNumarasi { get; set; }
 
 		[Required(ErrorMessage = "Cinsel seçimi yapmalısınız.")]
@@ -28,11 +28,11 @@ namespace Proje_B201210567.Models
 
 		[Required(ErrorMessage = "Email boş bırakılamaz.")]
 		[EmailAddress(ErrorMessage = "Geçerli bir email adresi giriniz.")]
-		[DisplayName("Email address")]
+		//[DisplayName("Email address")]
 		public string Email { get; set; }
 
 		[Required(ErrorMessage = "Şifre boş bırakılamaz.")]
-		[DisplayName("Sifre")]
+		//[DisplayName("Sifre")]
         public string Sifre { get; set; }
     }
 }

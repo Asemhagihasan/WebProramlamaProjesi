@@ -706,3 +706,16 @@ C:\Users\HamudTheGreat\Desktop\WebProramlamaProjesi\Proje-B201210567\obj\Debug\n
 C:\Users\HamudTheGreat\Desktop\WebProramlamaProjesi\Proje-B201210567\obj\Debug\net6.0\Proje-B201210567.pdb
 C:\Users\HamudTheGreat\Desktop\WebProramlamaProjesi\Proje-B201210567\obj\Debug\net6.0\Proje-B201210567.genruntimeconfig.cache
 C:\Users\HamudTheGreat\Desktop\WebProramlamaProjesi\Proje-B201210567\obj\Debug\net6.0\ref\Proje-B201210567.dll
+C:\Users\HamudTheGreat\Desktop\WebProramlamaProjesi\Proje-B201210567\bin\Debug\net6.0\en\Proje-B201210567.resources.dll
+C:\Users\HamudTheGreat\Desktop\WebProramlamaProjesi\Proje-B201210567\bin\Debug\net6.0\tr\Proje-B201210567.resources.dll
+C:\Users\HamudTheGreat\Desktop\WebProramlamaProjesi\Proje-B201210567\obj\Debug\net6.0\Proje_B201210567.Resources.Views.Shared._Layout.en.resources
+C:\Users\HamudTheGreat\Desktop\WebProramlamaProjesi\Proje-B201210567\obj\Debug\net6.0\Proje_B201210567.Resources.Views.Shared._Layout.tr.resources
+C:\Users\HamudTheGreat\Desktop\WebProramlamaProjesi\Proje-B201210567\obj\Debug\net6.0\Proje-B201210567.csproj.GenerateResource.cache
+C:\Users\HamudTheGreat\Desktop\WebProramlamaProjesi\Proje-B201210567\obj\Debug\net6.0\en\Proje-B201210567.resources.dll
+C:\Users\HamudTheGreat\Desktop\WebProramlamaProjesi\Proje-B201210567\obj\Debug\net6.0\tr\Proje-B201210567.resources.dll
+C:\Users\HamudTheGreat\Desktop\WebProramlamaProjesi\Proje-B201210567\obj\Debug\net6.0\Proje_B201210567.Resources.Controllers.PoliklinikController.en.resources
+C:\Users\HamudTheGreat\Desktop\WebProramlamaProjesi\Proje-B201210567\obj\Debug\net6.0\Proje_B201210567.Resources.Controllers.PoliklinikController.tr.resources
+C:\Users\HamudTheGreat\Desktop\WebProramlamaProjesi\Proje-B201210567\obj\Debug\net6.0\Proje_B201210567.Resources.Controllers.KullanciController.en.resources
+C:\Users\HamudTheGreat\Desktop\WebProramlamaProjesi\Proje-B201210567\obj\Debug\net6.0\Proje_B201210567.Resources.Controllers.KullanciController.tr.resources
+C:\Users\HamudTheGreat\Desktop\WebProramlamaProjesi\Proje-B201210567\obj\Debug\net6.0\Proje_B201210567.Resources.Controllers.AdminController.en.resources
+C:\Users\HamudTheGreat\Desktop\WebProramlamaProjesi\Proje-B201210567\obj\Debug\net6.0\Proje_B201210567.Resources.Controllers.AdminController.tr.resources

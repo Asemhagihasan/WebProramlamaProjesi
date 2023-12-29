@@ -1,4 +1,5 @@
 ﻿@model IEnumerable<Poliklinik>
+@inject Microsoft.AspNetCore.Mvc.Localization.IViewLocalizer localizer
 
 <div class="container p-3">
     <div class="row pt-4">
@@ -6,14 +7,16 @@
         </div>
         <div class="col-6 text-end">
             <a asp-controller="Poliklinik" asp-action="PoliklinikEkle" class="btn btn-primary">
-                <i class="bi bi-plus-circle"></i> &nbsp; Poliklinik Ekle
+                <i class="bi bi-plus-circle"></i> &nbsp; @ViewData["Add Poliklinik"]
             </a>
         </div>
     </div>
 </div>
 
 <div class="form-group" style="margin-top:-2rem">
-    <label for="exampleSelect1" class="form-label mt-4">Bölüm</label>
+    <label for="exampleSelect1" class="form-label mt-4">
+        @ViewData["Section"]
+    </label>
     <select class="form-select" id="mySelect">
         @foreach (var item in Model)
         {
@@ -22,6 +25,7 @@
     </select>
 </div>
 <div class="ponklikListsi mt-3"></div>
+
 
 @section scripts {
     <script>

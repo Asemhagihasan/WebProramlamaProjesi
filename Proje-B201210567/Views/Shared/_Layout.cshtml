@@ -1,6 +1,8 @@
 ﻿<!DOCTYPE html>
+@inject Microsoft.AspNetCore.Mvc.Localization.IViewLocalizer localizer
 <html lang="en">
 <head>
+    
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - Proje_B201210567</title>
@@ -13,6 +15,7 @@
    
 </head>
 <body>
+   
     <header>
         <nav class="navbar navbar-expand-lg bg-primary" data-bs-theme="dark">
             <div class="container-fluid">
@@ -26,35 +29,36 @@
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Admin</a>
                             <div class="dropdown-menu">
-                                <a class="dropdown-item" asp-controller="Admin" asp-action="Index">Adminler</a>
-                                <a class="dropdown-item" asp-controller="Admin" asp-action="Create">Admin Ekle</a>
+                                <a class="dropdown-item" asp-controller="Admin" asp-action="Index">@localizer["Admins"]</a>
+                                <a class="dropdown-item" asp-controller="Admin" asp-action="Create">@localizer["Add Admin"]</a>
                             </div>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link active" asp-controller="Kullanci" asp-action="Kullancilar">
-                                Hastalar
+                                @localizer["Patients"]
                                 <span class="visually-hidden">(current)</span>
                             </a>
                         </li>
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Poliklinik</a>
+                            <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">@localizer["Polyclinic"]</a>
                             <div class="dropdown-menu">
-                                <a class="dropdown-item" asp-controller="Poliklinik" asp-action="PoliklinikGet">Poliklinikler</a>
-                                <a class="dropdown-item" asp-controller="Doktor" asp-action="DoktorEkle">Doktor Ekle</a>
+                                <a class="dropdown-item" asp-controller="Poliklinik" asp-action="PoliklinikGet">@localizer["Polyclinics"]</a>
+                                <a class="dropdown-item" asp-controller="Doktor" asp-action="DoktorEkle">@localizer["Add Doctor"]</a>
                             </div>
                         </li>
                        @*  <li class="nav-item">
                             <a class="nav-link" asp-controller="Doktor" asp-action="DoktorListesi">Doktorlar</a>
                         </li> *@
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Randevu</a>
+                            <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">@localizer["Reservation"]</a>
                             <div class="dropdown-menu">
-                                <a class="dropdown-item" href="#">Randevu Al</a>
-                                <a class="dropdown-item" href="#">Randevuler Listesi</a>
+                                <a class="dropdown-item" href="#">@localizer["Make Reservation"]</a>
+                                <a class="dropdown-item" href="#">@localizer["Reservation List"]</a>
                             </div>
                         </li>
-                    </ul>                        
-                    <a class="btn btn-success my-2 my-sm-0">Login</a>
+                    </ul>
+                    <partial name="LanguagePartial"></partial>
+                    <a class="btn btn-success my-2 my-sm-0">@localizer["Login"]</a>
                 </div>
             </div>
         </nav>

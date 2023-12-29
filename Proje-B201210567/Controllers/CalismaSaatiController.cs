@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Localization;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Localization;
 using Proje_B201210567.Data;
 using Proje_B201210567.Models;
 
@@ -7,11 +9,24 @@ namespace Proje_B201210567.Controllers
     public class CalismaSaatiController : Controller
     { 
          private readonly AppDbContext _db;
-        public CalismaSaatiController(AppDbContext db)
+        private IHtmlLocalizer<CalismaSaatiController> _localizer;
+        public CalismaSaatiController(AppDbContext db ,IHtmlLocalizer<CalismaSaatiController> localizer)
         {
+            _localizer = localizer;
             _db = db;
         }
+        public IActionResult setLanguage(string Culture, string returnUrl)
+        {
 
+            Response.Cookies.Append
+                (
+                CookieRequestCultureProvider.DefaultCookieName,
+                CookieRequestCultureProvider.MakeCookieValue(new RequestCulture(Culture)),
+                new CookieOptions { Expires = DateTimeOffset.UtcNow.AddYears(1) }
+
+                );
+            return LocalRedirect(returnUrl);
+        }
         public IActionResult CalismaGuncel(int ? id)
         {
             if (id == null || id == 0)

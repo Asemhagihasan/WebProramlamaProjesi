@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Localization;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Localization;
 using Proje_B201210567.Data;
 using Proje_B201210567.Models;
 using System.Collections;
@@ -9,13 +11,30 @@ namespace Proje_B201210567.Controllers
     public class KullanciController : Controller
     {
 		private readonly AppDbContext _db;
-		public KullanciController(AppDbContext db)
+        private readonly IHtmlLocalizer<KullanciController> _localizer;
+        public KullanciController(AppDbContext db , IHtmlLocalizer<KullanciController> localizer)
 		{
+            _localizer = localizer;
 			_db = db;
 		}
 
         public IActionResult Kullancilar(Kullanci model)
         {
+            @ViewData["Patients List"] = _localizer["Patients List"];
+            @ViewData["Add Patient"] = _localizer["Add Patient"];
+            @ViewData["Search"] = _localizer["Search"];
+            @ViewData["Update"] = _localizer["Update"];
+            @ViewData["Delete"] = _localizer["Delete"];
+            @ViewData["Id Number"] = _localizer["Id Number"];
+            @ViewData["Name"] = _localizer["Name"];
+            @ViewData["Surname"] = _localizer["Surname"];
+            @ViewData["Number"] = _localizer["Number"];
+            @ViewData["Gender"] = _localizer["Gender"];
+
+
+
+
+
             List<Kullanci> objCategortList;
 
             if (model.KullaniciId != 0)
@@ -31,14 +50,30 @@ namespace Proje_B201210567.Controllers
         }
         public IActionResult KullanciEkleme()
         {
-            return View();
+			@ViewData["Create Patient"] = _localizer["Create Patient"];
+			@ViewData["Id Number"] = _localizer["Id Number"];
+			return View();
+        }
+        public IActionResult setLanguage(string Culture, string returnUrl)
+        {
+
+            Response.Cookies.Append
+                (
+                CookieRequestCultureProvider.DefaultCookieName,
+                CookieRequestCultureProvider.MakeCookieValue(new RequestCulture(Culture)),
+                new CookieOptions { Expires = DateTimeOffset.UtcNow.AddYears(1) }
+
+                );
+            return LocalRedirect(returnUrl);
         }
 
-		[HttpPost]
+        [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult KullanciEkleme(Kullanci kullanci)
         {
-			if (_db.Kullancilar.Any(k => k.Tc == kullanci.Tc ))
+            
+
+            if (_db.Kullancilar.Any(k => k.Tc == kullanci.Tc ))
 
 			{
 				ModelState.AddModelError("Tc", "Bu Tc Zaten Mevcut");

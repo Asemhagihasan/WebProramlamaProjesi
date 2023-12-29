@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Localization;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Localization;
 using Newtonsoft.Json;
 using Proje_B201210567.Data;
 using Proje_B201210567.Models;
@@ -9,14 +11,39 @@ namespace Proje_B201210567.Controllers
 	public class AdminController : Controller
 	{
 		private readonly AppDbContext _db;
-		public AdminController(AppDbContext db)
+        private IHtmlLocalizer<AdminController> _localizer;
+        public AdminController(AppDbContext db , IHtmlLocalizer<AdminController> localizer)
 		{
+			_localizer = localizer;
 			_db = db;
 		}
-       
+        public IActionResult setLanguage(string Culture, string returnUrl)
+        {
+
+            Response.Cookies.Append
+                (
+                CookieRequestCultureProvider.DefaultCookieName,
+                CookieRequestCultureProvider.MakeCookieValue(new RequestCulture(Culture)),
+                new CookieOptions { Expires = DateTimeOffset.UtcNow.AddYears(1) }
+
+                );
+            return LocalRedirect(returnUrl);
+        }
+
         public async Task<IActionResult> Index()
         {
-			List<Admin> yazarlar = new List<Admin>();
+            @ViewData["Admins List"] = _localizer["Admins List"];
+            @ViewData["Add Admin"] = _localizer["Add Admin"];
+            @ViewData["Update"] = _localizer["Update"];
+            @ViewData["Delete"] = _localizer["Delete"];
+            @ViewData["Id Number"] = _localizer["Id Number"];
+            @ViewData["Name"] = _localizer["Name"];
+            @ViewData["Surname"] = _localizer["Surname"];
+            @ViewData["Password"] = _localizer["Password"];
+            @ViewData["Number"] = _localizer["Number"];
+
+
+            List<Admin> yazarlar = new List<Admin>();
 			HttpClient client = new HttpClient();
 			var response = await client.GetAsync("https://localhost:7100/api/AdminApi");
 			var jsonResponse = await response.Content.ReadAsStringAsync();

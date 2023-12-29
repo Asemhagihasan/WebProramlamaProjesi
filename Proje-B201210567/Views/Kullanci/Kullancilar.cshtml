@@ -1,4 +1,5 @@
 ﻿@model List<Kullanci>
+@inject Microsoft.AspNetCore.Mvc.Localization.IViewLocalizer localizer
 @{
     ViewData["Title"] = "Index";
     var kullancilar = (from x in Model orderby x.KullaniciId select x).ToList();
@@ -7,11 +8,11 @@
 <div class="container p-3">
     <div class="row pt-4">
         <div class="col-6">
-            <h2 class="text-primary">Hastalar Listesi</h2>
+            <h2 class="text-primary">@ViewData["Patients List"]</h2>
         </div>
         <div class="col-6 text-end">
             <a asp-controller="Kullanci" asp-action="KullanciEkleme" class="btn btn-primary">
-                <i class="bi bi-plus-circle"></i> &nbsp; Hasta Ekle
+                <i class="bi bi-plus-circle"></i> &nbsp;@ViewData["Add Patient"]
             </a>
         </div>
     </div>
@@ -20,7 +21,7 @@
 
 <form method="post" asp-controller="Kullanci" asp-action="HastaAra" class="d-flex mb-2">
     <input class="form-control me-sm-2" type="search" name="Tc" placeholder="Search">
-    <button  class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
+    <button class="btn btn-secondary my-2 my-sm-0" type="submit">@ViewData["Search"]</button>
 </form>
 
 
@@ -28,19 +29,19 @@
     <thead>
         <tr class="bg-body-secondary">
             <th>
-                Tc
+                @ViewData["Id Number"]
             </th>
             <th>
-                Adi
+                @ViewData["Name"]
             </th>
             <th>
-                Soyad
+                @ViewData["Surname"]
             </th>
             <th>
-                Telefon Numarasi
+                @ViewData["Number"]
             </th>
             <th>
-                Cinsel
+                @ViewData["Gender"]
             </th>
             <th>
                 Email
@@ -73,12 +74,12 @@
                 </td>
                 <td>
                     <div class="w-75 btn-group " role="group">
-                        <a asp-controller="Kullanci" asp-action="KullanciGuncel" asp-route-id="@obj.KullaniciId" class="btn btn-warning mx-2"><i class="bi bi-pencil-square"></i> &nbsp; Güncel</a>
+                        <a asp-controller="Kullanci" asp-action="KullanciGuncel" asp-route-id="@obj.KullaniciId" class="btn btn-warning mx-2"><i class="bi bi-pencil-square"></i> &nbsp;@ViewData["Update"]</a>
                     </div>
                 </td>
                 <td>
                     <div class="w-75 btn-group " role="group">
-                        <a asp-controller="Kullanci" asp-action="KullanciSilme" asp-route-id="@obj.KullaniciId" class="btn btn-danger mx-2"><i class="bi bi-trash-fill"></i>&nbsp; Sil</a>
+                        <a asp-controller="Kullanci" asp-action="KullanciSilme" asp-route-id="@obj.KullaniciId" class="btn btn-danger mx-2"><i class="bi bi-trash-fill"></i>&nbsp;@ViewData["Delete"]</a>
                     </div>
                 </td>
             </tr>

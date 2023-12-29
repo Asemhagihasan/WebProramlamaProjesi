@@ -17,6 +17,14 @@
         },
         "runtime": {
           "Proje-B201210567.dll": {}
+        },
+        "resources": {
+          "en/Proje-B201210567.resources.dll": {
+            "locale": "en"
+          },
+          "tr/Proje-B201210567.resources.dll": {
+            "locale": "tr"
+          }
         }
       },
       "Humanizer/2.14.1": {

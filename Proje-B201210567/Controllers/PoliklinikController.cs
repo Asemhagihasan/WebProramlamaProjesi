@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Localization;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Localization;
 using Microsoft.EntityFrameworkCore;
 using Proje_B201210567.Data;
 using Proje_B201210567.Models;
@@ -8,12 +10,17 @@ namespace Proje_B201210567.Controllers
     public class PoliklinikController : Controller
     {
         private readonly AppDbContext _db;
-        public PoliklinikController(AppDbContext db)
+        private readonly IHtmlLocalizer <PoliklinikController> _localizer;
+        public PoliklinikController(AppDbContext db , IHtmlLocalizer <PoliklinikController> localizer )
         {
+            _localizer = localizer;
             _db = db;
         }
+      
         public IActionResult PoliklinikGet()
         {
+            @ViewData["Section"] = _localizer["Section"];
+            @ViewData["Add Poliklinik"] = _localizer["Add Poliklinik"];
             IEnumerable<Poliklinik> PoliklinkListe = _db.Poliklinikler.ToList();
 
 			return View(PoliklinkListe);
@@ -29,6 +36,20 @@ namespace Proje_B201210567.Controllers
             }
             return Json(null);
         }
+        public IActionResult setLanguage(string Culture, string returnUrl)
+        {
+
+            Response.Cookies.Append
+                (
+                CookieRequestCultureProvider.DefaultCookieName,
+                CookieRequestCultureProvider.MakeCookieValue(new RequestCulture(Culture)),
+                new CookieOptions { Expires = DateTimeOffset.UtcNow.AddYears(1) }
+
+                );
+            return LocalRedirect(returnUrl);
+        }
+
+
 
         public IActionResult PoliklinikEkle()
         {
