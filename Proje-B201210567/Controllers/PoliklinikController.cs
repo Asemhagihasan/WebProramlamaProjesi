@@ -1,11 +1,13 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Proje_B201210567.Data;
 using Proje_B201210567.Models;
 
 namespace Proje_B201210567.Controllers
 {
-    public class PoliklinikController : Controller
+	[Authorize(Roles = "admin")]
+	public class PoliklinikController : Controller
     {
         private readonly AppDbContext _db;
         public PoliklinikController(AppDbContext db)

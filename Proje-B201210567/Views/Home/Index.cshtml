@@ -1,1 +1,37 @@
-﻿
+﻿@{
+	Layout = "_User";
+}
+@model poliklinikVeDoktorlar
+
+<div class="slider_area">
+    <div class="slider_active owl-carousel">
+        <div class="single_slider  d-flex align-items-center slider_bg_2">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-12">
+                        <div class="slider_text ">
+                            <h3>
+                                <span>
+                                    Sağlık Hizmetleri
+                                    
+                                </span> <br>
+                                Tüm Aile İçin
+                            </h3>
+                            <p>
+                                Sağlık sektöründe, hizmet mükemmelliği, hastane olarak sağlık hizmeti sağlayıcısının sürekli olarak bu mükemmellik düzeyini sürdürebilme yeteneğidir.
+                            </p>
+                            @if(User.Identity.IsAuthenticated)
+                            {
+                                
+                                <a asp-controller="Randevu" asp-action="RandevuAra" class="boxed-btn3">Randevu Ara</a>
+                            } else
+                            {
+                                <a asp-controller="Authentication" asp-action="Login" class="boxed-btn3">Randevu Ara</a>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

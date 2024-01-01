@@ -1,4 +1,10 @@
-﻿@model CalismaVePoliklinik
+﻿@{
+    if (User.IsInRole("user"))
+    {
+        Layout = "_User";
+    }
+}
+@model CalismaVePoliklinik
 
 
 <div class="row">
@@ -29,9 +35,27 @@
                                                         <i class="expandable-table-caret fas fa-caret-right fa-fw"></i>
                                                         @for (int count = 0, j = 2 * i; count < 2; count++, j++)
                                                         {
-                                                            <button class="btn btn-info onay-button" data-toggle="modal" data-target="#confirmModal">@Model.CalismaSaati.RandevuSaatlari[j]</button>
-
+                                                            @if (@Model.CalismaSaati.IsAvailable[j] == true)
+                                                            {
+                                                                <button class="btn btn-info onay-button"
+                                                                        data-toggle="modal"
+                                                                        data-target="#confirmModal"
+                                                                        onclick="Saatiptal(@j, @Model.calsismaId)">
+                                                                    @Model.CalismaSaati.RandevuSaatlari[j]
+                                                                </button>
+                                                            }
+                                                            else
+                                                            {
+                                                                <button class="btn btn-info onay-button"
+                                                                        data-toggle="modal"
+                                                                        data-target="#confirmModal"
+                                                                        disabled>
+                                                                    @Model.CalismaSaati.RandevuSaatlari[j]
+                                                                </button>
+                                                            }
                                                         }
+
+
                                                     </td>
                                                 </tr>
                                             </tbody>
@@ -51,7 +75,7 @@
 
 <!-- Confirmation Modal -->
 <form method="post" action="/Randevu/RandevuOnay">
-    <div class="modal fade"
+    <div class="modal"
          id="confirmModal"
          tabindex="-1"
          role="dialog"
@@ -109,9 +133,28 @@
 </form>
 
 @section scripts{
+
+    <script>
+        function Saatiptal(index,id,saat) {
+            console.log("Saatiptal function called with index:", index, "and id:", id);
+            $.ajax({
+                type: "GET",
+                url: "/Randevu/SaatGetir",
+                data: { Index: index,
+                        Id:id},
+                success: function () {
+                    console.log("tamam");
+                },
+                error: function (error) {
+                    alert("Error");
+                }
+            });
+        }
+    </script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.10.2/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
 }
 
 

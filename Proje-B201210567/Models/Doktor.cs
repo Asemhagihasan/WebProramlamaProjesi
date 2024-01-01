@@ -18,7 +18,10 @@ namespace Proje_B201210567.Models
 		[Required]
         public string Doktor_Soyad { get; set; }
 
-		[Required]
+        [Required]
+        public string Cinsyet { get; set; }
+
+        [Required]
 		public string TelefonNumarasi {  get; set; }
 
 		[Required]

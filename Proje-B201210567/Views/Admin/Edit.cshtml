@@ -1,4 +1,4 @@
-﻿@model Admin
+﻿@model Kullanci
 <form method="post" asp-controller="Admin" asp-action="Edit">
 	<div class="border p-3 mt-4">
 		<div class="row pb-2">
@@ -12,14 +12,21 @@
 			<span asp-validation-for="Tc" class="text-danger"></span>
 		</div>
 		<div class="mb-3">
-			<label asp-for="Adi"></label>
-			<input asp-for="Adi" type="text" class="form-control" />
-			<span asp-validation-for="Adi" class="text-danger"></span>
+			<label asp-for="Kullanci_Adi"></label>
+			<input asp-for="Kullanci_Adi" type="text" class="form-control" />
+			<span asp-validation-for="Kullanci_Adi" class="text-danger"></span>
 		</div>
 		<div class="mb-3">
-			<label asp-for="Soyad"></label>
-			<input asp-for="Soyad" type="text" class="form-control" />
-			<span asp-validation-for="Soyad" class="text-danger"></span>
+			<label asp-for="Kullanci_Soyad"></label>
+			<input asp-for="Kullanci_Soyad" type="text" class="form-control" />
+			<span asp-validation-for="Kullanci_Soyad" class="text-danger"></span>
+		</div>
+		<div class="mb-3">
+			<label asp-for="Cinsel" class="form-label"></label>
+			<select asp-for="Cinsel" class="form-select">
+				<option>Erkek</option>
+				<option>Kız</option>
+			</select>
 		</div>
 		<div class="mb-3">
 			<label asp-for="TelefonNumarasi"></label>
@@ -27,16 +34,16 @@
 			<span asp-validation-for="TelefonNumarasi" class="text-danger"></span>
 		</div>
 
-		<div class="mb-3">
+@* 		<div class="mb-3">
 			<label asp-for="Email"></label>
 			<input asp-for="Email" type="email" class="form-control" placeholder="email@example.com" />
 			<span asp-validation-for="Email" class="text-danger"></span>
 		</div>
 		<div class="mb-3">
-			<label asp-for="Sifre"></label>
-			<input asp-for="Sifre" type="password" class="form-control"/>
-			<span asp-validation-for="Sifre" class="text-danger"></span>
-		</div>
+			<label asp-for="PasswordHash"></label>
+			<input asp-for="PasswordHash" type="password" class="form-control" />
+			<span asp-validation-for="PasswordHash" class="text-danger"></span>
+		</div> *@
 		
 		<button type="submit" class="btn btn-warning" style="width:150px">Oluştur</button>
 		<a asp-controller="Admin" asp-action="Index" class="btn btn-secondary" style="width:150px">Back To List</a>

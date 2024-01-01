@@ -1,4 +1,6 @@
-﻿namespace Proje_B201210567.Models
+﻿using System.ComponentModel.DataAnnotations.Schema;
+
+namespace Proje_B201210567.Models
 {
     public class RandevuYazdir
     {
@@ -9,7 +11,8 @@
 
         public string BolumAdi { get; set; }
 
-        public int KullanciId { get; set; }
+        [ForeignKey(nameof(Kullanci))]
+        public string Id { get; set; }
         public int BolumId { get; set; }
         public int DokrorId { get; set; }
     }

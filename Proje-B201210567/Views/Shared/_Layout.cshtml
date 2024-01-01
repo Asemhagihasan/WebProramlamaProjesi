@@ -13,13 +13,19 @@
     <header>
         <nav class="navbar navbar-expand-lg bg-primary" data-bs-theme="dark">
             <div class="container-fluid">
-                <a class="navbar-brand" asp-controller="Home" asp-action="Index">MHRS SAÜ</a>
+                <a class="navbar-brand" asp-controller="Home" asp-action="AdminIndex">MHRS SAÜ</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarColor01">
 
                     <ul class="navbar-nav me-auto">
+                        <li class="nav-item">
+                            <a class="nav-link active" asp-controller="Home" asp-action="Index">
+                                Ana Sayfası
+                                <span class="visually-hidden">(current)</span>
+                            </a>
+                        </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Admin</a>
                             <div class="dropdown-menu">
@@ -43,6 +49,7 @@
                        @*  <li class="nav-item">
                             <a class="nav-link" asp-controller="Doktor" asp-action="DoktorListesi">Doktorlar</a>
                         </li> *@
+                        
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Randevu</a>
                             <div class="dropdown-menu">
@@ -51,7 +58,6 @@
                             </div>
                         </li>
                     </ul>                        
-                    <a class="btn btn-success my-2 my-sm-0">Login</a>
                 </div>
             </div>
         </nav>

@@ -1,16 +1,35 @@
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Localization;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Options;
 using Proje_B201210567.Data;
+using Proje_B201210567.Models;
+using Proje_B201210567.Repository;
+using System.Globalization;
+using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
+
+
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
+
 builder.Services.AddDbContext<AppDbContext>(options =>
 {
 	options.UseNpgsql((builder.Configuration.GetConnectionString("DefaultConnection")));
+
+
 });
 
+
+builder.Services.AddIdentity<Kullanci, IdentityRole>()
+		.AddEntityFrameworkStores<AppDbContext>()
+		.AddDefaultTokenProviders();
+
+
+builder.Services.AddScoped<IUserAuthenticationService, UserAuthenticationService>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -26,11 +45,12 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllerRoute(
 	name: "default",
 	pattern: "{controller=Home}/{action=Index}/{id?}");
 
-AppDbInitializer.Seed(app);
+//AppDbInitializer.Seed(app);
 app.Run();

@@ -1,0 +1,62 @@
+﻿@{
+    Layout = "_User";
+}
+@model IEnumerable<RandevuYazdir>
+<style>
+
+</style>
+<section class="content">
+    <div class="card card-solid">
+        <div class="card-body pb-0">
+            <div class="row">
+                @foreach (var item in @Model)
+                {
+                    <div class="col-12 col-sm-6 col-md-4 d-flex align-items-stretch flex-column" >
+                        <div class="card bg-light d-flex flex-fill" style="padding-top:1rem">
+                            <div class="card-body pt-0">
+                                <div class="row">
+                                    <div class="col-7 d-flex align-items-center">
+                                        <i class="bi bi-tags" style="margin-right:5px"></i>
+                                        <div style="font-size:12px;font-weight:500; color:green">active randevu</div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-7 d-flex align-items-center">
+                                        <i class="bi bi-tags" style="margin-right:5px"></i>
+                                        <div style="font-size:12px;font-weight:500;">Muayene</div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-7 d-flex align-items-center">
+                                        <i class="bi bi-h-circle-fill" style="margin-right:5px"></i>
+                                        <div style="font-size:12px;font-weight:500;">Saü Hastanesi</div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-7 d-flex align-items-center">
+                                        <i class="bi bi-hospital" style="margin-right:5px"></i>
+                                        <div style="font-size:12px;font-weight:500;">@item.BolumAdi</div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-7 d-flex align-items-center">
+                                        <i class="fa-solid fa-stethoscope" style="margin-right:5px"></i>
+                                        <div style="font-size:12px;font-weight:500;">@item.DoktorAdi</div>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="card-footer">
+                                <div class="text-right">
+                                    <a asp-controller="Randevu" asp-action="RandevuIptal" asp-route-bolum="@item.BolumAdi" class="btn btn-sm btn-danger">
+                                        <i class="bi bi-trash-fill"></i> Sil
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</section>

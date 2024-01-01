@@ -1,14 +1,15 @@
-﻿@model Admin
-<form method="post" >
+﻿@model Proje_B201210567.Models.Authentication.RegistrationModel
+
+<form method="post" asp-action="Create" asp-controller="Admin">
 	<div class="border p-3 mt-4">
 		<div class="row pb-2">
-			<h2 class="text-primary">Admin Oluşturma</h2>
+			<h2 class="text-primary">Kullanci Oluşturma</h2>
 			<hr />
 		</div>
 		<div class="mb-3">
-			<label asp-for="Tc"></label>
-			<input asp-for="Tc" type="text" class="form-control" />
-			<span asp-validation-for="Tc" class="text-danger"></span>
+			<label asp-for="TC"></label>
+			<input asp-for="TC" type="text" class="form-control" />
+			<span asp-validation-for="TC" class="text-danger"></span>
 		</div>
 		<div class="mb-3">
 			<label asp-for="Adi"></label>
@@ -16,14 +17,21 @@
 			<span asp-validation-for="Adi" class="text-danger"></span>
 		</div>
 		<div class="mb-3">
-			<label asp-for="Soyad"></label>
-			<input asp-for="Soyad" type="text" class="form-control" />
-			<span asp-validation-for="Soyad" class="text-danger"></span>
+			<label asp-for="Soyadi"></label>
+			<input asp-for="Soyadi" type="text" class="form-control" />
+			<span asp-validation-for="Soyadi" class="text-danger"></span>
 		</div>
 		<div class="mb-3">
 			<label asp-for="TelefonNumarasi"></label>
 			<input asp-for="TelefonNumarasi" type="text" class="form-control" />
 			<span asp-validation-for="TelefonNumarasi" class="text-danger"></span>
+		</div>
+		<div class="mb-3">
+			<label asp-for="Cinsiyet" class="form-label"></label>
+			<select asp-for="Cinsiyet" class="form-select">
+				<option>Erkek</option>
+				<option>Kız</option>
+			</select>
 		</div>
 		<div class="mb-3">
 			<label asp-for="Email"></label>
@@ -35,7 +43,12 @@
 			<input asp-for="Sifre" type="password" class="form-control" />
 			<span asp-validation-for="Sifre" class="text-danger"></span>
 		</div>
-		<button asp-controller="Admin" asp-action="Create" type="submit" class="btn btn-primary" style="width:150px">Oluştur</button>
+		<div class="mb-3">
+			<label asp-for="SifreTekrar"></label>
+			<input asp-for="SifreTekrar" type="password" class="form-control" />
+			<span asp-validation-for="SifreTekrar" class="text-danger"></span>
+		</div>
+		<button type="submit" class="btn btn-primary" style="width:150px"> Oluştur</button>
 	</div>
 </form>
 @section Scripts{

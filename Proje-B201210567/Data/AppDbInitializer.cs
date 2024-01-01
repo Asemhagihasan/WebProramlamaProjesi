@@ -19,47 +19,47 @@ namespace Proje_B201210567.Data
                     {
                         new Kullanci()
                         {
-                            KullaniciId = 1234,
-                            Tc = "99242813288",
-                            Kullanci_Adi = "Asem",
+                            Id = "1",
+                            Tc = "99241321121",
+                            Kullanci_Adi = "halo",
                             Kullanci_Soyad = "Hagi hasan",
-                            TelefonNumarasi = "05526492911",
+                            TelefonNumarasi = "05526492765",
                             Cinsel = "Erkek",
-                            Email = "asemhagihasan12345@gmail.com",
-                            Sifre = "9924"
+                            Email = "halo@gmail.com",
+                            PasswordHash = "9924281328Asem*"
                         },
                           new Kullanci()
                         {
-                            KullaniciId = 1345,
+                            Id = "2",
                             Tc = "99242813277",
                             Kullanci_Adi = "omar",
                             Kullanci_Soyad = "shamiye",
                             TelefonNumarasi = "05526492981",
                             Cinsel = "kadin",
                             Email = "omarshamiye@gmail.com",
-                            Sifre = "9924"
+                            PasswordHash = "9924151231AsS*"
                         },
                           new Kullanci()
                           {
-                            KullaniciId = 1246,
-                            Tc = "99242813266",
+							 Id = "3",
+							Tc = "99242813266",
                             Kullanci_Adi = "qusai",
                             Kullanci_Soyad = "kalmon",
                             TelefonNumarasi = "05525592911",
                             Cinsel = "Erkek",
                             Email = "qusai@gmail.com",
-                            Sifre = "9924"
+                            PasswordHash = "99241541231Qad*"
                           },
                            new Kullanci()
                           {
-                            KullaniciId = 2314,
+                            Id = "4",
                             Tc = "99242813255",
                             Kullanci_Adi = "suhaib",
                             Kullanci_Soyad = "hagosman",
                             TelefonNumarasi = "05526464911",
                             Cinsel = "Erkek",
                             Email = "suhaib@gmail.com",
-                            Sifre = "9924"
+                            PasswordHash = "992428165SAMI*"
                           }
                     });
                     context.SaveChanges();
@@ -127,51 +127,25 @@ namespace Proje_B201210567.Data
                             {
                                 new Doktor()
                                 {
-                                    DoktorId = 0001,
+                                    DoktorId = 1,
                                     Tc = "99242813211",
                                     Doktor_Adi = "ahmet",
                                     Doktor_Soyad = "nor",
+                                    Cinsyet ="Erkek",
                                     TelefonNumarasi = "05528728212",
                                     Email = "ahmet@gmail.com",
-                                    CalismaSaatleri = new List<CalismaSaati>()
-                                    {
-                                        new CalismaSaati()
-                                        {
-                                            Gun = new DateTime(2023,12,5).DayOfWeek,
-                                            BaslangicSaati = new TimeSpan(9,0,0),
-                                            BitisSaati = new TimeSpan(17,0,0),
-                                        },
-                                        new CalismaSaati()
-                                        {
-                                            Gun = new DateTime(2023,12,7).DayOfWeek,
-                                            BaslangicSaati = new TimeSpan(9,0,0),
-                                            BitisSaati = new TimeSpan(17,0,0),
-                                        }
-                                    }
+                                    CalismaSaatleri = new List<CalismaSaati>(){}
                                 },
                                 new Doktor()
                                 {
-                                    DoktorId = 0002,
+                                    DoktorId = 2,
                                     Tc = "99242813211",
                                     Doktor_Adi = "Hasan",
                                     Doktor_Soyad = "hamil",
+                                     Cinsyet ="Erkek",
                                     TelefonNumarasi = "5526492965",
                                     Email = "Hasan@gmail.com",
-                                    CalismaSaatleri = new List<CalismaSaati>()
-                                    {
-                                        new CalismaSaati()
-                                        {
-                                            Gun = new DateTime(2023,12,3).DayOfWeek,
-                                            BaslangicSaati = new TimeSpan(11,0,0),
-                                            BitisSaati = new TimeSpan(15,0,0),
-                                        },
-                                        new CalismaSaati()
-                                        {
-                                            Gun = new DateTime(2023,12,1).DayOfWeek,
-                                            BaslangicSaati = new TimeSpan(9,0,0),
-                                            BitisSaati = new TimeSpan(14,0,0),
-                                        }
-                                    }
+                                    CalismaSaatleri = new List<CalismaSaati>(){}
                                 }
                             }
                         },
@@ -184,51 +158,25 @@ namespace Proje_B201210567.Data
                             {
                                 new Doktor()
                                 {
-                                    DoktorId = 0003,
+                                    DoktorId = 3,
                                     Tc = "99242713344",
                                     Doktor_Adi = "nor",
                                     Doktor_Soyad = "hala",
+                                     Cinsyet ="Kız",
                                     TelefonNumarasi = "5526492988",
                                     Email = "nor@gmail.com",
-                                    CalismaSaatleri = new List<CalismaSaati>()
-                                    {
-                                        new CalismaSaati()
-                                        {
-                                            Gun = new DateTime(2023,12,11).DayOfWeek,
-                                            BaslangicSaati = new TimeSpan(9,0,0),
-                                            BitisSaati = new TimeSpan(17,0,0),
-                                        },
-                                        new CalismaSaati()
-                                        {
-                                            Gun = new DateTime(2023,12,8).DayOfWeek,
-                                            BaslangicSaati = new TimeSpan(9,0,0),
-                                            BitisSaati = new TimeSpan(16,0,0),
-                                        }
-                                    }
+                                   CalismaSaatleri = new List<CalismaSaati>(){}
                                 },
                                 new Doktor()
                                 {
-                                    DoktorId = 0004,
+                                    DoktorId = 4,
                                     Tc = "992427133045",
                                     Doktor_Adi = "hany",
                                     Doktor_Soyad = "san",
+                                     Cinsyet ="Erkek",
                                     TelefonNumarasi = "05526482533",
                                     Email = "hany@gmail.com",
-                                    CalismaSaatleri = new List<CalismaSaati>()
-                                    {
-                                        new CalismaSaati()
-                                        {
-                                            Gun = new DateTime(2023,12,20).DayOfWeek,
-                                            BaslangicSaati = new TimeSpan(14,0,0),
-                                            BitisSaati = new TimeSpan(17,0,0),
-                                        },
-                                        new CalismaSaati()
-                                        {
-                                            Gun = new DateTime(2023,12,17).DayOfWeek,
-                                            BaslangicSaati = new TimeSpan(10,0,0),
-                                            BitisSaati = new TimeSpan(15,0,0),
-                                        }
-                                    }
+                                    CalismaSaatleri = new List<CalismaSaati>(){}
                                 }
                             }
                         }

@@ -24,7 +24,7 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-xl-6 col-md-6 ">
-                            <div class="social_media_links">
+@*                             <div class="social_media_links">
                                 <a href="#">
                                     <i class="fa fa-linkedin"></i>
                                 </a>
@@ -34,13 +34,21 @@
                                 <a href="#">
                                     <i class="fa fa-google-plus"></i>
                                 </a>
-                            </div>
+                            </div> *@
                         </div>
                         <div class="col-xl-6 col-md-6">
                             <div class="short_contact_list">
                                 <ul>
-                                    <li><a href="#"> <i class="fa fa-envelope"></i> info@docmed.com</a></li>
-                                    <li><a href="#"> <i class="fa fa-phone"></i> 160160</a></li>
+                                    <li><a href="#"> <i class="fa fa-envelope"></i>info@gmail.com</a></li>
+                                    <li><a href="#"> <i class="bi bi-telephone-fill"></i> 160160</a></li>
+                                    @if(User.Identity.IsAuthenticated)
+                                    {
+                                        <li><a asp-action="Logout" asp-controller="Authentication" class="btn btn-primary" style="color:#fff">Logout</a></li>
+                                    } else
+                                    {
+                                        <li><a asp-action="Login" asp-controller="Authentication" class="btn btn-primary" style="color:#fff">Login</a></li>
+                                    }
+                                   
                                 </ul>
                             </div>
                         </div>
@@ -52,8 +60,8 @@
                     <div class="row align-items-center">
                         <div class="col-xl-3 col-lg-2">
                             <div class="logo">
-                                <a href="index.html">
-                                    <img src="img/logo.png" alt="">
+                                <a asp-controller="Home" asp-action="Index">
+                                    <img src="~/imgs/logo.png" alt="">
                                 </a>
                             </div>
                         </div>
@@ -61,35 +69,45 @@
                             <div class="main-menu  d-none d-lg-block">
                                 <nav>
                                     <ul id="navigation">
-                                        <li><a class="active" href="index.html">home</a></li>
-                                        <li><a href="Department.html">Department</a></li>
                                         <li>
-                                            <a href="#">blog <i class="ti-angle-down"></i></a>
+                                            <a href="#"> <i class="bi bi-chevron-down" style="margin-right:5px;font-size:12px"></i>Randevu</a>
                                             <ul class="submenu">
-                                                <li><a href="blog.html">blog</a></li>
-                                                <li><a href="single-blog.html">single-blog</a></li>
+                                                @if (User.Identity.IsAuthenticated)
+                                                {
+                                                    <li><a asp-controller="Randevu" asp-action="RandevuAra">Randevu Al</a></li>
+                                                }
+                                                else{
+                                                    <li><a asp-controller="Authentication" asp-action="Login">Randevu Al</a></li>
+                                                }
+                                                @if (User.Identity.IsAuthenticated)
+                                                {
+                                                    <li><a asp-controller="Randevu" asp-action="Randevularim">Randevularım</a></li>
+                                                }
+                                                else
+                                                {
+                                                    <li><a asp-controller="Authentication" asp-action="Login">Randevularım</a></li>
+                                                }
+
                                             </ul>
                                         </li>
-                                        <li>
-                                            <a href="#">pages <i class="ti-angle-down"></i></a>
-                                            <ul class="submenu">
-                                                <li><a href="elements.html">elements</a></li>
-                                                <li><a href="about.html">about</a></li>
-                                            </ul>
-                                        </li>
-                                        <li><a href="Doctors.html">Doctors</a></li>
-                                        <li><a href="contact.html">Contact</a></li>
+                                        <li><a href="#" >Doktorlar</li> 
+                                        <li><a href="#">Iletşim</a></li>
+                                        @if (User.IsInRole("admin"))
+                                        {
+                                            <li><a asp-controller="Home" asp-action="AdminIndex">Admin Sayfası</a></li>
+                                        }
+
                                     </ul>
                                 </nav>
                             </div>
                         </div>
-                        <div class="col-xl-3 col-lg-3 d-none d-lg-block">
+@*      @*                    <div class="col-xl-3 col-lg-3 d-none d-lg-block">
                             <div class="Appointment">
                                 <div class="book_btn d-none d-lg-block">
-                                    <a class="popup-with-form" href="#test-form">Make an Appointment</a>
+                                    <a class="popup-with-form" href="#test-form">Randevu Ara</a>
                                 </div>
                             </div>
-                        </div>
+                        </div> *@ 
                         <div class="col-12">
                             <div class="mobile_menu d-block d-lg-none"></div>
                         </div>
@@ -97,11 +115,24 @@
                 </div>
             </div>
         </div>
+
     </header>
+
     <div class="container">
         <main role="main" class="pb-3">
             @RenderBody()
         </main>
     </div>
+
+
+
+    @* dkslfldsmn*@
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="~/js/adminlLte.js" asp-append-version="true"></script>
+    <script src="https://kit.fontawesome.com/9684127fb1.js" crossorigin="anonymous"></script>
+    @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>
+}

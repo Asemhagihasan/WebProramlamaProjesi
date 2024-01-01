@@ -9,121 +9,149 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = Proje_B201210567
 build_property.RootNamespace = Proje_B201210567
-build_property.ProjectDir = C:\Users\AsemHagi\source\repos\WebProramlamaProjesi\Proje-B201210567\
+build_property.ProjectDir = C:\Users\AsemHagi\Desktop\WebProramlamaProjesi\Proje-B201210567\
 build_property.RazorLangVersion = 6.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = C:\Users\AsemHagi\source\repos\WebProramlamaProjesi\Proje-B201210567
+build_property.MSBuildProjectDirectory = C:\Users\AsemHagi\Desktop\WebProramlamaProjesi\Proje-B201210567
 build_property._RazorSourceGeneratorDebug = 
 
-[C:/Users/AsemHagi/source/repos/WebProramlamaProjesi/Proje-B201210567/Views/CalismaSaati/CalismaGuncel.cshtml]
+[C:/Users/AsemHagi/Desktop/WebProramlamaProjesi/Proje-B201210567/Views/Admin/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/AsemHagi/Desktop/WebProramlamaProjesi/Proje-B201210567/Views/Admin/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cRGVsZXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/AsemHagi/Desktop/WebProramlamaProjesi/Proje-B201210567/Views/Admin/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/AsemHagi/Desktop/WebProramlamaProjesi/Proje-B201210567/Views/Admin/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/AsemHagi/Desktop/WebProramlamaProjesi/Proje-B201210567/Views/Authentication/Login.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXV0aGVudGljYXRpb25cTG9naW4uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/AsemHagi/Desktop/WebProramlamaProjesi/Proje-B201210567/Views/Authentication/Registration.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXV0aGVudGljYXRpb25cUmVnaXN0cmF0aW9uLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/AsemHagi/Desktop/WebProramlamaProjesi/Proje-B201210567/Views/CalismaSaati/CalismaGuncel.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2FsaXNtYVNhYXRpXENhbGlzbWFHdW5jZWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/AsemHagi/source/repos/WebProramlamaProjesi/Proje-B201210567/Views/CalismaSaati/CalismaSil.cshtml]
+[C:/Users/AsemHagi/Desktop/WebProramlamaProjesi/Proje-B201210567/Views/CalismaSaati/CalismaSil.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2FsaXNtYVNhYXRpXENhbGlzbWFTaWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/AsemHagi/source/repos/WebProramlamaProjesi/Proje-B201210567/Views/Doktor/DoktorEkle.cshtml]
+[C:/Users/AsemHagi/Desktop/WebProramlamaProjesi/Proje-B201210567/Views/Doktor/DoktorEkle.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRG9rdG9yXERva3RvckVrbGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/AsemHagi/source/repos/WebProramlamaProjesi/Proje-B201210567/Views/Doktor/DoktorGuncel.cshtml]
+[C:/Users/AsemHagi/Desktop/WebProramlamaProjesi/Proje-B201210567/Views/Doktor/DoktorGuncel.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRG9rdG9yXERva3Rvckd1bmNlbC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/AsemHagi/source/repos/WebProramlamaProjesi/Proje-B201210567/Views/Doktor/DoktorListesi.cshtml]
+[C:/Users/AsemHagi/Desktop/WebProramlamaProjesi/Proje-B201210567/Views/Doktor/DoktorListesi.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRG9rdG9yXERva3Rvckxpc3Rlc2kuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/AsemHagi/source/repos/WebProramlamaProjesi/Proje-B201210567/Views/Doktor/DoktorSilme.cshtml]
+[C:/Users/AsemHagi/Desktop/WebProramlamaProjesi/Proje-B201210567/Views/Doktor/DoktorSilme.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRG9rdG9yXERva3RvclNpbG1lLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/AsemHagi/source/repos/WebProramlamaProjesi/Proje-B201210567/Views/Hastane/Login.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSGFzdGFuZVxMb2dpbi5jc2h0bWw=
+[C:/Users/AsemHagi/Desktop/WebProramlamaProjesi/Proje-B201210567/Views/Home/AdminIndex.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxBZG1pbkluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/AsemHagi/source/repos/WebProramlamaProjesi/Proje-B201210567/Views/Home/Index.cshtml]
+[C:/Users/AsemHagi/Desktop/WebProramlamaProjesi/Proje-B201210567/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/AsemHagi/source/repos/WebProramlamaProjesi/Proje-B201210567/Views/Home/Privacy.cshtml]
+[C:/Users/AsemHagi/Desktop/WebProramlamaProjesi/Proje-B201210567/Views/Home/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/AsemHagi/source/repos/WebProramlamaProjesi/Proje-B201210567/Views/Kullanci/KullanciEkleme.cshtml]
+[C:/Users/AsemHagi/Desktop/WebProramlamaProjesi/Proje-B201210567/Views/Kullanci/KullanciEkleme.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcS3VsbGFuY2lcS3VsbGFuY2lFa2xlbWUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/AsemHagi/source/repos/WebProramlamaProjesi/Proje-B201210567/Views/Kullanci/KullanciGuncel.cshtml]
+[C:/Users/AsemHagi/Desktop/WebProramlamaProjesi/Proje-B201210567/Views/Kullanci/KullanciGuncel.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcS3VsbGFuY2lcS3VsbGFuY2lHdW5jZWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/AsemHagi/source/repos/WebProramlamaProjesi/Proje-B201210567/Views/Kullanci/Kullancilar.cshtml]
+[C:/Users/AsemHagi/Desktop/WebProramlamaProjesi/Proje-B201210567/Views/Kullanci/Kullancilar.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcS3VsbGFuY2lcS3VsbGFuY2lsYXIuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/AsemHagi/source/repos/WebProramlamaProjesi/Proje-B201210567/Views/Kullanci/KullanciSilme.cshtml]
+[C:/Users/AsemHagi/Desktop/WebProramlamaProjesi/Proje-B201210567/Views/Kullanci/KullanciSilme.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcS3VsbGFuY2lcS3VsbGFuY2lTaWxtZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/AsemHagi/source/repos/WebProramlamaProjesi/Proje-B201210567/Views/Poliklinik/PoliklinikEkle.cshtml]
+[C:/Users/AsemHagi/Desktop/WebProramlamaProjesi/Proje-B201210567/Views/Poliklinik/PoliklinikEkle.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUG9saWtsaW5pa1xQb2xpa2xpbmlrRWtsZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/AsemHagi/source/repos/WebProramlamaProjesi/Proje-B201210567/Views/Poliklinik/PoliklinikGet.cshtml]
+[C:/Users/AsemHagi/Desktop/WebProramlamaProjesi/Proje-B201210567/Views/Poliklinik/PoliklinikGet.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUG9saWtsaW5pa1xQb2xpa2xpbmlrR2V0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/AsemHagi/source/repos/WebProramlamaProjesi/Proje-B201210567/Views/Poliklinik/poliklinikSil.cshtml]
+[C:/Users/AsemHagi/Desktop/WebProramlamaProjesi/Proje-B201210567/Views/Poliklinik/poliklinikSil.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUG9saWtsaW5pa1xwb2xpa2xpbmlrU2lsLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/AsemHagi/source/repos/WebProramlamaProjesi/Proje-B201210567/Views/Poliklinik/PoliklinikSilPost.cshtml]
+[C:/Users/AsemHagi/Desktop/WebProramlamaProjesi/Proje-B201210567/Views/Poliklinik/PoliklinikSilPost.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUG9saWtsaW5pa1xQb2xpa2xpbmlrU2lsUG9zdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/AsemHagi/source/repos/WebProramlamaProjesi/Proje-B201210567/Views/Randevu/CalismaSaatiGoster.cshtml]
+[C:/Users/AsemHagi/Desktop/WebProramlamaProjesi/Proje-B201210567/Views/Randevu/CalismaSaatiGoster.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmFuZGV2dVxDYWxpc21hU2FhdGlHb3N0ZXIuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/AsemHagi/source/repos/WebProramlamaProjesi/Proje-B201210567/Views/Randevu/DoktorFiltere.cshtml]
+[C:/Users/AsemHagi/Desktop/WebProramlamaProjesi/Proje-B201210567/Views/Randevu/DoktorFiltere.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmFuZGV2dVxEb2t0b3JGaWx0ZXJlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/AsemHagi/source/repos/WebProramlamaProjesi/Proje-B201210567/Views/Randevu/Hata.cshtml]
+[C:/Users/AsemHagi/Desktop/WebProramlamaProjesi/Proje-B201210567/Views/Randevu/Hata.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmFuZGV2dVxIYXRhLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/AsemHagi/source/repos/WebProramlamaProjesi/Proje-B201210567/Views/Randevu/RandevuAra.cshtml]
+[C:/Users/AsemHagi/Desktop/WebProramlamaProjesi/Proje-B201210567/Views/Randevu/RandevuAra.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmFuZGV2dVxSYW5kZXZ1QXJhLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/AsemHagi/source/repos/WebProramlamaProjesi/Proje-B201210567/Views/Randevu/RandevuListesi.cshtml]
+[C:/Users/AsemHagi/Desktop/WebProramlamaProjesi/Proje-B201210567/Views/Randevu/Randevularim.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmFuZGV2dVxSYW5kZXZ1bGFyaW0uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/AsemHagi/Desktop/WebProramlamaProjesi/Proje-B201210567/Views/Randevu/RandevuListesi.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmFuZGV2dVxSYW5kZXZ1TGlzdGVzaS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/AsemHagi/source/repos/WebProramlamaProjesi/Proje-B201210567/Views/Shared/Error.cshtml]
+[C:/Users/AsemHagi/Desktop/WebProramlamaProjesi/Proje-B201210567/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/AsemHagi/source/repos/WebProramlamaProjesi/Proje-B201210567/Views/Shared/_User.cshtml]
+[C:/Users/AsemHagi/Desktop/WebProramlamaProjesi/Proje-B201210567/Views/Shared/_User.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9Vc2VyLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/AsemHagi/source/repos/WebProramlamaProjesi/Proje-B201210567/Views/Shared/_ValidationScriptsPartial.cshtml]
+[C:/Users/AsemHagi/Desktop/WebProramlamaProjesi/Proje-B201210567/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/AsemHagi/source/repos/WebProramlamaProjesi/Proje-B201210567/Views/_ViewImports.cshtml]
+[C:/Users/AsemHagi/Desktop/WebProramlamaProjesi/Proje-B201210567/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/AsemHagi/source/repos/WebProramlamaProjesi/Proje-B201210567/Views/_ViewStart.cshtml]
+[C:/Users/AsemHagi/Desktop/WebProramlamaProjesi/Proje-B201210567/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/AsemHagi/source/repos/WebProramlamaProjesi/Proje-B201210567/Views/Shared/_Layout.cshtml]
+[C:/Users/AsemHagi/Desktop/WebProramlamaProjesi/Proje-B201210567/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-7hkgso9cj1

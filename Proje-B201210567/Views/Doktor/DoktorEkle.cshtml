@@ -21,6 +21,13 @@
 			<span asp-validation-for="Doktor.Doktor_Soyad" class="text-danger"></span>
 		</div>
 		<div class="mb-3">
+			<label class="form-label">Cinsyet</label>
+			<select asp-for="Doktor.Cinsyet" class="form-select">
+				<option>Erkek</option>
+				<option>Kız</option>
+			</select>
+		</div>
+		<div class="mb-3">
 			<label asp-for="Doktor.TelefonNumarasi"></label>
 			<input asp-for="Doktor.TelefonNumarasi" type="text" class="form-control" />
 			<span asp-validation-for="Doktor.TelefonNumarasi" class="text-danger"></span>

@@ -13,6 +13,6 @@ namespace Proje_B201210567.Models
         public string ?Tarih {  get; set; }
         public List<TimeSpan> ?DayOfWeeks { get; set; }
         public List<TimeSpan>? RandevuSaatlari { get; set; }
-        public bool[] ?IsAvailable { get; set; }
+        public List<bool> ?IsAvailable { get; set; }
     }
 }

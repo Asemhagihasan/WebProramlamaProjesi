@@ -1,9 +1,12 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Proje_B201210567.Data;
 using Proje_B201210567.Models;
+using System.Security.Claims;
 
 namespace Proje_B201210567.Controllers
 {
+	[Authorize(Roles = "admin")]
 	public class DoktorController : Controller
 	{
 		int BolumId;
@@ -14,7 +17,7 @@ namespace Proje_B201210567.Controllers
 		}
 		public IActionResult DoktorListesi(int id)
 		{
-			if(id == 0 || id == null) { return NotFound(); }
+			if (id == 0 || id == null) { return NotFound(); }
 
 			var Doktorlar = (from d in _db.Doktorlar where d.poliklinikBolum_Id == id select d).ToList();
 
@@ -65,11 +68,6 @@ namespace Proje_B201210567.Controllers
 			model.polikliniks = new List<Poliklinik>() { };
 			model.polikliniks.Add(poliklinik);
 
-			if (poliklinik.AcilisSaati > model.Doktor.CalismaSaatleri[0].BaslangicSaati || poliklinik.KapanisSaati < model.Doktor.CalismaSaatleri[0].BitisSaati)
-			{
-				ModelState.AddModelError("Doktor.CalismaSaatleri[0]", "Girdigniz saatler poliklinik calisma saatlerinden degildir");
-				return View(model);
-			}
 			if (_db.Doktorlar.Any(k => k.Tc == model.Doktor.Tc))
 			{
 				ModelState.AddModelError("Doktor.Tc", "Bu Tc Zaten Mevcut");
@@ -121,8 +119,9 @@ namespace Proje_B201210567.Controllers
 		{
 			List<TimeSpan> randevuSaatlari = new List<TimeSpan>();
             List<TimeSpan> RandevuSaatlari1 = new List<TimeSpan>();
-            bool[] bools = new bool[doktor.CalismaSaatleri[0].BitisSaati.Hours - doktor.CalismaSaatleri[0].BaslangicSaati.Hours];
-			int count = 0;
+            List<bool> bools = new List<bool>();
+			var poliklinik = _db.Poliklinikler.Find(doktor.poliklinikBolum_Id);
+
 
             for (int i =0; i < doktor.CalismaSaatleri[0].BitisSaati.Hours - doktor.CalismaSaatleri[0].BaslangicSaati.Hours; i++)
 			{
@@ -136,9 +135,8 @@ namespace Proje_B201210567.Controllers
 				for(int j = 1; j < 3; j++)
 				{
 					TimeSpan RandevuSaat = new TimeSpan(currentHour, j*20, 0);
-                    bools[i + count] = true;
+                    bools.Add(true);
 					RandevuSaatlari1.Add(RandevuSaat);
-					count++;
                 }
 
                 TimeSpan appointmentTime = new TimeSpan(currentHour, 0, 0);
@@ -163,6 +161,12 @@ namespace Proje_B201210567.Controllers
 			{
 				return NotFound();
 			}
+
+            if (poliklinik.AcilisSaati > doktor.CalismaSaatleri[0].BaslangicSaati || poliklinik.KapanisSaati < doktor.CalismaSaatleri[0].BitisSaati)
+            {
+                ModelState.AddModelError("Doktor.CalismaSaatleri[0]", "Girdigniz saatler poliklinik calisma saatlerinden degildir");
+                return View();
+            }
 
             doktor.CalismaSaatleri.Clear();
             _db.Doktorlar.Update(doktor);

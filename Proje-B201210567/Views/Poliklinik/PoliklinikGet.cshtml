@@ -38,17 +38,18 @@
                     DisplayDeteailes(detailes);
                 },
                 error: function (error) {
-                    alert("siktir git");
+                    alert("Hata");
                 }
             });
         });
-
         const DisplayDeteailes = function (data) {
             const html = `<table class="table table-bordered table-striped">
             <thead>
                 <tr class="bg-body-secondary">
                     <th>Bölüm Id</th>
                     <th>Bölüm Adı</th>
+                    <th>Açılış Saatı</th>
+                    <th>Kapaniş Saatı</th>
                     <th>Doktor Listesi</th>
                 </tr>
             </thead>
@@ -56,6 +57,8 @@
                 <tr>
                     <td>${data.bolum_Id}</td>
                     <td>${data.bolum_Adi}</td>
+                    <td>${data.acilisSaati}
+                    <td>${data.kapanisSaati}
                     <td width="20%">
                         <div class="w-50 btn-group " role="group">
                                                      <a href="/Doktor/DoktorListesi/${data.bolum_Id}" class="btn btn-info mx-2"><i class="bi bi-pencil-square"></i> &nbsp;incele </a>

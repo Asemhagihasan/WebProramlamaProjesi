@@ -21,7 +21,7 @@ namespace Proje_B201210567.Models
         public int ?DoktorId { get; set; }
         public Doktor ?Doktor { get; set; }
         [ForeignKey("Kullanci")]
-        public int? KullanciId { get; set; }
+        public string? KullanciId { get; set; }
         public Kullanci ?Kullanci { get; set; }
     }
 }

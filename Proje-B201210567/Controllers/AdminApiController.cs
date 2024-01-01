@@ -1,96 +1,106 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
 using Proje_B201210567.Data;
 using Proje_B201210567.Models;
+using Proje_B201210567.Models.Authentication;
+using Proje_B201210567.Repository;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
 namespace Proje_B201210567.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class AdminApiController : ControllerBase
+	[Authorize(Roles = "admin")]
+	public class AdminApiController : ControllerBase
     {
         private readonly AppDbContext _db;
-            public AdminApiController(AppDbContext db)
+        private readonly UserManager<Kullanci> _userManager;
+        private readonly SignInManager<Kullanci> _signInManager;
+        private readonly IUserAuthenticationService _authService;
+        public AdminApiController(AppDbContext db, UserManager<Kullanci> userManager, SignInManager<Kullanci> signInManager, IUserAuthenticationService authService)
+        {
+            _db = db;
+            _userManager = userManager;
+            _signInManager = signInManager;
+            _authService = authService;
+        }
+        //api/products
+        [HttpGet]
+        public async Task<List<Kullanci>> GetAsync()
+        {
+            var adminUsers = await _userManager.GetUsersInRoleAsync("Admin");
+            return adminUsers.ToList(); ;
+        }
+
+
+        [HttpPost]
+        public async Task<IActionResult> Post([FromBody] RegistrationModel admin)
+        {
+            admin.Role = "admin";
+            var result = await _authService.RegistratiopnAsync(admin);
+            return Ok(result);
+        }
+
+
+        [HttpGet("{id}")]
+        public async Task<ActionResult<Kullanci>> GetAsync(string? id)
+        {
+            if (id is null)
             {
-                _db = db;
+                return NotFound();
             }
-            // api/products
-            [HttpGet]
-            public List<Admin> Get()
+			var adminUsers = await _userManager.GetUsersInRoleAsync("Admin");
+            var admin = adminUsers.FirstOrDefault(k => k.Id == id);
+			if (admin == null)
             {
-                var products = _db.Admins.ToList();
-                return products;
-
+                return NotFound();
             }
-            [HttpPost]
-            // api/products
-            public IActionResult Post([FromBody] Admin p)
+            return admin;
+        }
+
+
+        [HttpPut("{id}")]
+        public async Task<IActionResult> PutAsync(string? id, [FromBody] Kullanci y)
+        {
+            if (id is null)
             {
-                _db.Add(p);
-                _db.SaveChanges();
-                return Ok(p);
-
+                return NotFound();
             }
-            [HttpGet("{id}")]
-            public ActionResult<Admin> Get(int? id)
+			var adminUsers = await _userManager.GetUsersInRoleAsync("Admin");
+            var user = adminUsers.SingleOrDefault(k => k.Id == id);
+	
+
+			if (user == null)
+			{
+                return NotFound();
+            }
+            user.Tc = y.Tc;
+			user.Kullanci_Adi = y.Kullanci_Adi;
+			user.Kullanci_Soyad = y.Kullanci_Soyad;
+			user.TelefonNumarasi = y.TelefonNumarasi;
+            user.Cinsel = y.Cinsel;
+			var result = await _userManager.UpdateAsync(user);
+			return Ok(user);
+        }
+
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteAsync(string? id)
+        {
+            if (id is null)
             {
-                if (id is null)
-                {
-                    return NotFound();
-                }
-                var Updated = _db.Admins.Find(id);
-                if (Updated == null)
-                {
-                    return NotFound();
-                }
-                return Updated;
+                return NotFound();
             }
-
-            // POST api/<YazarApiController>
-
-
-
-            // PUT api/<YazarApiController>/5
-            [HttpPut("{id}")]
-            public IActionResult Put(int? id, [FromBody] Admin y)
+			var adminUsers = await _userManager.GetUsersInRoleAsync("Admin");
+            var DeletedAdmin = adminUsers.SingleOrDefault(k => k.Id == id);
+            if (DeletedAdmin == null)
             {
-                if (id is null)
-                {
-                    return NotFound();
-                }
-                var updated = _db.Admins.FirstOrDefault(z => z.Id == id);
-                if (updated == null)
-                {
-                    return NotFound();
-                }
-                updated.Adi = y.Adi;
-                updated.Soyad = y.Soyad;
-                updated.TelefonNumarasi = y.TelefonNumarasi;
-                updated.Email = y.Email; 
-                updated.Sifre = y.Sifre;
-
-                _db.Admins.Update(updated);
-                _db.SaveChanges();
-                return Ok(updated);
+                return NotFound();
             }
+			var result = await _userManager.DeleteAsync(DeletedAdmin);
 
-            // DELETE api/<YazarApiController>/5
-            [HttpDelete("{id}")]
-            public IActionResult Delete(int? id)
-            {
-                if (id is null)
-                {
-                    return NotFound();
-                }
-                var Deleted = _db.Admins.FirstOrDefault(z => z.Id == id);
-                if (Deleted == null)
-                {
-                    return NotFound();
-                }
-
-                _db.Admins.Remove(Deleted);
-                _db.SaveChanges();
-                return Ok(Deleted);
-            }
+			return Ok(DeletedAdmin);
         }
     }
+}
 
