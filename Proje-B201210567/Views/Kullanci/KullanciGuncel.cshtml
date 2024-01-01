@@ -1,5 +1,5 @@
 ﻿@model Kullanci
-<form method="post" asp-controller="Authentication" asp-action="KullanciGuncel">
+<form method="post" asp-controller="Kullanci" asp-action="KullanciGuncel">
 	<div class="border p-3 mt-4">
 		<div class="row pb-2">
 			<h2 class="text-primary">Günceleme</h2>
@@ -32,11 +32,6 @@
 				<option>Erkek</option>
 				<option>Kız</option>
 			</select>
-		</div>
-		<div class="mb-3">
-			<label asp-for="Email"></label>
-			<input asp-for="Email" type="email" class="form-control" placeholder="email@example.com" />
-			<span asp-validation-for="Email" class="text-danger"></span>
 		</div>
 		<input asp-for="PasswordHash" type="hidden" class="form-control" /> 
 		<button  type="submit" class="btn btn-warning" style="width:150px">Oluştur</button>

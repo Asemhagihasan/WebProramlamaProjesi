@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using NuGet.Protocol;
 using Proje_B201210567.Data;
 using Proje_B201210567.Models;
@@ -25,7 +26,7 @@ namespace Proje_B201210567.Controllers
             _signInManager = signInManager;
         }
 
-        public async Task<IActionResult> KullancilarAsync(Kullanci model)
+        public async Task<IActionResult> Kullancilar(Kullanci model)
         {
             List<Kullanci> objCategortList;
 
@@ -48,42 +49,60 @@ namespace Proje_B201210567.Controllers
         {
             return View();
         }
-        public IActionResult KullanciGuncel(string ?id)
+        public async Task<IActionResult> KullanciGuncel(string id)
         {
-            if(id == null)
+            if (id == null)
             {
                 return NotFound();
             }
-            var kullanci = _db.Kullancilar.Find(id);
-            if(kullanci == null)
+            var users = await _userManager.GetUsersInRoleAsync("user");
+
+            var kullanci = users.SingleOrDefault(k => k.Id == id);
+
+            if (kullanci == null)
             {
                 return NotFound();
             }
+
             return View(kullanci);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult KullanciGuncel(Kullanci kullanci)
+        public async Task<IActionResult> KullanciGuncel(Kullanci kullanci)
         {
             if (ModelState.IsValid)
             {
-                _db.Kullancilar.Update(kullanci);
-                _db.SaveChanges();
-                return RedirectToAction("Kullancilar");
+                var result = await _userManager.UpdateAsync(kullanci);
+                if (result.Succeeded)
+                {
+                    return RedirectToAction("Kullancilar");
+                }
+                else
+                {
+                    // Handle errors, perhaps by returning to the view with error messages
+                    foreach (var error in result.Errors)
+                    {
+                        ModelState.AddModelError("ModelState is not valid", error.Description);
+                    }
+                }
             }
+
+            // ModelState is not valid, return to the view with the current model
             return View(kullanci);
         }
 
-        public IActionResult KullanciSilme(int?id)
+        public async Task<IActionResult> KullanciSilme(string?id)
         {
 
-            if (id == null || id == 0)
+            if (id == null)
             {
                 return NotFound();
             }
 
-             var kullanci = _db.Kullancilar.Find(id);
+            var users = await _userManager.GetUsersInRoleAsync("user");
+
+            var kullanci =users.FirstOrDefault(k => k.Id == id);
             //var queri = from c in _db.Categories where c.Id == id select c;
             //var CategoryFromDbFirst = _db.Categories.FirstOrDefault(c => c.Id == id);
 
@@ -97,15 +116,26 @@ namespace Proje_B201210567.Controllers
 
         [HttpPost]
 		[ValidateAntiForgeryToken]
-		public IActionResult HastaSil(int? KullaniciId)
+		public async Task<IActionResult> HastaSil(Kullanci kullanci1)
         {
-           var kullanci = _db.Kullancilar.Find(KullaniciId);
-          if(kullanci == null)
+            var users = await _userManager.GetUsersInRoleAsync("user");
+
+            var kullanci = users.FirstOrDefault(k => k.Id == kullanci1.Id);
+            var CvP = _db.calismaVePolikliniks.SingleOrDefault(t => t.KullanciId == kullanci1.Id);
+            var randevu = _db.Rendevuler.Find(kullanci1.Id);
+            if(randevu != null)
+            {
+                _db.Rendevuler.Remove(randevu);
+                _db.SaveChanges();
+            }
+            if (kullanci == null || CvP == null)
             {
                 return NotFound();
             }
-            _db.Remove(kullanci);
+            _db.calismaVePolikliniks.Remove(CvP);
             _db.SaveChanges();
+            var result = await _userManager.DeleteAsync(kullanci);
+
             return RedirectToAction("Kullancilar","Kullanci");
         }
         [HttpPost]

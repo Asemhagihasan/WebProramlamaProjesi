@@ -215,7 +215,6 @@ namespace Proje_B201210567.Controllers
 			{
 				return NotFound();
 			}
-
 			var randevu = _db.calismaVePolikliniks.Find(RandevId);
 
 			if(randevu == null)
@@ -248,6 +247,7 @@ namespace Proje_B201210567.Controllers
             var Randevuler1 = new List<RandevuYazdir>();
             foreach (var item in Randevular)
             {
+                //var adminUsers = await _userManager.GetUsersInRoleAsync("Admin");
                 var kullanci = _db.Kullancilar.Find(item.KullaniciId);
                 var Doktor = _db.Doktorlar.Find(item.DoktorId);
                 var Bolum = _db.Poliklinikler.Find(item.BolumId);
