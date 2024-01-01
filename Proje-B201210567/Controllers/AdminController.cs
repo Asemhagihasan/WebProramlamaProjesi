@@ -23,12 +23,13 @@ namespace Proje_B201210567.Controllers
 
         public async Task<IActionResult> Index()
 		{
-			List <Kullanci> adminler = new List<Kullanci>();
+            var adminUsers = await _userManager.GetUsersInRoleAsync("Admin");
+            List <Kullanci> adminler = new List<Kullanci>();
 			HttpClient client = new HttpClient();
 			var response = await client.GetAsync("https://localhost:7100/api/AdminApi");
 			var jsonResponse = await response.Content.ReadAsStringAsync();
             adminler = JsonConvert.DeserializeObject<List<Kullanci>>(jsonResponse);
-			return View(adminler);
+			return View(adminUsers);
 		}
 		public IActionResult Create()
 		{
