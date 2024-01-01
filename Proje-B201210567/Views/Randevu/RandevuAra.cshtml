@@ -1,4 +1,11 @@
-﻿@model RandevuModelleri
+﻿@{
+	if (User.IsInRole("user"))
+	{
+		Layout = "_user";
+	}
+}
+@model RandevuModelleri
+
 
 <form method="post" asp-controller="Randevu" asp-action="DoktorFiltere">
 	<div class="border p-3 mt-4">
@@ -11,9 +18,16 @@
 			</h2>
 		</div>
 		<div class="mb-3">
-			<label asp-for="Kullanci.Tc" ></label>
-			<input asp-for="Kullanci.Tc" type="text" class="form-control" />
-			<span asp-validation-for="Kullanci.Tc" class="text-danger"></span>
+			<label asp-for="Kullanci.Tc"></label>
+			@if (User.IsInRole("admin"))
+			{
+				<input asp-for="Kullanci.Tc" type="text" class="form-control" />
+			}
+			else
+			{
+				<input asp-for="@Model.Kullanci.Tc" type="text" class="form-control" type="hidden" />
+				<input asp-for="@Model.Kullanci.Tc" type="text" class="form-control" disabled />
+			}
 		</div>
 		<div class="mb-3">
 			<label class="form-label">Bölüm</label>
@@ -46,10 +60,7 @@
 </form>
 
 
-@section Scripts{
-	@{
-	<partial name="_validationScriptsPartial" />
-	}
+
 	<script>
 		const container = document.querySelector(".hakimListesi");
 
@@ -96,6 +107,10 @@
 
 
 	</script>
+@section Scripts{
+	@{
+		<partial name="_validationScriptsPartial" />
+	}
 }
 @* fetch("/Randevu/jsonData?BolumId=" + selectedValue)
 	.then(response => response.json())

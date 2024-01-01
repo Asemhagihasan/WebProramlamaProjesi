@@ -1,10 +1,12 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Proje_B201210567.Data;
 using Proje_B201210567.Models;
 
 namespace Proje_B201210567.Controllers
 {
-    public class CalismaSaatiController : Controller
+	[Authorize(Roles = "admin")]
+	public class CalismaSaatiController : Controller
     { 
          private readonly AppDbContext _db;
         public CalismaSaatiController(AppDbContext db)

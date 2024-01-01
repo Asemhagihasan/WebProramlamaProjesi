@@ -1,9 +1,12 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Proje_B201210567.Data;
 using Proje_B201210567.Models;
+using System.Security.Claims;
 
 namespace Proje_B201210567.Controllers
 {
+	[Authorize(Roles = "admin")]
 	public class DoktorController : Controller
 	{
 		int BolumId;
@@ -14,7 +17,7 @@ namespace Proje_B201210567.Controllers
 		}
 		public IActionResult DoktorListesi(int id)
 		{
-			if(id == 0 || id == null) { return NotFound(); }
+			if (id == 0 || id == null) { return NotFound(); }
 
 			var Doktorlar = (from d in _db.Doktorlar where d.poliklinikBolum_Id == id select d).ToList();
 
@@ -62,8 +65,22 @@ namespace Proje_B201210567.Controllers
 				model.polikliniks = _db.Poliklinikler.ToList();
 				return View(model);
 			}
+			model.polikliniks = new List<Poliklinik>() { };
+			model.polikliniks.Add(poliklinik);
 
-			if(model.Doktor.CalismaSaatleri == null)
+			if (_db.Doktorlar.Any(k => k.Tc == model.Doktor.Tc))
+			{
+				ModelState.AddModelError("Doktor.Tc", "Bu Tc Zaten Mevcut");
+				return View(model);
+			}
+			if (_db.Doktorlar.Any(c => c.Email == model.Doktor.Email))
+			{
+				ModelState.AddModelError("Doktor.Email", "Bu mail adresi Zaten Mevcut");
+				return View(model);
+
+			}
+
+			if (model.Doktor.CalismaSaatleri == null)
 			{
 				model.Doktor.CalismaSaatleri = new List<CalismaSaati> { };
 			}
@@ -96,26 +113,66 @@ namespace Proje_B201210567.Controllers
 			return View(doktor);
 		}
 
-		[HttpPost]
+
+        [HttpPost]
 		public IActionResult DoktorGuncel(Doktor doktor)
 		{
-			CalismaSaati calismaSaati = new CalismaSaati()
+			List<TimeSpan> randevuSaatlari = new List<TimeSpan>();
+            List<TimeSpan> RandevuSaatlari1 = new List<TimeSpan>();
+            List<bool> bools = new List<bool>();
+			var poliklinik = _db.Poliklinikler.Find(doktor.poliklinikBolum_Id);
+
+
+            for (int i =0; i < doktor.CalismaSaatleri[0].BitisSaati.Hours - doktor.CalismaSaatleri[0].BaslangicSaati.Hours; i++)
+			{
+                int currentHour = doktor.CalismaSaatleri[0].BaslangicSaati.Hours + i;
+
+                if (currentHour == 12)
+                {
+                    continue;
+                }
+
+				for(int j = 1; j < 3; j++)
+				{
+					TimeSpan RandevuSaat = new TimeSpan(currentHour, j*20, 0);
+                    bools.Add(true);
+					RandevuSaatlari1.Add(RandevuSaat);
+                }
+
+                TimeSpan appointmentTime = new TimeSpan(currentHour, 0, 0);
+
+                randevuSaatlari.Add(appointmentTime);
+            }
+			var gun = (int)(doktor.CalismaSaatleri[0].Gun);
+
+            CalismaSaati calismaSaati = new CalismaSaati()
 			{
 				Gun = doktor.CalismaSaatleri[0].Gun,
 				BaslangicSaati = doktor.CalismaSaatleri[0].BaslangicSaati,
 				BitisSaati = doktor.CalismaSaatleri[0].BitisSaati,
-				DoktorId = doktor.DoktorId
+				DoktorId = doktor.DoktorId,
+				DayOfWeeks = randevuSaatlari,
+				RandevuSaatlari = RandevuSaatlari1,
+				Tarih = DateTime.Now.ToShortDateString(),
+				IsAvailable = bools,
 			};
-			_db.CalismaSaati.Add(calismaSaati);
-			doktor.CalismaSaatleri.Clear();
-			if (doktor == null)
+
+            if (doktor == null)
 			{
 				return NotFound();
 			}
-			_db.Doktorlar.Update(doktor);
-			_db.SaveChanges();
-			return RedirectToAction("DoktorListesi" , "Doktor",new { id = doktor.poliklinikBolum_Id });
 
+            if (poliklinik.AcilisSaati > doktor.CalismaSaatleri[0].BaslangicSaati || poliklinik.KapanisSaati < doktor.CalismaSaatleri[0].BitisSaati)
+            {
+                ModelState.AddModelError("Doktor.CalismaSaatleri[0]", "Girdigniz saatler poliklinik calisma saatlerinden degildir");
+                return View();
+            }
+
+            doktor.CalismaSaatleri.Clear();
+            _db.Doktorlar.Update(doktor);
+            _db.CalismaSaati.Add(calismaSaati);
+            _db.SaveChanges();
+			return RedirectToAction("DoktorListesi" , "Doktor",new { id = doktor.poliklinikBolum_Id });
 		}
 
 		public IActionResult DoktorSilme(int ?id)

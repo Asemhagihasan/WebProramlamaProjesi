@@ -1,4 +1,10 @@
-﻿@model List<CalismaSaatlarGroup>
+﻿@{
+    if (User.IsInRole("user"))
+    {
+        Layout = "_User";
+    }
+}
+@model List<CalismaSaatlarGroup>
 
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
 <style>
@@ -60,12 +66,21 @@
                             @foreach(var obj in Model){
 
                                 @foreach (var item in obj.CalismaSaatiListesi)
-                                {
+                                {   
                                     <tr class="align-middle">
                                         <td>
                                             <div class="d-flex align-items-center">
                                                 <i class="bi bi-star me-3"></i>
-                                                <img src="https://png.pngtree.com/png-vector/20191130/ourmid/pngtree-doctor-icon-circle-png-image_2055257.jpg" class="avatar sm rounded-pill me-3 flex-shrink-0" alt="Customer">
+                                                @{
+                                                    if(obj.Cinsyet == "Erkek")
+                                                    {
+                                                        <img src="https://png.pngtree.com/png-vector/20191130/ourmid/pngtree-doctor-icon-circle-png-image_2055257.jpg" class="avatar sm rounded-pill me-3 flex-shrink-0" alt="Customer">
+                                                    }
+                                                    else
+                                                    {
+                                                        <img src="https://st5.depositphotos.com/1748586/65901/v/450/depositphotos_659011646-stock-illustration-medicine-concept-young-woman-doctor.jpg" class="avatar sm rounded-pill me-3 flex-shrink-0" />
+                                                    }
+                                                }
                                                 <div>
                                                     <div class="h6 mb-0 lh-1">@obj.DoctorName @obj.DoktorSoyad</div>
                                                 </div>
@@ -73,19 +88,21 @@
                                         </td>
                                         <td>
                                             <div class="tarihContainer">
-                                                <span class="text-tarih">En Yakın Tarihi</span>
-                                                <div class="tarih">00/00/2023</div>
+                                                <span class="text-tarih">En Yakın Gün</span>
+                                                <div class="tarih">
+                                                    @item.Gun
+                                                </div>
                                             </div>
                                         </td>
                                         <td> <span class="d-inline-block align-middle"><i class="bi bi-h-circle me-2"></i>Saü Sakarya</span></td>
                                         <td><span><i class="bi bi-hospital me-2"></i>@obj.BolumAdi</span></td>
                                         <td>
-                                            <a asp-controller="Randevu" asp-action="CalismaSaatiGoster" asp-route-id="@item.Id" style="text-decoration:none; color:#157347">
+                                            <a asp-controller="Randevu" asp-action="CalismaSaatiGoster" asp-route-id1="@item.Id" asp-route-id2="@obj.KullanciId" style="text-decoration:none; color:#157347">
                                                 <i class="bi bi-plus-circle "></i> &nbsp;
                                             </a>
                                         </td>
 
-                                    </tr>
+                                    </tr>                                  
                                 }
                             }
                         </tbody>

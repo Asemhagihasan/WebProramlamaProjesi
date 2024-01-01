@@ -21,6 +21,13 @@
 			<span asp-validation-for="Doktor.Doktor_Soyad" class="text-danger"></span>
 		</div>
 		<div class="mb-3">
+			<label class="form-label">Cinsyet</label>
+			<select asp-for="Doktor.Cinsyet" class="form-select">
+				<option>Erkek</option>
+				<option>Kız</option>
+			</select>
+		</div>
+		<div class="mb-3">
 			<label asp-for="Doktor.TelefonNumarasi"></label>
 			<input asp-for="Doktor.TelefonNumarasi" type="text" class="form-control" />
 			<span asp-validation-for="Doktor.TelefonNumarasi" class="text-danger"></span>
@@ -42,6 +49,7 @@
 
 		<button type="submit" class="btn btn-primary" style="width:150px">Oluştur</button> 
 	</div>
+	@Html.ValidationMessageFor(model => model.Doktor.CalismaSaatleri[0], "", new { @class = "text-danger" })
 </form>
 
 

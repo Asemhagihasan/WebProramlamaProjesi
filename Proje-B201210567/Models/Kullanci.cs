@@ -1,12 +1,12 @@
-﻿using System.ComponentModel;
+﻿using Microsoft.AspNetCore.Identity;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
 namespace Proje_B201210567.Models
 {
-	public class Kullanci
+	public class Kullanci : IdentityUser
 	{
-        [Key]
-        public int KullaniciId { get; set; }
+        
 
 		[Required]
         public string Tc { get; set; }
@@ -25,14 +25,5 @@ namespace Proje_B201210567.Models
 
 		[Required(ErrorMessage = "Cinsel seçimi yapmalısınız.")]
 		public string Cinsel { get; set; }
-
-		[Required(ErrorMessage = "Email boş bırakılamaz.")]
-		[EmailAddress(ErrorMessage = "Geçerli bir email adresi giriniz.")]
-		[DisplayName("Email address")]
-		public string Email { get; set; }
-
-		[Required(ErrorMessage = "Şifre boş bırakılamaz.")]
-		[DisplayName("Sifre")]
-        public string Sifre { get; set; }
-    }
+	}
 }

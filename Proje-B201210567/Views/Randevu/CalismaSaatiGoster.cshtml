@@ -1,21 +1,28 @@
-﻿@model CalismaSaati
+﻿@{
+    if (User.IsInRole("user"))
+    {
+        Layout = "_User";
+    }
+}
+@model CalismaVePoliklinik
+
+
 <div class="row">
     <div class="col-12">
         <div class="card">
-            <div class="card-header ">
+            <div class="card-header">
                 <h4 class="card-title">Randevu Al</h4>
             </div>
             <!-- ./card-header -->
             <div class="card-body p-0">
                 <table class="table table-hover">
                     <tbody>
-                        @for (int i = 0; i <= (@Model.BitisSaati.Hours - @Model.BaslangicSaati.Hours); i++)
+                        @for (int i = 0; i < Model.CalismaSaati.DayOfWeeks.Count; i++)
                         {
-                            if (@Model.BaslangicSaati.Hours + i == 12) { continue; }
                             <tr data-widget="expandable-table" aria-expanded="false">
                                 <td>
                                     <i class="bi bi-chevron-right"></i>
-                                    @DateTime.Today.AddHours(Model.BaslangicSaati.Hours + i).ToString("HH:mm")
+                                    @Model.CalismaSaati.DayOfWeeks[i]
                                 </td>
                             </tr>
                             <tr class="expandable-body">
@@ -26,7 +33,29 @@
                                                 <tr data-widget="expandable-table" aria-expanded="false">
                                                     <td>
                                                         <i class="expandable-table-caret fas fa-caret-right fa-fw"></i>
-                                                        <button class="btn btn-info"> 08:35</button>
+                                                        @for (int count = 0, j = 2 * i; count < 2; count++, j++)
+                                                        {
+                                                            @if (@Model.CalismaSaati.IsAvailable[j] == true)
+                                                            {
+                                                                <button class="btn btn-info onay-button"
+                                                                        data-toggle="modal"
+                                                                        data-target="#confirmModal"
+                                                                        onclick="Saatiptal(@j, @Model.calsismaId)">
+                                                                    @Model.CalismaSaati.RandevuSaatlari[j]
+                                                                </button>
+                                                            }
+                                                            else
+                                                            {
+                                                                <button class="btn btn-info onay-button"
+                                                                        data-toggle="modal"
+                                                                        data-target="#confirmModal"
+                                                                        disabled>
+                                                                    @Model.CalismaSaati.RandevuSaatlari[j]
+                                                                </button>
+                                                            }
+                                                        }
+
+
                                                     </td>
                                                 </tr>
                                             </tbody>
@@ -35,9 +64,7 @@
                                 </td>
                             </tr>
                         }
-
                     </tbody>
-
                 </table>
             </div>
             <!-- /.card-body -->
@@ -45,4 +72,91 @@
         <!-- /.card -->
     </div>
 </div>
+
+<!-- Confirmation Modal -->
+<form method="post" action="/Randevu/RandevuOnay">
+    <div class="modal"
+         id="confirmModal"
+         tabindex="-1"
+         role="dialog"
+         aria-labelledby="confirmModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="confirmModalLabel">Confirmation</h5>
+                    <button type="button"
+                            class="close"
+                            data-dismiss="modal"
+                            aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <table class="table table-bordered">
+                        <tbody>
+                            <tr>
+                                <td width="25%">Randevu Zamanı</td>
+                                <td>@Model.CalismaSaati.Gun</td>
+                            </tr>
+                            <tr>
+                                <td width="25%">Hakim</td>
+                                <td>@Model.Doktor.Doktor_Adi @Model.Doktor.Doktor_Soyad</td>
+                            </tr>
+                            <tr>
+                                <td width="25%">Randevu Türü</td>
+                                <td class="text-danger"> Muayene</td>
+
+                            </tr>
+                            <tr>
+                                <td width="25%">Hastane</td>
+                                <td>Saü Hastanesi</td>
+                            </tr>
+                            <tr>
+                                <td width="25%">Poliklinik Adı</td>
+                                <td class="font-weight-bold">@Model.Poliklinik.Bolum_Adi</td>
+                            </tr>
+                            <tr>
+                                <td width="25%">Randevu Sahibi</td>
+                                <td>@Model.Kullanci.Kullanci_Adi @Model.Kullanci.Kullanci_Soyad</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="modal-footer">
+                    <input type="hidden" name="RandevId" value="@Model.Id" />
+                    <button type="submit" class="btn btn-info">Onay</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+@section scripts{
+
+    <script>
+        function Saatiptal(index,id,saat) {
+            console.log("Saatiptal function called with index:", index, "and id:", id);
+            $.ajax({
+                type: "GET",
+                url: "/Randevu/SaatGetir",
+                data: { Index: index,
+                        Id:id},
+                success: function () {
+                    console.log("tamam");
+                },
+                error: function (error) {
+                    alert("Error");
+                }
+            });
+        }
+    </script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.10.2/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+}
+
+
+
 

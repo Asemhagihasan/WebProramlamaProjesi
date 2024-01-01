@@ -1,68 +1,56 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
+using NuGet.Protocol;
 using Proje_B201210567.Data;
 using Proje_B201210567.Models;
+using Proje_B201210567.Repository;
 using System.Collections;
 using System.Collections.Generic;
+using System.Security.Claims;
 
 namespace Proje_B201210567.Controllers
 {
-    public class KullanciController : Controller
+	[Authorize(Roles = "admin")]
+	public class KullanciController : Controller
     {
-		private readonly AppDbContext _db;
-		public KullanciController(AppDbContext db)
-		{
-			_db = db;
-		}
+        private readonly UserManager<Kullanci> _userManager;
+        private readonly SignInManager<Kullanci> _signInManager;
 
-        public IActionResult Kullancilar(Kullanci model)
+        private readonly AppDbContext _db;
+        public KullanciController(AppDbContext db, UserManager<Kullanci> userManager, SignInManager<Kullanci> signInManager)
+        {
+            _db = db;
+            _userManager = userManager;
+            _signInManager = signInManager;
+        }
+
+        public async Task<IActionResult> KullancilarAsync(Kullanci model)
         {
             List<Kullanci> objCategortList;
 
-            if (model.KullaniciId != 0)
+            var adminUsers = await _userManager.GetUsersInRoleAsync("Admin");
+            var users = await _userManager.GetUsersInRoleAsync("user");
+            if (model.Tc != null)
             {
-                objCategortList = new List<Kullanci> { model };
+                objCategortList = new List<Kullanci> { model }; 
+                return View(objCategortList);
             }
             else
             {
-                objCategortList = _db.Kullancilar.ToList();
+                objCategortList = users.ToList();
             }
 
-            return View(objCategortList);
+			return View(objCategortList);
         }
-        public IActionResult KullanciEkleme()
+
+		public IActionResult KullanciEkleme()
         {
             return View();
         }
-
-		[HttpPost]
-        [ValidateAntiForgeryToken]
-        public IActionResult KullanciEkleme(Kullanci kullanci)
+        public IActionResult KullanciGuncel(string ?id)
         {
-			if (_db.Kullancilar.Any(k => k.Tc == kullanci.Tc ))
-
-			{
-				ModelState.AddModelError("Tc", "This TC is already in use.");
-				return View(kullanci);
-			}
-            if(_db.Kullancilar.Any(c=>c.Email == kullanci.Email))
-            {
-				ModelState.AddModelError("Email", "This Email is already in use.");
-				return View(kullanci);
-
-			}
-			if (ModelState.IsValid)
-            {
-                _db.Add(kullanci);
-                _db.SaveChanges();
-                return RedirectToAction("Kullancilar","Kullanci");
-
-            }
-            return View(kullanci);
-        }
-
-        public IActionResult KullanciGuncel(int ?id)
-        {
-            if(id == 0 || id == null)
+            if(id == null)
             {
                 return NotFound();
             }
@@ -75,10 +63,10 @@ namespace Proje_B201210567.Controllers
         }
 
         [HttpPost]
-		[ValidateAntiForgeryToken]
-		public IActionResult KullanciGuncel(Kullanci kullanci)
+        [ValidateAntiForgeryToken]
+        public IActionResult KullanciGuncel(Kullanci kullanci)
         {
-            if(ModelState.IsValid)
+            if (ModelState.IsValid)
             {
                 _db.Kullancilar.Update(kullanci);
                 _db.SaveChanges();
